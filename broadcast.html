@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Broadcast</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+table{border-collapse:collapse;width:100%}
+th{font-size:11px;font-weight:600;color:#5C5F6A;text-align:left;padding:12px 16px;border-bottom:1px solid #E6E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#FAFAF8}
+td{font-size:14px;color:#14161C;padding:14px 16px;border-bottom:1px solid #EFEFEB;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.num{font-family:'Geist Mono',ui-monospace,monospace;text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
+.lbl{font-size:13px;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav on" href="broadcast.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<header style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Broadcast</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A">Send one message to many people at once over Microsoft Teams and email</p>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<section aria-label="New broadcast" style="flex: 999 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Send to</span>
+<div role="group" aria-label="Audience" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: #F0F0EC; border-radius: 12px">
+<sc-for list="{{audiences}}" as="a" hint-placeholder-count="3">
+<button type="button" aria-pressed="{{a.pressed}}" onClick="{{a.pick}}" style="{{a.style}}">{{a.label}}</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<span style="font-size: 13px; color: #5C5F6A">Who:</span>
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
+<span class="chip" style="{{f.style}}">{{f.label}}</span>
+</sc-for>
+<button type="button" class="btn" style="min-height: 36px; padding: 0 12px; font-size: 13px; background: #FFFFFF; color: #14161C; border: 1px dashed #C9C9C2">+ Filter</button>
+</div>
+<span style="font-size: 14px"><strong class="mono" style="font-weight: 600">{{count}}</strong> <span style="color: #5C5F6A">will receive this</span></span>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Send via</span>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" aria-pressed="{{teamsPressed}}" onClick="{{toggleTeams}}" style="{{teamsStyle}}"><span aria-hidden="true" style="{{teamsBox}}">{{teamsTick}}</span>Microsoft Teams</button>
+<button type="button" aria-pressed="{{emailPressed}}" onClick="{{toggleEmail}}" style="{{emailStyle}}"><span aria-hidden="true" style="{{emailBox}}">{{emailTick}}</span>Email</button>
+</div>
+</div>
+
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="lbl">Start from a template</span><select class="sel"><option>{{template}}</option><option>Payout change</option><option>Cap reached, pause traffic</option><option>Monthly report reminder</option><option>Blank message</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="lbl">Subject</span><input type="text" class="sel" value="{{subject}}"></label>
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="lbl">Message</span><textarea rows="6" style="padding: 12px 14px; border: 1px solid #E2E2DC; border-radius: 10px; font: 15px/1.55 Geist, system-ui, sans-serif; color: #14161C; resize: vertical">{{body}}</textarea></label>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center"><span style="font-size: 12px; color: #5C5F6A">Insert:</span><button type="button" class="btn mono" style="min-height: 32px; padding: 0 10px; font-size: 12px; background: #F0F0EC; color: #14161C; border: 0">{first name}</button><button type="button" class="btn mono" style="min-height: 32px; padding: 0 10px; font-size: 12px; background: #F0F0EC; color: #14161C; border: 0">{campaign}</button><button type="button" class="btn mono" style="min-height: 32px; padding: 0 10px; font-size: 12px; background: #F0F0EC; color: #14161C; border: 0">{payout}</button><button type="button" class="btn mono" style="min-height: 32px; padding: 0 10px; font-size: 12px; background: #F0F0EC; color: #14161C; border: 0">{POC name}</button></div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; padding-top: 6px; border-top: 1px solid #EFEFEB">
+<button type="button" class="btn" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Send me a test</button>
+<button type="button" class="btn" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Schedule…</button>
+<button type="button" class="btn" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Send to {{count}}</button>
+</div>
+</section>
+
+<aside aria-label="Preview" style="flex: 1 1 340px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #5C5F6A">Preview · as {{previewName}} sees it</span>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 18px; display: flex; gap: 12px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #0C0E14; color: #D4F25A; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap"><span style="font-size: 14px; font-weight: 600">Priya S. · [Company name]</span><span style="font-size: 12px; color: #5C5F6A">via {{viaLabel}}</span></div>
+<span style="font-size: 14px; font-weight: 600">{{subject}}</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.55; color: #2A2D35; white-space: pre-line">{{previewBody}}</p>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Recipients</span>
+<sc-for list="{{people}}" as="p" hint-placeholder-count="5">
+<div style="display: flex; justify-content: space-between; gap: 10px; font-size: 14px"><span>{{p.name}}</span><span style="font-size: 12px; color: #5C5F6A">{{p.org}}</span></div>
+</sc-for>
+<span style="font-size: 12px; color: #5C5F6A">Contacts without a Teams ID get email only.</span>
+</div>
+</aside>
+</div>
+
+<section aria-labelledby="sent" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="padding: 18px 24px"><h2 id="sent" style="margin: 0; font-size: 16px; font-weight: 600">Sent broadcasts</h2></div>
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">Message</th><th scope="col">Sent to</th><th scope="col">Via</th><th scope="col">By</th><th scope="col">When</th><th scope="col" style="text-align: right">Delivered</th></tr></thead>
+<tbody>
+<sc-for list="{{log}}" as="l" hint-placeholder-count="4">
+<tr><td style="font-weight: 500">{{l.msg}}</td><td>{{l.to}}</td><td>{{l.via}}</td><td>{{l.by}}</td><td style="color: #5C5F6A">{{l.when}}</td><td class="num">{{l.ok}}</td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const aud = s.aud || 'pub';
+    const teams = s.teams !== false, email = s.email !== false;
+    const aOn = 'flex:1 1 auto;min-height:44px;padding:0 16px;border:0;border-radius:9px;background:#FFFFFF;box-shadow:0 1px 2px #0000001a;font:600 14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
+    const aOff = 'flex:1 1 auto;min-height:44px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;cursor:pointer';
+    const audiences = [['pub', 'Publishers'], ['adv', 'Advertisers'], ['team', 'Internal team']].map(([id, label]) => ({
+      label, pressed: String(id === aud), style: id === aud ? aOn : aOff, pick: () => this.setState({ aud: id })
+    }));
+    const fOn = 'background:#0C0E14;color:#FFFFFF', fOff = 'background:#ECECE7;color:#4A4D57';
+    const A = {
+      pub: {
+        filters: [['Running SpinArena · Android FTD', fOn], ['Any accuracy', fOff]], count: '5 publishers · 7 contacts',
+        template: 'Campaign update', subject: 'SpinArena Android FTD: payout up to $36 from 10 Nov',
+        body: 'Hi {first name},\n\nGood news on {campaign}: from 10 November your payout goes up to $36 per first deposit. Caps stay the same.\n\nReach out to me if you have questions.\n{POC name}',
+        previewName: 'Ravi at ClickHive Media',
+        previewBody: 'Hi Ravi,\n\nGood news on SpinArena Android FTD: from 10 November your payout goes up to $36 per first deposit. Caps stay the same.\n\nReach out to me if you have questions.\nPriya S.',
+        people: [['Ravi K.', 'ClickHive Media'], ['Dana L.', 'AdNest Network'], ['Sunil P.', 'Orbit Leads'], ['Mehul T.', 'Pulse Affiliates'], ['+3 more', 'BlueKite Ads, AdNest']]
+      },
+      adv: {
+        filters: [['October report pending', fOn], ['All categories', fOff]], count: '7 advertisers · 9 contacts',
+        template: 'Monthly report reminder', subject: 'Reminder: October report due by 5 November',
+        body: 'Hi {first name},\n\nA quick reminder that your October report for {campaign} is due by 5 November. Please reply with the file.\n\nThanks,\n{POC name}',
+        previewName: 'Marco at Nova Bank PH',
+        previewBody: 'Hi Marco,\n\nA quick reminder that your October report for Savings account is due by 5 November. Please reply with the file.\n\nThanks,\nPriya S.',
+        people: [['Marco R.', 'Nova Bank PH'], ['Anita G.', 'Pocket Rummy'], ['Joel S.', 'Adbridge Agency'], ['+4 more', 'various']]
+      },
+      team: {
+        filters: [['Everyone', fOn]], count: '6 team members',
+        template: 'Team announcement', subject: 'October close: reports due Friday',
+        body: 'Team,\n\nPlease make sure every advertiser report for October is uploaded by Friday so we can settle publishers on time.\n\n{POC name}',
+        previewName: 'Arjun M.',
+        previewBody: 'Team,\n\nPlease make sure every advertiser report for October is uploaded by Friday so we can settle publishers on time.\n\nPriya S.',
+        people: [['Arjun M.', 'Account manager'], ['Karan D.', 'Account manager'], ['Meera R.', 'Account manager'], ['Rohit V.', 'Admin'], ['+2 more', 'Finance']]
+      }
+    };
+    const a = A[aud];
+    const chOn = 'display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid #0C0E14;background:#FFFFFF;font:600 14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
+    const chOff = 'display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 16px;border-radius:10px;border:1px solid #E2E2DC;background:#FFFFFF;font:500 14px Geist,system-ui,sans-serif;color:#5C5F6A;cursor:pointer';
+    const boxOn = 'width:18px;height:18px;border-radius:5px;background:#0C0E14;color:#D4F25A;font-size:12px;display:flex;align-items:center;justify-content:center';
+    const boxOff = 'width:18px;height:18px;border-radius:5px;border:1.5px solid #C9C9C2;box-sizing:border-box';
+    const via = [teams ? 'Teams' : null, email ? 'email' : null].filter(Boolean).join(' and ') || 'nothing selected';
+    const log = [
+      ['Cap reached on Pocket Rummy, pause traffic', '4 publishers', 'Teams + email', 'Arjun M.', '30 Oct, 4:05 pm', '4 / 4'],
+      ['October report reminder', '9 advertisers', 'Email', 'Priya S.', '28 Oct, 10:00 am', '9 / 9'],
+      ['New: Nova Bank PH credit card campaign', '12 publishers', 'Teams + email', 'Priya S.', '24 Oct, 2:30 pm', '12 / 12'],
+      ['Payout change on Kredo Card approval', '3 publishers', 'Teams', 'Karan D.', '18 Oct, 11:15 am', '3 / 3']
+    ].map(([msg, to, v, by, when, ok]) => ({ msg, to, via: v, by, when, ok }));
+    return {
+      audiences, log, count: a.count, template: a.template, subject: a.subject, body: a.body,
+      previewName: a.previewName, previewBody: a.previewBody, viaLabel: via,
+      filters: a.filters.map(([label, style]) => ({ label, style })),
+      people: a.people.map(([name, org]) => ({ name, org })),
+      teamsPressed: String(teams), emailPressed: String(email),
+      teamsStyle: teams ? chOn : chOff, emailStyle: email ? chOn : chOff,
+      teamsBox: teams ? boxOn : boxOff, emailBox: email ? boxOn : boxOff,
+      teamsTick: teams ? '✓' : '', emailTick: email ? '✓' : '',
+      toggleTeams: () => this.setState({ teams: !teams }),
+      toggleEmail: () => this.setState({ email: !email })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Advertisers</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+table{border-collapse:collapse;width:100%}
+th{font-size:11px;font-weight:600;color:#5C5F6A;text-align:left;padding:12px 16px;border-bottom:1px solid #E6E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#FAFAF8}
+td{font-size:14px;color:#14161C;padding:14px 16px;border-bottom:1px solid #EFEFEB;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#FAFAF8}
+.num{font-family:'Geist Mono',ui-monospace,monospace;text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.av{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav on" href="advertisers.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Advertisers</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A">Who pays us: brands, agencies and networks that give us campaigns</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<a class="btn" href="upload.html" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Import from Excel</a>
+<a class="btn" href="advertiser.html" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">+ Add advertiser</a>
+</div>
+</header>
+
+<section aria-label="Advertiser summary, October 2026" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 14px">
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5C5F6A">Revenue from advertisers · Oct</span><span class="mono" style="font-size: 28px; font-weight: 500; letter-spacing: -.02em">$48,920</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5C5F6A">Active advertisers</span><span class="mono" style="font-size: 28px; font-weight: 500; letter-spacing: -.02em">18 <span style="font-size: 15px; color: #5C5F6A">of 28</span></span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5C5F6A">October reports still pending</span><span class="mono" style="font-size: 28px; font-weight: 500; letter-spacing: -.02em; color: #8A4300">7</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #5C5F6A">Avg. days to send report</span><span class="mono" style="font-size: 28px; font-weight: 500; letter-spacing: -.02em">8.4</span></div>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; background: #FFFFFF; border: 1px solid #E2E2DC; border-radius: 10px; flex: 1 1 280px; box-sizing: border-box">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5C5F6A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<span class="sr">Search advertisers</span>
+<input type="search" placeholder="Search advertisers or contacts" style="border: 0; outline: 0; flex: 1; font: 14px Geist, system-ui, sans-serif; background: transparent; color: #14161C; min-width: 0">
+</label>
+<label><span class="sr">Type</span><select class="sel"><option>All types</option><option>Direct brand</option><option>Agency</option><option>Network</option></select></label>
+<label><span class="sr">Category</span><select class="sel"><option>All categories</option><option>iGaming</option><option>Banking</option><option>Credit card</option><option>Insurance</option><option>Lending</option><option>Gaming</option></select></label>
+<label><span class="sr">Report status</span><select class="sel"><option>Any report status</option><option>Pending</option><option>Received</option><option>Disputed</option><option>Settled</option></select></label>
+<label><span class="sr">POC</span><select class="sel"><option>All POCs</option><option>My accounts</option></select></label>
+</div>
+
+<section aria-label="Advertiser list" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">Advertiser</th><th scope="col">Type</th><th scope="col">Category</th><th scope="col">POC</th><th scope="col" style="text-align: right">Live campaigns</th><th scope="col" style="text-align: right">Oct revenue</th><th scope="col" style="text-align: right">Lifetime revenue</th><th scope="col" style="text-align: right">Days to report</th><th scope="col">October report</th></tr></thead>
+<tbody>
+<sc-for list="{{advs}}" as="a" hint-placeholder-count="7">
+<tr>
+<td><a href="advertiser.html" style="display: flex; align-items: center; gap: 12px; color: #14161C; text-decoration: none"><span class="av" aria-hidden="true" style="{{a.avStyle}}">{{a.ini}}</span><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 500">{{a.name}}</span><span style="font-size: 12px; color: #5C5F6A">{{a.sub}}</span></span></a></td>
+<td>{{a.type}}</td>
+<td>{{a.cat}}</td>
+<td>{{a.poc}}</td>
+<td class="num">{{a.live}}</td>
+<td class="num">{{a.oct}}</td>
+<td class="num">{{a.rev}}</td>
+<td class="num"><span style="{{a.turnStyle}}">{{a.turn}}</span></td>
+<td><span class="chip" style="{{a.chipStyle}}">{{a.rep}}</span></td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+<div style="padding: 14px 20px; border-top: 1px solid #EFEFEB; font-size: 13px; color: #5C5F6A">Showing 7 of 28 advertisers</div>
+</section>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const tints = ['#E7ECFD;color:#2440B0', '#EEF7CF;color:#3F5200', '#FFF1DF;color:#8A4300', '#ECEBFA;color:#3A33A8', '#E8F3EA;color:#1F6B37', '#ECECE7;color:#4A4D57'];
+    const ini = (n) => n.split(' ').map((w) => w[0]).join('').slice(0, 2).toUpperCase();
+    const rc = { Pending: 'background:#FFF1DF;color:#8A4300', Received: 'background:#E7ECFD;color:#2440B0', Disputed: 'background:#FBE7E9;color:#9B1C2C', Settled: 'background:#E8F3EA;color:#1F6B37', 'No campaigns': 'background:#ECECE7;color:#4A4D57' };
+    const advs = [
+      ['SpinArena', 'Philippines', 'Direct brand', 'iGaming', 'Arjun M.', 3, '$18,590', '$142,300', 6, 'Received'],
+      ['Nova Bank PH', 'Philippines', 'Direct brand', 'Banking', 'Priya S.', 2, '$10,760', '$64,900', 9, 'Pending'],
+      ['Adbridge Agency', 'For Kredo Card, Zest Pay', 'Agency', 'Credit card', 'Karan D.', 2, '$8,320', '$58,200', 12, 'Disputed'],
+      ['Pocket Rummy', 'India', 'Direct brand', 'Gaming', 'Arjun M.', 1, '$6,850', '$39,700', 7, 'Pending'],
+      ['ShieldCare Insurance', 'India', 'Direct brand', 'Insurance', 'Meera R.', 1, '$2,940', '$18,300', 5, 'Settled'],
+      ['Lumi Lending', 'Indonesia', 'Network', 'Lending', 'Karan D.', 0, '$1,460', '$9,800', 15, 'Settled'],
+      ['Vela Pay', 'Vietnam · request under review', 'Direct brand', 'Fintech', 'Karan D.', 0, '—', '—', '—', 'No campaigns']
+    ].map(([name, sub, type, cat, poc, live, oct, rev, turn, rep], i) => ({
+      name, sub, type, cat, poc, live, oct, rev, rep, ini: ini(name),
+      turn: typeof turn === 'number' ? turn + ' days' : turn,
+      turnStyle: typeof turn === 'number' && turn > 10 ? 'color:#9A4A00;font-weight:600' : 'color:#14161C',
+      avStyle: 'background:' + tints[i % tints.length], chipStyle: rc[rep]
+    }));
+    return { advs };
+  }
+}
+</script>
+</body>
+</html>

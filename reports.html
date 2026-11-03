@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Reports</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+table{border-collapse:collapse;width:100%}
+th{font-size:11px;font-weight:600;color:#5C5F6A;text-align:left;padding:12px 16px;border-bottom:1px solid #E6E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#FAFAF8}
+td{font-size:14px;color:#14161C;padding:14px 16px;border-bottom:1px solid #EFEFEB;white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:#FAFAF8}
+tfoot td{background:#FAFAF8;font-weight:600;border-top:1px solid #E6E6E1;border-bottom:0}
+.num{font-family:'Geist Mono',ui-monospace,monospace;text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
+.lbl{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#5C5F6A}
+.chk{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px}
+.chk input{width:18px;height:18px;accent-color:#0C0E14}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav on" href="reports.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Reports</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A">Build any view of past and current performance, then save, export or email it</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" class="btn" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Save report</button>
+<button type="button" class="btn" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Email every Monday</button>
+<button type="button" class="btn" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Export to Excel</button>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<aside aria-label="Report settings" style="flex: 1 1 280px; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 22px; box-sizing: border-box">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Date range</span>
+<label><span class="sr">Quick range</span><select class="sel"><option>Last month · October 2026</option><option>Today</option><option>Yesterday</option><option>This week</option><option>Last 7 days</option><option>This month</option><option>This quarter</option><option>This calendar year</option><option>This financial year · FY 2026–27</option><option>Last financial year · FY 2025–26</option><option>Custom range</option></select></label>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #5C5F6A">From<input type="date" value="2026-10-01" class="sel mono" readonly></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #5C5F6A">To<input type="date" value="2026-10-31" class="sel mono" readonly></label>
+</div>
+<label class="chk"><input type="checkbox" checked>Compare with previous period</label>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Break down by time</span>
+<div role="group" aria-label="Time grouping" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: #F0F0EC; border-radius: 12px">
+<sc-for list="{{grains}}" as="g" hint-placeholder-count="7">
+<button type="button" aria-pressed="{{g.pressed}}" onClick="{{g.pick}}" style="{{g.style}}">{{g.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Group rows by</span>
+<div role="group" aria-label="Group rows by" style="display: flex; flex-direction: column; gap: 4px">
+<sc-for list="{{dims}}" as="d" hint-placeholder-count="5">
+<button type="button" aria-pressed="{{d.pressed}}" onClick="{{d.pick}}" style="{{d.style}}"><span>{{d.label}}</span><span aria-hidden="true">{{d.mark}}</span></button>
+</sc-for>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span class="lbl" style="margin-bottom: 6px">Columns</span>
+<label class="chk"><input type="checkbox" checked>Revenue</label>
+<label class="chk"><input type="checkbox" checked>Payout</label>
+<label class="chk"><input type="checkbox" checked>Margin &amp; margin %</label>
+<label class="chk"><input type="checkbox" checked>Attribution accuracy</label>
+<label class="chk"><input type="checkbox">Reported vs confirmed conversions</label>
+<label class="chk"><input type="checkbox">Clicks &amp; CR% (from uploads)</label>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lbl">Filters</span>
+<label><span class="sr">Category</span><select class="sel"><option>All categories</option><option>iGaming</option><option>Banking</option></select></label>
+<label><span class="sr">Geo</span><select class="sel"><option>All geos</option><option>India</option><option>Philippines</option></select></label>
+<label><span class="sr">POC</span><select class="sel"><option>All POCs</option><option>Priya S.</option><option>Arjun M.</option></select></label>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<section aria-labelledby="res" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="res" style="margin: 0; font-size: 18px; font-weight: 600">{{title}}</h2>
+<span style="font-size: 13px; color: #5C5F6A">1 – 31 Oct 2026 · by {{grainWord}} · compared with September</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" class="btn" style="min-height: 40px; background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">CSV</button>
+<button type="button" class="btn" style="min-height: 40px; background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">PDF</button>
+</div>
+</div>
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">{{dimLabel}}</th><th scope="col">Share of revenue</th><th scope="col" style="text-align: right">Revenue</th><th scope="col" style="text-align: right">Payout</th><th scope="col" style="text-align: right">Margin</th><th scope="col" style="text-align: right">Margin %</th><th scope="col" style="text-align: right">vs Sep</th></tr></thead>
+<tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<tr>
+<td style="font-weight: 500">{{r.name}}</td>
+<td><div style="display: flex; align-items: center; gap: 10px"><div style="width: 140px; height: 8px; border-radius: 999px; background: #F0F0EC; overflow: hidden"><div style="{{r.bar}}"></div></div><span class="mono" style="font-size: 12px; color: #5C5F6A">{{r.share}}</span></div></td>
+<td class="num">{{r.rev}}</td>
+<td class="num">{{r.pay}}</td>
+<td class="num" style="font-weight: 600">{{r.mar}}</td>
+<td class="num">{{r.pct}}</td>
+<td class="num"><span style="{{r.deltaStyle}}">{{r.delta}}</span></td>
+</tr>
+</sc-for>
+</tbody>
+<tfoot><tr><td>Total</td><td></td><td class="num">$48,920</td><td class="num">$36,140</td><td class="num">$12,780</td><td class="num">26.1%</td><td class="num">+7.3%</td></tr></tfoot>
+</table>
+</div>
+</section>
+
+<section aria-labelledby="saved" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="saved" style="margin: 0 0 4px; font-size: 16px; font-weight: 600">Saved reports</h2>
+<sc-for list="{{saved}}" as="s" hint-placeholder-count="4">
+<button type="button" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; min-height: 52px; padding: 0 14px; border: 1px solid #EFEFEB; border-radius: 12px; background: #FAFAF8; font: 500 14px Geist, system-ui, sans-serif; color: #14161C; cursor: pointer; text-align: left"><span>{{s.name}}</span><span style="font-size: 12px; color: #5C5F6A">{{s.meta}}</span></button>
+</sc-for>
+</section>
+</div>
+</div>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const grain = s.grain || 'Week', dim = s.dim || 'adv';
+    const gOn = 'min-height:40px;padding:0 6px;border:0;border-radius:9px;background:#FFFFFF;box-shadow:0 1px 2px #0000001a;font:600 13px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
+    const gOff = 'min-height:40px;padding:0 6px;border:0;border-radius:9px;background:transparent;font:500 13px Geist,system-ui,sans-serif;color:#4A4D57;cursor:pointer';
+    const grains = ['Total', 'Day', 'Week', 'Month', 'Quarter', 'Year', 'FY'].map((g) => ({
+      label: g === 'FY' ? 'Fin. year' : g, pressed: String(g === grain), style: g === grain ? gOn : gOff, pick: () => this.setState({ grain: g })
+    }));
+    const dOn = 'display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 14px;border:1px solid #0C0E14;border-radius:10px;background:#0C0E14;color:#FFFFFF;font:600 14px Geist,system-ui,sans-serif;cursor:pointer';
+    const dOff = 'display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:0 14px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;color:#14161C;font:500 14px Geist,system-ui,sans-serif;cursor:pointer';
+    const D = {
+      adv: ['Advertiser', [['SpinArena', 18590, 13460, 12.1], ['Nova Bank PH', 10760, 8070, 4.0], ['Adbridge Agency', 8320, 6240, 9.6], ['Pocket Rummy', 6850, 5140, 2.2], ['ShieldCare Insurance', 2940, 2180, -6.1], ['Lumi Lending', 1460, 1050, -18.4]]],
+      pub: ['Publisher', [['ClickHive Media', 14210, 10230, 8.3], ['AdNest Network', 11060, 8190, 11.0], ['Orbit Leads', 8450, 6340, 5.2], ['Pulse Affiliates', 6200, 4710, -2.4], ['BlueKite Ads', 4900, 3630, 14.7], ['36 other publishers', 4100, 3040, 3.1]]],
+      cat: ['Category', [['iGaming', 18590, 13460, 12.1], ['Banking', 10760, 8070, 4.0], ['Credit card', 8320, 6240, 9.6], ['Gaming', 6850, 5140, 2.2], ['Insurance', 2940, 2180, -6.1], ['Lending', 1460, 1050, -18.4]]],
+      geo: ['Geo', [['Philippines', 29350, 21530, 9.4], ['India', 18110, 13560, 5.6], ['Indonesia', 1460, 1050, -18.4]]],
+      poc: ['POC', [['Arjun M.', 25440, 18600, 8.7], ['Priya S.', 10760, 8070, 4.0], ['Karan D.', 9780, 7290, 3.9], ['Meera R.', 2940, 2180, -6.1]]]
+    };
+    const dims = [['adv', 'Advertiser'], ['pub', 'Publisher'], ['cat', 'Category'], ['geo', 'Geo'], ['poc', 'POC (account manager)']].map(([id, label]) => ({
+      label, pressed: String(id === dim), style: id === dim ? dOn : dOff, mark: id === dim ? '✓' : '', pick: () => this.setState({ dim: id })
+    }));
+    const usd = (n) => '$' + n.toLocaleString('en-US');
+    const [dimLabel, data] = D[dim];
+    const rows = data.map(([name, rev, pay, d]) => ({
+      name, rev: usd(rev), pay: usd(pay), mar: usd(rev - pay), pct: ((rev - pay) / rev * 100).toFixed(1) + '%',
+      share: (rev / 48920 * 100).toFixed(1) + '%',
+      bar: 'height:100%;border-radius:999px;background:#2F4FD6;width:' + (rev / 29350 * 100).toFixed(1) + '%',
+      delta: (d > 0 ? '+' : '') + d.toFixed(1) + '%', deltaStyle: d < 0 ? 'color:#9A4A00;font-weight:600' : 'color:#14161C'
+    }));
+    const saved = [
+      ['Monthly margin by advertiser', 'Last month · by advertiser'],
+      ['Publisher accuracy, last 90 days', 'Emailed to Priya, Arjun every Monday'],
+      ['FY revenue by category', 'This financial year · by month'],
+      ['Team performance', 'This quarter · by POC']
+    ].map(([name, meta]) => ({ name, meta }));
+    return {
+      grains, dims, rows, saved, dimLabel,
+      title: 'Revenue & margin by ' + dimLabel.toLowerCase().replace(' (account manager)', ''),
+      grainWord: grain === 'FY' ? 'financial year' : grain.toLowerCase()
+    };
+  }
+}
+</script>
+</body>
+</html>

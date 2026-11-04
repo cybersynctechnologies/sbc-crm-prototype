@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Daily entry</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+.grid{border-collapse:separate;border-spacing:0;font-size:13px}
+.grid th{font-size:11px;font-weight:600;color:#5C5F6A;padding:8px 4px;border-bottom:1px solid #E6E6E1;background:#FAFAF8;white-space:nowrap;text-align:center}
+.grid td{border-bottom:1px solid #EFEFEB;padding:0;white-space:nowrap}
+.grid tfoot td{background:#FAFAF8;font-weight:600;border-top:1px solid #E6E6E1;border-bottom:0}
+.grid input{width:44px;height:40px;box-sizing:border-box;border:0;background:transparent;text-align:center;font:500 13px 'Geist Mono',ui-monospace,monospace;color:#14161C;outline:none}
+.grid input:focus{background:#FFFFFF;box-shadow:inset 0 0 0 2px #2F4FD6;border-radius:6px}
+.stick{position:sticky;background:#FFFFFF;z-index:1}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav on" href="daily-entry.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 10h18M9 4v17M15 4v17"></path></svg>Daily entry</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Daily entry</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A">Enter each publisher's conversions per campaign, day by day, the same way as your publisher tabs</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+<label><span class="sr">Month</span><select class="sel"><option>November 2026</option><option>October 2026 · settled, locked</option></select></label>
+<a class="btn" href="upload.html" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Paste from Excel</a>
+<button type="button" class="btn" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Save</button>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+<aside aria-label="My publishers" style="flex: 1 1 240px; max-width: 100%; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 16px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 0 4px 6px">
+<span style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #5C5F6A">My publishers</span>
+<span class="mono" style="font-size: 12px; color: #5C5F6A">{{doneLabel}}</span>
+</div>
+<sc-for list="{{pubs}}" as="p" hint-placeholder-count="2">
+<button type="button" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="{{p.style}}">
+<span style="display: flex; flex-direction: column; gap: 2px; text-align: left"><span style="font-weight: 600">{{p.name}}</span><span style="font-size: 12px; color: #5C5F6A">{{p.camps}} campaigns</span></span>
+<span class="chip" style="{{p.chip}}">{{p.status}}</span>
+</button>
+</sc-for>
+<a href="publishers.html" style="font-size: 13px; font-weight: 600; text-decoration: none; padding: 8px 4px 0; min-height: 32px; display: inline-flex; align-items: center">Show all publishers</a>
+</aside>
+
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<section aria-label="Month so far" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 12px">
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5C5F6A">Conversions this month</span><span class="mono" style="font-size: 26px; font-weight: 500">{{mtd}}</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5C5F6A">Estimated payout so far</span><span class="mono" style="font-size: 26px; font-weight: 500">{{payout}}</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5C5F6A">Today (4 Nov)</span><span class="mono" style="font-size: 26px; font-weight: 500">{{today}}</span></div>
+<div style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 14px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px"><span style="font-size: 13px; color: #5C5F6A">Last saved</span><span style="font-size: 15px; font-weight: 600; padding-top: 6px">{{saved}}</span></div>
+</section>
+
+<section aria-labelledby="grid-h" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 20px">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<h2 id="grid-h" style="margin: 0; font-size: 17px; font-weight: 600">{{pubName}} · November 2026</h2>
+<span style="font-size: 13px; color: #5C5F6A">Type a number in any day. Totals and payout update straight away.</span>
+</div>
+<div style="display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: #5C5F6A; align-items: center">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 3px; background: #EEF7CF; border: 1px solid #C9DC7A"></span>Today</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 12px; height: 12px; border-radius: 3px; background: #F4F4F1; border: 1px solid #E2E2DC"></span>Weekend</span>
+</div>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid #EFEFEB">
+<table class="grid">
+<thead><tr>
+<th scope="col" class="stick" style="left: 0; min-width: 92px; text-align: left; padding-left: 16px; background: #FAFAF8">Offer ID</th>
+<th scope="col" class="stick" style="left: 92px; min-width: 210px; text-align: left; background: #FAFAF8; box-shadow: 1px 0 0 #E6E6E1">Campaign</th>
+<th scope="col" style="min-width: 60px">PO</th>
+<sc-for list="{{days}}" as="d" hint-placeholder-count="30"><th scope="col" style="{{d.style}}"><span style="display: block">{{d.n}}</span><span style="display: block; font-weight: 500; color: #8A8D97">{{d.w}}</span></th></sc-for>
+<th scope="col" style="min-width: 64px; padding-right: 12px">Total</th>
+<th scope="col" style="min-width: 86px; padding-right: 16px">Payout</th>
+</tr></thead>
+<tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+<tr>
+<td class="stick mono" style="left: 0; padding: 0 0 0 16px; font-size: 12px; color: #4A4D57">{{r.id}}</td>
+<td class="stick" style="left: 92px; padding: 6px 12px 6px 0; box-shadow: 1px 0 0 #E6E6E1"><span style="display: block; font-weight: 500">{{r.name}}</span><span style="display: block; font-size: 12px; color: #5C5F6A">{{r.adv}} · {{r.model}}</span></td>
+<td class="mono" style="text-align: center; color: #4A4D57">{{r.po}}</td>
+<sc-for list="{{r.cells}}" as="c" hint-placeholder-count="30"><td style="{{c.bg}}"><input type="text" inputmode="numeric" value="{{c.v}}" onChange="{{c.set}}" aria-label="{{c.label}}"></td></sc-for>
+<td class="mono" style="text-align: right; padding: 0 12px; font-weight: 600">{{r.total}}</td>
+<td class="mono" style="text-align: right; padding: 0 16px 0 0">{{r.pay}}</td>
+</tr>
+</sc-for>
+</tbody>
+<tfoot><tr>
+<td class="stick" style="left: 0; padding: 12px 0 12px 16px; background: #FAFAF8">Total</td>
+<td class="stick" style="left: 92px; background: #FAFAF8; box-shadow: 1px 0 0 #E6E6E1"></td>
+<td></td>
+<sc-for list="{{dayTotals}}" as="t" hint-placeholder-count="30"><td class="mono" style="{{t.style}}">{{t.v}}</td></sc-for>
+<td class="mono" style="text-align: right; padding: 0 12px">{{mtd}}</td>
+<td class="mono" style="text-align: right; padding: 0 16px 0 0">{{payout}}</td>
+</tr></tfoot>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 14px 20px; border-top: 1px solid #EFEFEB; font-size: 13px; color: #5C5F6A">
+<span>Offer ID is the Affise offer ID, or the tracking source (e.g. Appsflyer). PO is what we pay this publisher per conversion.</span>
+<span>Each month locks once it is settled.</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const pubId = s.pub || 'ch';
+    const edits = s.edits || {};
+    const P = {
+      ch: { name: 'ClickHive Media', saved: '10:42 am by Priya S.', rows: [
+        ['3731', 'Android FTD', 'SpinArena', 'CPA', 34, [4, 6, 5, 3]],
+        ['3742', 'Savings account', 'Nova Bank PH', 'CPR', 2.1, [41, 47, 39, 44]],
+        ['3729', 'Kredo Card approval', 'Adbridge Agency', 'CPA', 20, [3, 2, 4, 2]],
+        ['Appsflyer', 'Install + registration', 'Pocket Rummy', 'CPR', 0.5, [58, 63, 61, 55]],
+        ['3744', 'Web registration', 'SpinArena', 'CPR', 2.3, [11, 9, 12, 10]],
+        ['3786', 'Credit card approval', 'Nova Bank PH', 'CPA', 13, [null, null, null, 1]]
+      ] },
+      bk: { name: 'BlueKite Ads', saved: 'Yesterday 6:05 pm by Priya S.', rows: [
+        ['3731', 'Android FTD', 'SpinArena', 'CPA', 34, [1, 0, 2, null]],
+        ['Appsflyer', 'Install + registration', 'Pocket Rummy', 'CPR', 0.5, [22, 19, 24, null]],
+        ['3751', 'Savings account', 'Nova Bank PH', 'CPR', 2.1, [8, 11, 9, null]]
+      ] }
+    };
+    const TODAY = 4, DAYS = 30;
+    const wk = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    const isWeekend = (d) => { const w = (d - 1) % 7; return w === 0 || w === 6; };
+    const colBg = (d) => d === TODAY ? 'background:#EEF7CF' : isWeekend(d) ? 'background:#F4F4F1' : '';
+    const val = (pid, ri, d) => {
+      const k = pid + '|' + ri + '|' + d;
+      if (k in edits) return edits[k];
+      const v = P[pid].rows[ri][5][d - 1];
+      return v == null ? '' : String(v);
+    };
+    const num = (x) => { const n = parseFloat(x); return isNaN(n) ? 0 : n; };
+    const usd = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const cur = P[pubId];
+    const dayTotalsN = Array.from({ length: DAYS }, () => 0);
+    let mtd = 0, pay = 0, today = 0;
+    const rows = cur.rows.map(([id, name, adv, model, po], ri) => {
+      let total = 0;
+      const cells = Array.from({ length: DAYS }, (_, i) => {
+        const d = i + 1, v = val(pubId, ri, d), n = num(v);
+        total += n; dayTotalsN[i] += n; if (d === TODAY) today += n;
+        return {
+          v, bg: colBg(d), label: name + ', ' + d + ' November',
+          set: (e) => this.setState({ edits: Object.assign({}, edits, { [pubId + '|' + ri + '|' + d]: e.target.value }) })
+        };
+      });
+      mtd += total; pay += total * po;
+      return { id, name, adv, model, po: '$' + po, cells, total: total.toLocaleString('en-US'), pay: usd(total * po) };
+    });
+    const days = Array.from({ length: DAYS }, (_, i) => {
+      const d = i + 1;
+      return { n: d, w: wk[(d - 1) % 7], style: 'min-width:44px;' + (d === TODAY ? 'background:#E3F0B5;color:#3F5200' : isWeekend(d) ? 'background:#EFEFEA' : '') };
+    });
+    const dayTotals = dayTotalsN.map((t, i) => ({ v: t ? t.toLocaleString('en-US') : '', style: 'text-align:center;padding:12px 0;' + colBg(i + 1) }));
+    const todayDone = (pid) => P[pid].rows.some((r, ri) => val(pid, ri, TODAY) !== '');
+    const on = 'display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:60px;padding:0 12px;border:1.5px solid #0C0E14;border-radius:12px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
+    const off = 'display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:60px;padding:0 12px;border:1px solid #E2E2DC;border-radius:12px;background:#FAFAF8;font:14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
+    const pubs = Object.keys(P).map((pid) => {
+      const done = todayDone(pid);
+      return {
+        name: P[pid].name, camps: P[pid].rows.length, pressed: String(pid === pubId), style: pid === pubId ? on : off,
+        status: done ? 'Today done' : 'Today missing',
+        chip: done ? 'background:#E8F3EA;color:#1F6B37' : 'background:#FFF1DF;color:#8A4300',
+        pick: () => this.setState({ pub: pid })
+      };
+    });
+    const doneCount = Object.keys(P).filter(todayDone).length;
+    return {
+      pubs, rows, days, dayTotals, pubName: cur.name, saved: cur.saved,
+      mtd: mtd.toLocaleString('en-US'), payout: usd(pay), today: today.toLocaleString('en-US'),
+      doneLabel: doneCount + ' of ' + Object.keys(P).length + ' done today'
+    };
+  }
+}
+</script>
+</body>
+</html>

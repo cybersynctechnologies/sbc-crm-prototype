@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Currencies &amp; geos</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.field{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
+.lbl{font-size:13px;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.card{background:#FFFFFF;border:1px solid #E6E6E1;border-radius:16px}
+.rate{width:130px;min-height:38px;padding:0 10px;border:1px solid #E2E2DC;border-radius:8px;background:#FFFFFF;font:14px 'Geist Mono',ui-monospace,monospace;text-align:right;box-sizing:border-box}
+.cc{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:28px;padding:0 8px;border-radius:7px;background:#0C0E14;color:#D4F25A;font:600 12px 'Geist Mono',ui-monospace,monospace;box-sizing:border-box}
+/* ui-kit: shared across every screen */
+main{gap:24px!important}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.ph-t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 420px;max-width:760px}
+.ph-t h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-.025em}
+.ph-t p{margin:0;font-size:14px;color:#5C5F6A;line-height:1.5}
+.ph-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tabs{display:inline-flex;align-self:flex-start;flex-wrap:wrap;gap:4px;padding:4px;background:#E9E9E4;border-radius:12px;max-width:100%;box-sizing:border-box}
+.tabs>button,.tabs>a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tabs>button:hover,.tabs>a:hover{color:#14161C}
+.tabs>[aria-selected="true"],.tabs>[aria-pressed="true"],.tabs>[aria-current="page"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.tabs .ct{font:500 11px 'Geist Mono',ui-monospace,monospace;color:#8A8D98}
+.b1{background:#0C0E14;color:#FFFFFF;border:1px solid #0C0E14}
+.b2{background:#FFFFFF;color:#14161C;border:1px solid #E2E2DC}
+.b2:hover{border-color:#C9C9C2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="daily-entry.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 10h18M9 4v17M15 4v17"></path></svg>Daily entry</a>
+<a class="nav" href="validation.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 7h14"></path><path d="M5 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M19 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M8 21h8"></path></svg>Validation</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="categories.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Categories</a>
+<a class="nav" href="fields.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Fields &amp; formulas</a>
+<a class="nav on" href="currencies.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"></path></svg>Currencies &amp; geos</a>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
+<header class="ph">
+<div class="ph-t">
+<h1>Currencies &amp; geos</h1>
+<p>Choose which currencies campaigns and payouts can be in, their rates against USD and INR, and the geos campaigns come from. Amounts keep their own currency; every total is shown in one display currency.</p>
+</div>
+<div class="ph-a"><span class="chip" style="background: #E8F3EA; color: #1F6B37">Showing everything in {{dispCode}}</span></div>
+</header>
+
+<div class="tabs" role="tablist" aria-label="Settings">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<span class="ct">{{t.count}}</span></button></sc-for>
+</div>
+
+<sc-if value="{{isCur}}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="disp" style="background: #0C0E14; color: #FFFFFF; border-radius: 18px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 24px 32px; align-items: flex-end; position: relative; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(#ffffff0d 1px, transparent 1px); background-size: 18px 18px"></div>
+<div style="position: relative; flex: 1 1 300px; display: flex; flex-direction: column; gap: 6px">
+<h2 id="disp" style="margin: 0; font-size: 18px; font-weight: 600">Display currency</h2>
+<p style="margin: 0; font-size: 14px; color: #B9BBC6; line-height: 1.5">Dashboards, reports, settlements and totals across the platform are converted into this currency. Each campaign still keeps the currency the advertiser pays in.</p>
+</div>
+<label style="position: relative; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #B9BBC6">Show all amounts in
+<select class="sel" onChange="{{setDisp}}" style="min-width: 220px"><sc-for list="{{dispOpts}}" as="o" hint-placeholder-count="7"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<label style="position: relative; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: #B9BBC6">Convert past numbers at
+<select class="sel" style="min-width: 260px"><option>The rate on the day of each conversion</option><option>The month-end rate</option><option>Today's rate</option></select></label>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="clist" class="card" style="flex: 1 1 100%; min-width: 0; overflow: hidden">
+<div style="padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 4px"><h2 id="clist" style="margin: 0; font-size: 16px; font-weight: 600">Currencies</h2><span style="font-size: 13px; color: #5C5F6A">Edit a rate and every converted total updates. Sample rates.</span></div>
+<span style="font-size: 13px; color: #5C5F6A">Rates updated 6 Nov, 9:00 am</span>
+</div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Currency</th><th scope="col" style="text-align: right">1 unit in USD</th><th scope="col" style="text-align: right">1 unit in INR</th><th scope="col" style="text-align: right">1,000 shown as</th><th scope="col">Rates</th><th scope="col" style="text-align: right">Campaigns</th></tr></thead>
+<tbody><sc-for list="{{curs}}" as="c" hint-placeholder-count="7"><tr>
+<td><div style="display: flex; align-items: center; gap: 12px"><span class="cc">{{c.code}}</span><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-weight: 500">{{c.name}}</span><span style="font-size: 12px; color: #5C5F6A">Symbol {{c.sym}}{{c.base}}</span></div></div></td>
+<td style="text-align: right"><input class="rate" type="text" value="{{c.usd}}" onChange="{{c.setUsd}}" aria-label="1 {{c.code}} in USD" disabled="{{c.isUsd}}"></td>
+<td style="text-align: right"><input class="rate" type="text" value="{{c.inr}}" onChange="{{c.setInr}}" aria-label="1 {{c.code}} in INR" disabled="{{c.isInr}}"></td>
+<td class="num" style="font-size: 13px; color: #4A4D57">{{c.example}}</td>
+<td><select class="sel" style="min-height: 38px" aria-label="How {{c.code}} rates are updated"><option>Updated daily</option><option>I set it by hand</option></select></td>
+<td class="num">{{c.used}}</td>
+</tr></sc-for></tbody>
+</table></div>
+</section>
+
+<div style="flex: 1 1 100%; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 24px; align-items: start">
+<section aria-labelledby="cadd" class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="cadd" style="margin: 0; font-size: 16px; font-weight: 600">Add a currency</h2>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Code</span><input class="field mono" type="text" value="{{nCode}}" onChange="{{setNCode}}" placeholder="THB"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{nName}}" onChange="{{setNName}}" placeholder="Thai baht"></label>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">1 unit in USD</span><input class="field mono" type="text" value="{{nUsd}}" onChange="{{setNUsd}}" placeholder="0.0286"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">1 unit in INR</span><input class="field mono" type="text" value="{{nInr}}" onChange="{{setNInr}}" placeholder="{{nInrHint}}"></label>
+</div>
+<span style="font-size: 12px; color: #5C5F6A">Leave INR empty and it's worked out from the USD rate.</span>
+<button type="button" class="btn b1" onClick="{{addCur}}" style="justify-content: center">Add currency</button>
+</section>
+
+<section aria-labelledby="conv" class="card" style="padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="conv" style="margin: 0; font-size: 16px; font-weight: 600">Quick check</h2>
+<div style="display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Amount</span><input class="field mono" type="text" value="{{qAmt}}" onChange="{{setQAmt}}"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">In</span><select class="field" onChange="{{setQCur}}"><sc-for list="{{qOpts}}" as="o" hint-placeholder-count="7"><option value="{{o.id}}" selected="{{o.sel}}">{{o.id}}</option></sc-for></select></label>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 10px; background: #F6F9E8; border: 1px solid #D9EAA0"><span style="font-size: 12px; color: #5C5F6A">In USD</span><span class="mono" style="font-size: 20px; font-weight: 600">{{qUsd}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 12px; border-radius: 10px; background: #FAFAF8; border: 1px solid #EFEFEB"><span style="font-size: 12px; color: #5C5F6A">In INR</span><span class="mono" style="font-size: 20px; font-weight: 600">{{qInr}}</span></div>
+</div>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isGeo}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="glist" class="card" style="flex: 999 1 620px; min-width: 0; overflow: hidden">
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 4px"><h2 id="glist" style="margin: 0; font-size: 16px; font-weight: 600">Geolocations</h2><span style="font-size: 13px; color: #5C5F6A">Where campaigns come from. They appear in the Geo list when you log a request or a campaign.</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Geo</th><th scope="col">Code</th><th scope="col">Region</th><th scope="col">Usual currency</th><th scope="col" style="text-align: right">Live campaigns</th></tr></thead>
+<tbody><sc-for list="{{geos}}" as="g" hint-placeholder-count="7"><tr><td style="font-weight: 500">{{g.name}}</td><td><span class="mono" style="font-size: 13px; padding: 3px 8px; background: #F0F0EC; border-radius: 6px">{{g.code}}</span></td><td style="color: #4A4D57">{{g.region}}</td><td><select class="sel" style="min-height: 38px" onChange="{{g.setCur}}" aria-label="Usual currency for {{g.name}}"><sc-for list="{{g.opts}}" as="o" hint-placeholder-count="7"><option value="{{o.id}}" selected="{{o.sel}}">{{o.id}}</option></sc-for></select></td><td class="num">{{g.live}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+<section aria-labelledby="gadd" class="card" style="flex: 1 1 320px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="gadd" style="margin: 0; font-size: 16px; font-weight: 600">Add a geo</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{gName}}" onChange="{{setGName}}" placeholder="e.g. Thailand"></label>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Code</span><input class="field mono" type="text" value="{{gCode}}" onChange="{{setGCode}}" placeholder="TH"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Region</span><select class="field" onChange="{{setGRegion}}"><sc-for list="{{regions}}" as="o" hint-placeholder-count="5"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+</div>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Usual currency</span><select class="field" onChange="{{setGCur}}"><sc-for list="{{gCurOpts}}" as="o" hint-placeholder-count="7"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<span style="font-size: 12px; color: #5C5F6A; line-height: 1.5">The usual currency is filled in when you log a campaign from this geo. You can still pick any other currency.</span>
+<button type="button" class="btn b1" onClick="{{addGeo}}" style="justify-content: center">Add geo</button>
+</section>
+</div>
+</sc-if>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+    const tab = s.tab || 'cur';
+    const BASE = [
+      ['USD', 'US dollar', '$', 1, 84.2, 9], ['INR', 'Indian rupee', '₹', 0.01188, 1, 6], ['PHP', 'Philippine peso', '₱', 0.01711, 1.4407, 5],
+      ['IDR', 'Indonesian rupiah', 'Rp', 0.0000632, 0.00532, 2], ['VND', 'Vietnamese dong', '₫', 0.0000394, 0.00332, 1], ['EUR', 'Euro', '€', 1.084, 91.27, 0], ['AED', 'UAE dirham', 'AED ', 0.2723, 22.93, 0]
+    ];
+    const edits = s.edits || {};
+    const list = BASE.concat(s.added || []).map(([code, name, sym, usd, inr, used]) => { const e = edits[code] || {}; return { code, name, sym, usd: e.usd != null ? e.usd : usd, inr: e.inr != null ? e.inr : inr, used }; });
+    const R = {}; list.forEach((c) => { R[c.code] = c; });
+    const disp = s.disp || 'USD';
+    const num = (v) => { const n = Number(String(v).replace(/,/g, '')); return isFinite(n) ? n : null; };
+    const money = (v, code) => { const c = R[code]; const d = Math.abs(v) >= 100 ? 0 : 2; return (c ? c.sym : '') + v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }); };
+    const putEdit = (code, k, v) => { const n = num(v); if (n == null || n <= 0) return; const e = Object.assign({}, edits); e[code] = Object.assign({}, e[code], { [k]: n }); this.setState({ edits: e }); };
+    const curs = list.map((c) => ({
+      code: c.code, name: c.name, sym: c.sym.trim(), base: c.code === disp ? ' · display currency' : '',
+      usd: String(c.usd), inr: String(c.inr), isUsd: c.code === 'USD', isInr: c.code === 'INR',
+      example: money(1000 * c.usd / R[disp].usd, disp) + (disp === 'INR' ? '' : ' · ' + money(1000 * c.inr, 'INR')),
+      used: c.used, setUsd: (e) => putEdit(c.code, 'usd', e.target.value), setInr: (e) => putEdit(c.code, 'inr', e.target.value)
+    }));
+    const qAmt = s.qAmt == null ? '2,630' : s.qAmt, qCur = s.qCur || 'PHP', qa = num(qAmt) || 0;
+    const nUsd = num(s.nUsd || '');
+    const GBASE = [
+      ['Philippines', 'PH', 'South-east Asia', 'PHP', 9], ['India', 'IN', 'South Asia', 'INR', 8], ['Indonesia', 'ID', 'South-east Asia', 'IDR', 2],
+      ['Vietnam', 'VN', 'South-east Asia', 'VND', 1], ['United Arab Emirates', 'AE', 'Middle East', 'AED', 0], ['Global / any', 'WW', 'Worldwide', 'USD', 3]
+    ];
+    const gEdits = s.gEdits || {};
+    const regions = ['South-east Asia', 'South Asia', 'Middle East', 'Europe', 'Latin America', 'Worldwide'];
+    const geos = GBASE.concat(s.gAdded || []).map(([name, code, region, cur, live]) => {
+      const c = gEdits[code] || cur;
+      return { name, code, region, live, opts: list.map((x) => ({ id: x.code, sel: x.code === c })), setCur: (e) => this.setState({ gEdits: Object.assign({}, gEdits, { [code]: e.target.value }) }) };
+    });
+    const gCur = s.gCur || 'USD', gRegion = s.gRegion || 'South-east Asia';
+    return {
+      tabs: [['cur', 'Currencies', String(list.length)], ['geo', 'Geolocations', String(geos.length)]].map(([id, label, count]) => ({ label, count, sel: String(id === tab), pick: () => this.setState({ tab: id }) })),
+      isCur: tab === 'cur', isGeo: tab === 'geo',
+      dispCode: disp, dispOpts: list.map((c) => ({ id: c.code, v: c.code + ' · ' + c.name + (c.code === 'USD' ? ' (default)' : ''), sel: c.code === disp })), setDisp: set('disp'),
+      curs,
+      nCode: s.nCode || '', nName: s.nName || '', nUsd: s.nUsd || '', nInr: s.nInr || '', nInrHint: nUsd ? (nUsd * 84.2).toFixed(4) : '2.4081',
+      setNCode: set('nCode'), setNName: set('nName'), setNUsd: set('nUsd'), setNInr: set('nInr'),
+      addCur: () => { const code = (s.nCode || '').trim().toUpperCase(); if (!code || !nUsd || R[code]) return; const inr = num(s.nInr || '') || +(nUsd * 84.2).toFixed(4); this.setState({ added: (s.added || []).concat([[code, s.nName || code, code + ' ', nUsd, inr, 0]]), nCode: '', nName: '', nUsd: '', nInr: '' }); },
+      qAmt, setQAmt: set('qAmt'), setQCur: set('qCur'), qOpts: list.map((c) => ({ id: c.code, sel: c.code === qCur })),
+      qUsd: money(qa * R[qCur].usd, 'USD'), qInr: money(qa * R[qCur].inr, 'INR'),
+      geos, regions: regions.map((v) => ({ v, sel: v === gRegion })), gCurOpts: list.map((c) => ({ id: c.code, v: c.code + ' · ' + c.name, sel: c.code === gCur })),
+      gName: s.gName || '', gCode: s.gCode || '', setGName: set('gName'), setGCode: set('gCode'), setGRegion: set('gRegion'), setGCur: set('gCur'),
+      addGeo: () => { if (!s.gName) return; this.setState({ gAdded: (s.gAdded || []).concat([[s.gName, (s.gCode || s.gName.slice(0, 2)).toUpperCase(), gRegion, gCur, 0]]), gName: '', gCode: '' }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -28,6 +28,50 @@ tr:last-child td{border-bottom:0}
 .chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
 .mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
 .btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.field{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
+.lbl{font-size:13px;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.dgrid{position:relative}
+.wg{position:absolute;box-sizing:border-box;display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:16px;overflow:hidden;transition:left .18s ease,top .18s ease,width .18s ease,height .18s ease}
+.wg.ed{outline:1px dashed #B9BBC6;outline-offset:-1px}
+.wg.on{outline:2px solid #2F4FD6;outline-offset:-2px}
+.wh{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;min-height:40px}
+.wt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.wt h2{margin:0;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wt span{font-size:12px;color:#5C5F6A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dark .wt span{color:#A6A9B6}
+.wtool{display:flex;gap:4px;flex:none}
+.ib{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #E2E2DC;border-radius:9px;background:#FFFFFF;color:#14161C;cursor:pointer;padding:0}
+.ib:hover{background:#F4F4F1}
+.ib[data-move]{cursor:grab;touch-action:none}
+.dark .ib{background:#1C1F28;border-color:#2C3142;color:#FFFFFF}
+.rz{position:absolute;right:4px;bottom:4px;width:22px;height:22px;cursor:nwse-resize;touch-action:none;border-radius:6px;display:flex;align-items:flex-end;justify-content:flex-end;padding:3px;box-sizing:border-box}
+.rz::after{content:"";width:10px;height:10px;border-right:2px solid #8A8D98;border-bottom:2px solid #8A8D98;border-radius:0 0 3px 0}
+.wg table td,.wg table th{padding:10px 14px}
+.typ{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:12px;border:1px solid #E2E2DC;border-radius:12px;background:#FFFFFF;font:500 13px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer;text-align:left}
+.typ[aria-pressed="true"]{border-color:#0C0E14;box-shadow:inset 0 0 0 1px #0C0E14;font-weight:600}
+.tok{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid #D6DCF7;background:#F2F5FE;color:#2440B0;font:500 13px Geist,system-ui,sans-serif;cursor:pointer}
+.chk{display:flex;align-items:center;gap:10px;min-height:36px;font-size:14px}
+.chk input{width:18px;height:18px;accent-color:#0C0E14;margin:0}
+.pop{position:absolute;top:52px;z-index:40;background:#FFFFFF;border:1px solid #E2E2DC;border-radius:16px;box-shadow:0 28px 56px -16px #0c0e1440,0 2px 6px #0c0e1410;padding:20px;display:flex;flex-direction:column;gap:14px;width:min(380px,100%);box-sizing:border-box}
+@media (max-width:900px){.dgrid{height:auto!important;display:flex;flex-direction:column;gap:16px}.wg{position:relative!important;left:auto!important;top:auto!important;width:auto!important}.gcol{display:none}}
+/* ui-kit: shared across every screen */
+main{gap:24px!important}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.ph-t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 420px;max-width:760px}
+.ph-t h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-.025em}
+.ph-t p{margin:0;font-size:14px;color:#5C5F6A;line-height:1.5}
+.ph-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tabs{display:inline-flex;align-self:flex-start;flex-wrap:wrap;gap:4px;padding:4px;background:#E9E9E4;border-radius:12px;max-width:100%;box-sizing:border-box}
+.tabs>button,.tabs>a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tabs>button:hover,.tabs>a:hover{color:#14161C}
+.tabs>[aria-selected="true"],.tabs>[aria-pressed="true"],.tabs>[aria-current="page"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.tabs .ct{font:500 11px 'Geist Mono',ui-monospace,monospace;color:#8A8D98}
+.b1{background:#0C0E14;color:#FFFFFF;border:1px solid #0C0E14}
+.b2{background:#FFFFFF;color:#14161C;border:1px solid #E2E2DC}
+.b2:hover{border-color:#C9C9C2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px}
 </style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
@@ -57,270 +101,623 @@ tr:last-child td{border-bottom:0}
 </nav>
 
 <main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 24px">
-<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
-<div style="display: flex; flex-direction: column; gap: 6px">
-<p style="margin: 0; font-size: 13px; color: #5C5F6A">Tuesday, 3 November 2026</p>
-<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Good morning, Priya</h1>
+<header class="ph">
+<div class="ph-t">
+<h1>Dashboard</h1>
+<p>Good morning, Priya · Tuesday, 3 November 2026. Make as many dashboards as you need, each with the numbers and formulas you choose.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
-<label style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; background: #FFFFFF; border: 1px solid #E2E2DC; border-radius: 10px; min-width: 280px; box-sizing: border-box">
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5C5F6A" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
-<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search</span>
-<input type="search" placeholder="Search campaigns, publishers, advertisers" style="border: 0; outline: 0; flex: 1; font: 14px Geist, system-ui, sans-serif; background: transparent; color: #14161C; min-width: 0">
-<span class="mono" style="font-size: 11px; color: #5C5F6A; border: 1px solid #E2E2DC; border-radius: 6px; padding: 2px 6px">⌘K</span>
-</label>
-<span class="chip" style="background: #ECEBFA; color: #3A33A8">Prototype · sample data</span>
+<div class="ph-a">
+<sc-if value="{{notEditing}}" hint-placeholder-val="{{ true }}">
+<button type="button" class="btn b2" onClick="{{startEdit}}">Edit layout</button>
+<button type="button" class="btn b1" onClick="{{addWidget}}">+ Add widget</button>
+</sc-if>
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="btn b2" onClick="{{cancelEdit}}">Cancel</button>
+<button type="button" class="btn b2" onClick="{{addWidget}}">+ Add widget</button>
+<button type="button" class="btn b1" onClick="{{saveEdit}}">Save layout</button>
+</sc-if>
 </div>
 </header>
+
+<div style="position: relative; z-index: 7; display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div class="tabs" role="tablist" aria-label="Dashboards">
+<sc-for list="{{dashTabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.name}}<span class="ct">{{t.count}}</span></button></sc-for>
+<button type="button" onClick="{{toggleNew}}" aria-expanded="{{newExpanded}}" style="color: #2F4FD6; font-weight: 600">+ New dashboard</button>
+</div>
+<span style="font-size: 13px; color: #5C5F6A">Visible to {{who}}</span>
+<button type="button" class="btn b2" onClick="{{toggleSet}}" aria-expanded="{{setExpanded}}" style="min-height: 40px">Dashboard settings</button>
+
+<sc-if value="{{newOpen}}" hint-placeholder-val="{{ false }}">
+<div class="pop" role="dialog" aria-label="New dashboard" style="left: 0">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">New dashboard</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{newName}}" onChange="{{setNewName}}" placeholder="e.g. Finance · month end"></label>
+<div role="radiogroup" aria-label="Start from" style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Start from</span>
+<sc-for list="{{starts}}" as="o" hint-placeholder-count="3"><label class="chk"><input type="radio" name="start" checked="{{o.sel}}" onChange="{{o.pick}}">{{o.label}}</label></sc-for>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 10px"><button type="button" class="btn b2" onClick="{{toggleNew}}">Cancel</button><button type="button" class="btn b1" onClick="{{createDash}}">Create dashboard</button></div>
+</div>
+</sc-if>
+
+<sc-if value="{{setOpen}}" hint-placeholder-val="{{ false }}">
+<div class="pop" role="dialog" aria-label="Dashboard settings" style="right: 0">
+<h2 style="margin: 0; font-size: 16px; font-weight: 600">Dashboard settings</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{curName}}" onChange="{{rename}}"></label>
+<div style="display: flex; flex-direction: column; gap: 2px"><span class="lbl" style="margin-bottom: 4px">Who can see it</span>
+<sc-for list="{{roles}}" as="r" hint-placeholder-count="4"><label class="chk"><input type="checkbox" checked="{{r.on}}" onChange="{{r.toggle}}">{{r.label}}</label></sc-for>
+</div>
+<label class="chk"><input type="checkbox" checked="{{isDefault}}" onChange="{{makeDefault}}">Open this dashboard first</label>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px">
+<button type="button" class="btn b2" onClick="{{deleteDash}}" style="color: #9B1C2C">Delete</button>
+<span style="display: flex; gap: 10px"><button type="button" class="btn b2" onClick="{{duplicate}}">Duplicate</button><button type="button" class="btn b1" onClick="{{toggleSet}}">Done</button></span>
+</div>
+</div>
+</sc-if>
+</div>
 
 <div style="position: relative; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
 <button type="button" onClick="{{toggleDate}}" aria-expanded="{{dateExpanded}}" aria-haspopup="dialog" style="display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border: 1px solid #0C0E14; border-radius: 10px; background: #0C0E14; color: #FFFFFF; font: 600 14px Geist, system-ui, sans-serif; cursor: pointer">
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
 <span>{{rangeLabel}}</span>
-<span class="mono" style="font-size: 11px; padding: 2px 8px; border-radius: 6px; background: #262A37; color: #D4F25A">by {{grain}}</span>
 <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>
 </button>
 <span style="font-size: 13px; color: #5C5F6A">compared with {{compareLabel}}</span>
 <span style="flex: 1"></span>
 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C5F6A">Advertiser
-<select style="min-height: 44px; padding: 0 12px; border: 1px solid #E2E2DC; border-radius: 10px; background: #FFFFFF; font: 14px Geist, system-ui, sans-serif; color: #14161C"><option>All advertisers</option><option>SpinArena</option><option>Nova Bank PH</option></select>
+<select class="sel" onChange="{{setFAdv}}"><sc-for list="{{fAdvs}}" as="o" hint-placeholder-count="6"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select>
 </label>
 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C5F6A">Category
-<select style="min-height: 44px; padding: 0 12px; border: 1px solid #E2E2DC; border-radius: 10px; background: #FFFFFF; font: 14px Geist, system-ui, sans-serif; color: #14161C"><option>All categories</option><option>iGaming</option><option>Banking</option><option>Credit card</option></select>
+<select class="sel" onChange="{{setFCat}}"><sc-for list="{{fCats}}" as="o" hint-placeholder-count="6"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select>
 </label>
 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #5C5F6A">POC
-<select style="min-height: 44px; padding: 0 12px; border: 1px solid #E2E2DC; border-radius: 10px; background: #FFFFFF; font: 14px Geist, system-ui, sans-serif; color: #14161C"><option>Everyone</option><option>Me</option></select>
+<select class="sel" onChange="{{setFPoc}}"><sc-for list="{{fPocs}}" as="o" hint-placeholder-count="5"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select>
 </label>
 <sc-if value="{{dateOpen}}" hint-placeholder-val="{{ false }}">
-<div role="dialog" aria-label="Choose date range" style="position: absolute; top: 54px; left: 0; width: min(760px, 100%); background: #FFFFFF; border: 1px solid #E2E2DC; border-radius: 16px; box-shadow: 0 28px 56px -16px #0c0e1440, 0 2px 6px #0c0e1410; display: flex; flex-wrap: wrap; overflow: hidden">
+<div role="dialog" aria-label="Choose date range" style="position: absolute; top: 54px; left: 0; width: min(640px, 100%); background: #FFFFFF; border: 1px solid #E2E2DC; border-radius: 16px; box-shadow: 0 28px 56px -16px #0c0e1440, 0 2px 6px #0c0e1410; display: flex; flex-wrap: wrap; overflow: hidden">
 <div style="flex: 1 1 220px; padding: 12px; border-right: 1px solid #EFEFEB; background: #FAFAF8; display: flex; flex-direction: column; gap: 2px">
 <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #5C5F6A; padding: 8px 10px">Quick ranges</span>
 <sc-for list="{{presets}}" as="p" hint-placeholder-count="11">
 <button type="button" aria-pressed="{{p.pressed}}" onClick="{{p.pick}}" style="{{p.style}}"><span>{{p.label}}</span><span class="mono" style="{{p.hintStyle}}">{{p.hint}}</span></button>
 </sc-for>
 </div>
-<div style="flex: 999 1 400px; padding: 22px; display: flex; flex-direction: column; gap: 20px">
-<div style="display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 13px; font-weight: 600">Group numbers by</span>
-<div role="group" aria-label="Group by" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: #F0F0EC; border-radius: 12px">
-<sc-for list="{{grains}}" as="g" hint-placeholder-count="6">
-<button type="button" aria-pressed="{{g.pressed}}" onClick="{{g.pick}}" style="{{g.style}}">{{g.label}}</button>
-</sc-for>
+<div style="flex: 999 1 300px; padding: 22px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 12px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">From<input type="date" value="{{from}}" onChange="{{setFrom}}" class="field mono"></label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">To<input type="date" value="{{to}}" onChange="{{setTo}}" class="field mono"></label>
 </div>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr)); gap: 12px">
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">From<input type="date" value="{{from}}" onChange="{{setFrom}}" style="min-height: 44px; padding: 0 12px; border: 1px solid #E2E2DC; border-radius: 10px; font: 14px 'Geist Mono', ui-monospace, monospace; color: #14161C; background: #FFFFFF"></label>
-<label style="display: flex; flex-direction: column; gap: 6px; font-size: 13px; font-weight: 600">To<input type="date" value="{{to}}" onChange="{{setTo}}" style="min-height: 44px; padding: 0 12px; border: 1px solid #E2E2DC; border-radius: 10px; font: 14px 'Geist Mono', ui-monospace, monospace; color: #14161C; background: #FFFFFF"></label>
-</div>
-<label style="display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 14px"><input type="checkbox" checked="{{compare}}" onChange="{{toggleCompare}}" style="width: 18px; height: 18px; accent-color: #0C0E14">Compare with the previous period</label>
-<p style="margin: 0; font-size: 12px; color: #5C5F6A">Financial year runs 1 April to 31 March. Every screen and export uses the range you pick here.</p>
+<label class="chk"><input type="checkbox" checked="{{compare}}" onChange="{{toggleCompare}}">Compare with the previous period</label>
+<p style="margin: 0; font-size: 12px; color: #5C5F6A; line-height: 1.5">Widgets set to “Dashboard dates” follow this range. Others keep their own. Financial year runs 1 April to 31 March.</p>
 <div style="display: flex; justify-content: flex-end; gap: 10px">
-<button type="button" class="btn" onClick="{{toggleDate}}" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Cancel</button>
-<button type="button" class="btn" onClick="{{toggleDate}}" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Apply range</button>
+<button type="button" class="btn b2" onClick="{{toggleDate}}">Cancel</button>
+<button type="button" class="btn b1" onClick="{{toggleDate}}">Apply range</button>
 </div>
 </div>
 </div>
 </sc-if>
 </div>
 
-<section aria-label="Money flow" style="background: #0C0E14; border-radius: 18px; padding: 28px; color: #FFFFFF; display: flex; flex-direction: column; gap: 24px; position: relative; overflow: hidden">
-<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(#ffffff0d 1px, transparent 1px); background-size: 18px 18px"></div>
-<div style="position: relative; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 8px">
-<span style="font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #A6A9B6">Money flow · {{rangeLabel}}</span>
-<span style="font-size: 15px; color: #D7D9E0">From advertisers, through publishers, to our margin</span>
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 12px 16px; border-radius: 12px; background: #EEF2FE; border: 1px solid #D6DCF7; font-size: 14px; color: #1E2A6B">
+<strong style="font-weight: 600">Editing {{curName}}</strong>
+<span>Drag a widget by <span aria-hidden="true">⠿</span> to move it. Drag its bottom-right corner to resize. Click <span aria-hidden="true">✎</span> to change what it shows.</span>
 </div>
-<a href="settlements.html" style="color: #D4F25A; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; gap: 6px">Open settlements <span aria-hidden="true">→</span></a>
-</div>
-<div style="position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #A6A9B6">Revenue from advertisers</span><span class="mono" style="font-size: 40px; font-weight: 500; letter-spacing: -.03em">$48,920</span><span style="font-size: 13px; color: #A6A9B6"><span style="color: #D4F25A">▲ 7.3%</span> vs {{compareLabel}}</span></div>
-<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #A6A9B6">Paid to publishers</span><span class="mono" style="font-size: 40px; font-weight: 500; letter-spacing: -.03em">$36,140</span><span style="font-size: 13px; color: #A6A9B6">73.9% of revenue</span></div>
-<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #A6A9B6">Our margin</span><span class="mono" style="font-size: 40px; font-weight: 500; letter-spacing: -.03em; color: #D4F25A">$12,780</span><span style="font-size: 13px; color: #A6A9B6">26.1% · <span style="color: #D4F25A">▲ 0.4 pts</span></span></div>
-<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; color: #A6A9B6">Validation rate</span><span class="mono" style="font-size: 40px; font-weight: 500; letter-spacing: -.03em">82.4%</span><span style="font-size: 13px; color: #A6A9B6">validated ÷ publisher reported</span></div>
-</div>
-<div style="position: relative; display: flex; flex-direction: column; gap: 10px">
-<div role="img" aria-label="Revenue split: 73.9% publisher payout, 26.1% margin" style="display: flex; height: 14px; border-radius: 999px; overflow: hidden; gap: 3px">
-<div style="flex: 73.9; background: #4A5BE0"></div>
-<div style="flex: 26.1; background: #D4F25A"></div>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 13px; color: #D7D9E0">
-<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #4A5BE0"></span>Publisher payout</span>
-<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #D4F25A"></span>Margin</span>
-<span style="margin-left: auto; color: #A6A9B6">9,412 validated conversions · 23 live campaigns · 41 active publishers</span>
-</div>
-</div>
-</section>
+</sc-if>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px, 100%), 1fr)); gap: 24px">
-<section aria-labelledby="trend-h" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 20px">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
-<h2 id="trend-h" style="margin: 0; font-size: 16px; font-weight: 600">Revenue &amp; margin, last 6 months</h2>
-<div style="display: flex; gap: 16px; font-size: 12px; color: #5C5F6A">
-<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #2F4FD6"></span>Revenue</span>
-<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #0C0E14"></span>Margin</span>
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<section aria-label="Empty dashboard" style="background: #FFFFFF; border: 1px dashed #C9C9C2; border-radius: 16px; padding: 48px 24px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+<h2 style="margin: 0; font-size: 18px; font-weight: 600">{{curName}} has no widgets yet</h2>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A; max-width: 460px; line-height: 1.5">Add a number, ranking, chart or table. Each one can use any field or formula, split by publisher, advertiser, category or account manager.</p>
+<button type="button" class="btn b1" onClick="{{addWidget}}">+ Add your first widget</button>
+</section>
+</sc-if>
+
+<div data-grid="" class="dgrid" style="{{gridStyle}}">
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}">
+<sc-for list="{{gcols}}" as="g" hint-placeholder-count="12"><div class="gcol" aria-hidden="true" style="{{g}}"></div></sc-for>
+<div aria-hidden="true" style="position: absolute; display: var(--gd, none); left: var(--gl); top: var(--gt); width: var(--gw); height: var(--gh); border: 2px dashed #2F4FD6; border-radius: 16px; background: rgba(47, 79, 214, .07); box-sizing: border-box; pointer-events: none; z-index: 1"></div>
+</sc-if>
+<sc-for list="{{widgets}}" as="w" hint-placeholder-count="8">
+<section data-wid="{{w.id}}" class="{{w.cls}}" aria-label="{{w.title}}" style="{{w.box}}">
+<div class="wh">
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}"><button type="button" class="ib" data-move="" aria-label="Move {{w.title}}" title="Drag to move"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.6"></circle><circle cx="15" cy="6" r="1.6"></circle><circle cx="9" cy="12" r="1.6"></circle><circle cx="15" cy="12" r="1.6"></circle><circle cx="9" cy="18" r="1.6"></circle><circle cx="15" cy="18" r="1.6"></circle></svg></button></sc-if>
+<div class="wt" style="flex: 1"><h2 style="{{w.titleStyle}}">{{w.title}}</h2><span>{{w.sub}}</span></div>
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}"><div class="wtool">
+<button type="button" class="ib" onClick="{{w.edit}}" aria-label="Change {{w.title}}" title="Change what it shows"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"></path><path d="M13.5 6.5l4 4"></path></svg></button>
+<button type="button" class="ib" onClick="{{w.copy}}" aria-label="Duplicate {{w.title}}" title="Duplicate"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path></svg></button>
+<button type="button" class="ib" onClick="{{w.remove}}" aria-label="Remove {{w.title}}" title="Remove"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"></path></svg></button>
+</div></sc-if>
 </div>
+
+<sc-if value="{{w.isKpi}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px">
+<span class="mono" style="{{w.valStyle}}">{{w.value}}</span>
+<span style="font-size: 13px; color: #5C5F6A"><span style="{{w.deltaStyle}}">{{w.delta}}</span> {{w.vs}}</span>
 </div>
-<div role="img" aria-label="Revenue grew from $31.2k in May to $48.9k in October; margin from $8.1k to $12.8k" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; align-items: end; height: 220px; border-bottom: 1px solid #E6E6E1; padding-bottom: 2px">
-<sc-for list="{{months}}" as="mo" hint-placeholder-count="6">
-<div style="display: flex; flex-direction: column; align-items: center; gap: 8px; height: 100%; justify-content: flex-end">
-<span class="mono" style="font-size: 12px; color: #5C5F6A">{{mo.revL}}</span>
-<div style="display: flex; gap: 4px; align-items: flex-end; width: 100%; justify-content: center">
-<div style="{{mo.revStyle}}"></div>
-<div style="{{mo.marStyle}}"></div>
+</sc-if>
+
+<sc-if value="{{w.isStrip}}" hint-placeholder-val="{{ false }}">
+<div style="{{w.stripGrid}}">
+<sc-for list="{{w.items}}" as="it" hint-placeholder-count="4"><div style="display: flex; flex-direction: column; gap: 6px; min-width: 0"><span style="font-size: 13px; color: #A6A9B6">{{it.label}}</span><span class="mono" style="{{it.valStyle}}">{{it.v}}</span><span style="font-size: 12px; color: #A6A9B6"><span style="{{it.dStyle}}">{{it.d}}</span> {{it.vs}}</span></div></sc-for>
 </div>
+</sc-if>
+
+<sc-if value="{{w.isBars}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 12px; overflow: hidden">
+<sc-for list="{{w.bars}}" as="b" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: minmax(80px, 36%) minmax(0, 1fr) 72px; gap: 12px; align-items: center; font-size: 13px"><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{b.label}}</span><span style="height: 10px; background: #F0F0EC; border-radius: 999px; overflow: hidden"><span style="{{b.bar}}"></span></span><span class="mono" style="{{b.vStyle}}">{{b.v}}</span></div></sc-for>
 </div>
+</sc-if>
+
+<sc-if value="{{w.isCols}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; gap: 14px; font-size: 12px; color: #5C5F6A; min-height: 18px"><sc-for list="{{w.legend}}" as="l" hint-placeholder-count="2"><span style="display: inline-flex; align-items: center; gap: 6px"><span style="{{l.sw}}"></span>{{l.name}}</span></sc-for></div>
+<div role="img" aria-label="{{w.aria}}" style="{{w.plot}}">
+<sc-for list="{{w.cols}}" as="c" hint-placeholder-count="6"><div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; min-width: 0"><span class="mono" style="{{c.labStyle}}">{{c.v}}</span><div style="display: flex; gap: 3px; align-items: flex-end; justify-content: center; width: 100%"><div style="{{c.s1}}"></div><div style="{{c.s2}}"></div></div></div></sc-for>
+</div>
+<div style="{{w.xGrid}}"><sc-for list="{{w.cols}}" as="c" hint-placeholder-count="6"><span>{{c.x}}</span></sc-for></div>
+</div>
+</sc-if>
+
+<sc-if value="{{w.isLine}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 10px"><span style="font-size: 12px; color: #5C5F6A">{{w.lineNote}}</span><span class="mono" style="font-size: 22px; font-weight: 500">{{w.lineLast}}</span></div>
+<svg role="img" aria-label="{{w.aria}}" viewBox="0 0 100 40" preserveAspectRatio="none" style="{{w.svgStyle}}"><path d="{{w.area}}" fill="#2F4FD6" fill-opacity="0.08"></path><path d="{{w.path}}" fill="none" stroke="#2F4FD6" stroke-width="2.2" vector-effect="non-scaling-stroke" stroke-linejoin="round"></path><path d="{{w.path2}}" fill="none" stroke="#0C0E14" stroke-width="1.6" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"></path></svg>
+<div style="display: flex; justify-content: space-between; font-size: 12px; color: #5C5F6A"><span>{{w.x0}}</span><span>{{w.xm}}</span><span>{{w.x1}}</span></div>
+</div>
+</sc-if>
+
+<sc-if value="{{w.isTable}}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; min-height: 0; overflow: auto; margin: 0 -18px -18px; border-top: 1px solid #EFEFEB">
+<table><thead><tr><sc-for list="{{w.head}}" as="h" hint-placeholder-count="5"><th scope="col" style="{{h.style}}">{{h.label}}</th></sc-for></tr></thead>
+<tbody><sc-for list="{{w.rows}}" as="r" hint-placeholder-count="5"><tr><sc-for list="{{r.cells}}" as="c" hint-placeholder-count="5"><td class="{{c.cls}}" style="{{c.style}}">{{c.v}}</td></sc-for></tr></sc-for></tbody></table>
+</div>
+</sc-if>
+
+<sc-if value="{{editing}}" hint-placeholder-val="{{ false }}"><span class="rz" data-resize="" aria-hidden="true" title="Drag to resize"></span></sc-if>
+</section>
 </sc-for>
 </div>
-<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; font-size: 12px; color: #5C5F6A; text-align: center">
-<sc-for list="{{months}}" as="mo" hint-placeholder-count="6"><span>{{mo.m}}</span></sc-for>
-</div>
-</section>
 
-<section aria-labelledby="cat-h" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 18px">
+<sc-if value="{{edOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: fixed; inset: 0; z-index: 60; display: flex; justify-content: flex-end; background: rgba(12, 14, 20, .16); pointer-events: none">
+<aside role="dialog" aria-labelledby="ed-h" style="pointer-events: auto; width: min(420px, 100%); height: 100%; overflow: auto; background: #FFFFFF; box-shadow: -24px 0 48px -16px rgba(12, 14, 20, .25); padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
-<h2 id="cat-h" style="margin: 0; font-size: 16px; font-weight: 600">Revenue by category</h2>
-<span style="font-size: 12px; color: #5C5F6A">October</span>
-</div>
-<sc-for list="{{cats}}" as="c" hint-placeholder-count="6">
-<div style="display: grid; grid-template-columns: 110px minmax(0, 1fr) 72px 44px; gap: 12px; align-items: center; font-size: 14px">
-<span>{{c.name}}</span>
-<div style="height: 10px; background: #F0F0EC; border-radius: 999px; overflow: hidden"><div style="{{c.bar}}"></div></div>
-<span class="mono" style="text-align: right">{{c.rev}}</span>
-<span class="mono" style="text-align: right; color: #5C5F6A; font-size: 12px">{{c.pct}}</span>
-</div>
-</sc-for>
-</section>
+<div style="display: flex; flex-direction: column; gap: 2px"><h2 id="ed-h" style="margin: 0; font-size: 18px; font-weight: 600">Widget</h2><span style="font-size: 13px; color: #5C5F6A">Changes show on the dashboard as you make them</span></div>
+<button type="button" class="ib" onClick="{{closeEd}}" aria-label="Close"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(560px, 100%), 1fr)); gap: 24px">
-<section aria-labelledby="pub-h" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px">
-<h2 id="pub-h" style="margin: 0; font-size: 16px; font-weight: 600">Top publishers · October</h2>
-<a href="publishers.html" style="font-size: 14px; font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">All publishers</a>
-</div>
-<div style="overflow-x: auto">
-<table>
-<thead><tr><th scope="col">Publisher</th><th scope="col" style="text-align: right">Validated</th><th scope="col" style="text-align: right">Validation rate</th><th scope="col" style="text-align: right">Revenue</th><th scope="col" style="text-align: right">Margin</th></tr></thead>
-<tbody>
-<sc-for list="{{pubs}}" as="r" hint-placeholder-count="5">
-<tr>
-<td><a href="publisher.html" style="color: #14161C; font-weight: 500; text-decoration: none">{{r.name}}</a><div style="font-size: 12px; color: #5C5F6A; margin-top: 2px">{{r.camps}} live campaigns</div></td>
-<td class="num">{{r.conf}}</td>
-<td class="num"><span style="{{r.accStyle}}">{{r.acc}}</span></td>
-<td class="num">{{r.rev}}</td>
-<td class="num" style="font-weight: 600">{{r.mar}}</td>
-</tr>
-</sc-for>
-</tbody>
-</table>
-</div>
-</section>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Title</span><input class="field" type="text" value="{{ed.title}}" onChange="{{ed.setTitle}}"></label>
 
-<section aria-labelledby="rep-h" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<h2 id="rep-h" style="margin: 0; font-size: 16px; font-weight: 600">Advertiser reports</h2>
-<span style="font-size: 13px; color: #5C5F6A">7 of 23 still pending for October</span>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="lbl">Show as</span>
+<div role="group" aria-label="Show as" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{ed.types}}" as="t" hint-placeholder-count="6"><button type="button" class="typ" aria-pressed="{{t.sel}}" onClick="{{t.pick}}"><span aria-hidden="true" style="font-size: 16px; line-height: 1">{{t.icon}}</span>{{t.label}}</button></sc-for>
 </div>
-<a href="settlements.html" style="font-size: 14px; font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">Open settlements</a>
 </div>
-<div style="overflow-x: auto">
-<table>
-<thead><tr><th scope="col">Advertiser · campaign</th><th scope="col">Period</th><th scope="col">Status</th></tr></thead>
-<tbody>
-<sc-for list="{{reports}}" as="r" hint-placeholder-count="5">
-<tr>
-<td><span style="font-weight: 500">{{r.adv}}</span><div style="font-size: 12px; color: #5C5F6A; margin-top: 2px">{{r.camp}}</div></td>
-<td style="color: #5C5F6A">{{r.period}}</td>
-<td><span class="chip" style="{{r.chipStyle}}">{{r.status}}</span></td>
-</tr>
-</sc-for>
-</tbody>
-</table>
+
+<sc-if value="{{ed.hasMetric}}" hint-placeholder-val="{{ true }}">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">{{ed.metricLabel}}</span><select class="field" onChange="{{ed.setMetric}}"><sc-for list="{{ed.metrics}}" as="o" hint-placeholder-count="11"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+</sc-if>
+
+<sc-if value="{{ed.isCustom}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 12px; background: #FAFAF8; border: 1px solid #EFEFEB">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Formula</span><input class="field mono" type="text" value="{{ed.formula}}" onChange="{{ed.setFormula}}"></label>
+<span style="font-size: 12px; color: #5C5F6A">Click a field to add it. Use + − × ÷ and brackets.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{ed.toks}}" as="t" hint-placeholder-count="9"><button type="button" class="tok" onClick="{{t.add}}">{{t.label}}</button></sc-for></div>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show the result as</span><select class="field" onChange="{{ed.setFmt}}"><sc-for list="{{ed.fmts}}" as="o" hint-placeholder-count="3"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<div style="{{ed.prevBox}}"><span style="font-size: 12px; color: #5C5F6A">Result for {{rangeLabel}}</span><span class="mono" style="font-size: 22px; font-weight: 600">{{ed.preview}}</span></div>
+<label class="chk"><input type="checkbox" checked="{{ed.saveF}}" onChange="{{ed.toggleSaveF}}">Also save it in Fields &amp; formulas</label>
 </div>
-</section>
+</sc-if>
+
+<sc-if value="{{ed.hasM2}}" hint-placeholder-val="{{ false }}">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Second line (optional)</span><select class="field" onChange="{{ed.setM2}}"><sc-for list="{{ed.m2s}}" as="o" hint-placeholder-count="11"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+</sc-if>
+
+<sc-if value="{{ed.hasMulti}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 2px"><span class="lbl" style="margin-bottom: 4px">{{ed.multiLabel}}</span>
+<sc-for list="{{ed.multi}}" as="o" hint-placeholder-count="10"><label class="chk"><input type="checkbox" checked="{{o.on}}" onChange="{{o.toggle}}">{{o.v}}</label></sc-for>
 </div>
+</sc-if>
+
+<sc-if value="{{ed.hasDim}}" hint-placeholder-val="{{ false }}">
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 10px">
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Split by</span><select class="field" onChange="{{ed.setDim}}"><sc-for list="{{ed.dims}}" as="o" hint-placeholder-count="4"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show</span><select class="field" onChange="{{ed.setTop}}"><sc-for list="{{ed.tops}}" as="o" hint-placeholder-count="4"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+</div>
+</sc-if>
+
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Dates</span><select class="field" onChange="{{ed.setPeriod}}"><sc-for list="{{ed.periods}}" as="o" hint-placeholder-count="5"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+
+<sc-if value="{{ed.hasCompare}}" hint-placeholder-val="{{ false }}">
+<label class="chk"><input type="checkbox" checked="{{ed.compare}}" onChange="{{ed.toggleCompare}}">Show change against the previous period</label>
+</sc-if>
+
+<sc-if value="{{ed.hasRule}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show in red when</span>
+<div style="display: grid; grid-template-columns: minmax(0, 1.4fr) auto minmax(0, 1fr); gap: 8px; align-items: center">
+<select class="field" onChange="{{ed.setRuleM}}" aria-label="Number to check"><sc-for list="{{ed.ruleMs}}" as="o" hint-placeholder-count="5"><option value="{{o.id}}" selected="{{o.sel}}">{{o.v}}</option></sc-for></select>
+<span style="font-size: 14px; color: #5C5F6A">is below</span>
+<input class="field mono" type="number" value="{{ed.below}}" onChange="{{ed.setBelow}}" aria-label="Limit" placeholder="none">
+</div>
+<span style="font-size: 12px; color: #5C5F6A">{{ed.ruleHint}}</span>
+</div>
+</sc-if>
+
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="lbl">Size</span>
+<div class="tabs" role="group" aria-label="Width" style="align-self: stretch"><sc-for list="{{ed.sizes}}" as="z" hint-placeholder-count="4"><button type="button" aria-pressed="{{z.sel}}" onClick="{{z.pick}}" style="flex: 1; justify-content: center">{{z.label}}</button></sc-for></div>
+<span style="font-size: 12px; color: #5C5F6A">Or drag the widget's bottom-right corner on the dashboard.</span>
+</div>
+
+<div style="margin-top: auto; padding-top: 8px; display: flex; justify-content: space-between; gap: 10px">
+<button type="button" class="btn b2" onClick="{{ed.remove}}" style="color: #9B1C2C">Remove widget</button>
+<button type="button" class="btn b1" onClick="{{closeEd}}">Done</button>
+</div>
+<a href="fields.html" style="font-size: 13px">Manage fields and formulas</a>
+</aside>
+</div>
+</sc-if>
 </main>
 </div>
 </script>
 <script type="text/plain" id="dc-logic">
 class Component extends DCLogic {
+  componentDidMount() {
+    const GAP = 16, ROW = 80, U = ROW + GAP;
+    const stop = () => { ['pointermove', 'pointerup', 'pointercancel'].forEach((t) => document.removeEventListener(t, t === 'pointermove' ? this._move : this._up)); };
+    this._target = (d) => {
+      const w = ((this.state || {}).draft || []).find((x) => x.id === d.id);
+      if (!w) return null;
+      if (d.resize) return { x: w.x, y: w.y, w: Math.max(2, Math.min(12 - w.x, Math.round((d.w0 + d.dx + GAP) / d.colW))), h: Math.max(2, Math.round((d.h0 + d.dy + GAP) / U)) };
+      return { x: Math.max(0, Math.min(12 - w.w, Math.round(w.x + d.dx / d.colW))), y: Math.max(0, Math.round(w.y + d.dy / U)), w: w.w, h: w.h };
+    };
+    this._down = (e) => {
+      const h = e.target && e.target.closest ? e.target.closest('[data-move],[data-resize]') : null;
+      if (!h || !(this.state || {}).editing) return;
+      const card = h.closest('[data-wid]'), grid = card && card.closest('[data-grid]');
+      if (!card || !grid) return;
+      e.preventDefault();
+      const gr = grid.getBoundingClientRect(), cr = card.getBoundingClientRect();
+      this._d = { id: card.getAttribute('data-wid'), resize: h.hasAttribute('data-resize'), sx: e.clientX, sy: e.clientY, card, grid, colW: (gr.width + GAP) / 12, w0: cr.width, h0: cr.height, dx: 0, dy: 0 };
+      const c = card.style; c.zIndex = '30'; c.transition = 'none'; c.boxShadow = '0 24px 48px -12px rgba(12,14,20,.3)';
+      document.addEventListener('pointermove', this._move);
+      document.addEventListener('pointerup', this._up);
+      document.addEventListener('pointercancel', this._up);
+    };
+    this._move = (e) => {
+      const d = this._d; if (!d) return;
+      d.dx = e.clientX - d.sx; d.dy = e.clientY - d.sy;
+      if (d.resize) { d.card.style.setProperty('--dw', d.dx + 'px'); d.card.style.setProperty('--dh', d.dy + 'px'); }
+      else d.card.style.transform = 'translate(' + d.dx + 'px,' + d.dy + 'px)';
+      const t = this._target(d); if (!t) return;
+      const g = d.grid.style;
+      g.setProperty('--gd', 'block');
+      g.setProperty('--gl', 'calc((100% + 16px) * ' + t.x + ' / 12)');
+      g.setProperty('--gt', t.y * U + 'px');
+      g.setProperty('--gw', 'calc((100% + 16px) * ' + t.w + ' / 12 - 16px)');
+      g.setProperty('--gh', (t.h * U - GAP) + 'px');
+    };
+    this._up = () => {
+      const d = this._d; if (!d) return;
+      this._d = null; stop();
+      const c = d.card.style;
+      c.transform = ''; c.zIndex = ''; c.boxShadow = ''; c.transition = ''; c.removeProperty('--dw'); c.removeProperty('--dh');
+      ['--gd', '--gl', '--gt', '--gw', '--gh'].forEach((p) => d.grid.style.removeProperty(p));
+      if (Math.abs(d.dx) < 4 && Math.abs(d.dy) < 4) return;
+      const t = this._target(d); if (!t) return;
+      const draft = this.state.draft.map((w) => (w.id === d.id ? Object.assign({}, w, t) : w));
+      this.setState({ draft: Component.compact(draft, d.id) });
+    };
+    document.addEventListener('pointerdown', this._down);
+  }
+
+  componentWillUnmount() { document.removeEventListener('pointerdown', this._down); }
+
+  static compact(list, id) {
+    const hit = (a, b) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+    const place = (items, first) => {
+      const out = [];
+      items.forEach((w) => { const n = Object.assign({}, w); if (!first || n.id !== id) n.y = 0; while (out.some((p) => hit(p, n))) n.y++; out.push(n); });
+      return out;
+    };
+    const byYX = (a, b) => a.y - b.y || (a.id === id ? -1 : b.id === id ? 1 : a.x - b.x);
+    const mv = list.find((w) => w.id === id);
+    const pass1 = place((mv ? [mv] : []).concat(list.filter((w) => w.id !== id).sort(byYX)), true);
+    return place(pass1.sort(byYX), false);
+  }
+
   renderVals() {
     const s = this.state || {};
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+
+    // ---------- sample data (fictional) ----------
+    const PUBS = [['ClickHive Media', 1.3, 0.93], ['AdNest Network', 1.05, 0.88], ['Orbit Leads', 0.85, 0.8], ['Pulse Affiliates', 0.75, 0.6], ['BlueKite Ads', 0.45, 0.89]];
+    const ADVS = [['SpinArena', 'iGaming', 'Arjun M.', 45, 0.74, 48, 1.0], ['Nova Bank PH', 'Banking', 'Priya S.', 18, 0.75, 0, 1.5], ['Adbridge Agency', 'Credit card', 'Karan D.', 32, 0.75, 0, 0.6], ['Pocket Rummy', 'Gaming', 'Arjun M.', 9, 0.73, 22, 1.7], ['ShieldCare Insurance', 'Insurance', 'Meera R.', 14, 0.74, 0, 0.5]];
+    const MON = ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'], MONL = ['May', 'June', 'July', 'August', 'September', 'October', 'November'];
+    const GROW = [0.64, 0.73, 0.81, 0.86, 0.93, 1, 0.105];
+    const raw = [];
+    PUBS.forEach(([pub, pv, pvr], pi) => ADVS.forEach(([adv, cat, poc, pays, ratio, dep, av], ak) => GROW.forEach((g, m) => {
+      const j = 0.88 + 0.24 * (((pi * 7 + ak * 13 + m * 5) % 10) / 10);
+      const vr = Math.min(0.97, pvr * (0.96 + 0.04 * ((ak + m) % 3)));
+      raw.push({ pub, adv, cat, poc, m, base: pv * av * g * j, vr, pays, ratio, dep });
+    })));
+    const octRaw = raw.filter((r) => r.m === 5).reduce((a, r) => a + r.base * r.vr * r.pays, 0);
+    const K = 48920 / octRaw;
+    const ROWS = raw.map((r) => { const rep = r.base * K, val = rep * r.vr, rev = val * r.pays; return { pub: r.pub, adv: r.adv, cat: r.cat, poc: r.poc, m: r.m, Reported: rep, Validated: val, Revenue: rev, 'Publisher payout': rev * r.ratio, 'First deposit amount': val * r.dep }; });
+    const FIELDS = ['Reported', 'Validated', 'Revenue', 'Publisher payout', 'First deposit amount'];
+    const DAYW = Array.from({ length: 31 }, (_, i) => { const d = i + 1, wd = (d + 3) % 7; return 1 + 0.16 * Math.sin(d / 2.2) + (wd === 5 || wd === 6 ? -0.14 : 0.04); });
+    const DAYS = DAYW.reduce((a, b) => a + b, 0);
+
+    // ---------- formulas ----------
+    const M = [
+      ['rev', 'Revenue', '[Revenue]', 'money'], ['pay', 'Publisher payout', '[Publisher payout]', 'money'],
+      ['margin', 'Margin', '[Revenue] − [Publisher payout]', 'money'], ['mpct', 'Margin %', '([Revenue] − [Publisher payout]) ÷ [Revenue]', 'pct'],
+      ['rep', 'Reported conversions', '[Reported]', 'num'], ['val', 'Validated conversions', '[Validated]', 'num'],
+      ['vrate', 'Validation rate', '[Validated] ÷ [Reported]', 'pct'], ['notval', 'Not validated', '[Reported] − [Validated]', 'num'],
+      ['avgdep', 'Avg first deposit', '[First deposit amount] ÷ [Validated]', 'money'], ['rpv', 'Revenue per validated', '[Revenue] ÷ [Validated]', 'money']
+    ].map(([id, name, f, fmt]) => ({ id, name, f, fmt }));
+    const MI = {}; M.forEach((m) => { MI[m.id] = m; });
+    const ev = (f, A) => {
+      let x = f; FIELDS.slice().sort((a, b) => b.length - a.length).forEach((k) => { x = x.split('[' + k + ']').join('(' + (A[k] || 0) + ')'); });
+      x = x.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+      if (!/^[\d\s.()+\-*/e]+$/.test(x)) return null;
+      try { const r = Function('return (' + x + ')')(); return isFinite(r) ? r : null; } catch (err) { return null; }
+    };
+    const mdef = (w, id) => (id === 'custom' ? { id: 'custom', name: w.cName || 'My formula', f: w.formula || '', fmt: w.fmt || 'num' } : MI[id] || MI.rev);
+    const disp = (v, fmt) => (v == null ? null : fmt === 'pct' ? v * 100 : v);
+    const fmtV = (v, fmt, short) => {
+      if (v == null) return '—';
+      if (fmt === 'pct') return (v * 100).toFixed(1) + '%';
+      if (fmt === 'money') { if (short && Math.abs(v) >= 1000) return '$' + (v / 1000).toFixed(1) + 'k'; return Math.abs(v) >= 100 ? '$' + Math.round(v).toLocaleString('en-US') : '$' + v.toFixed(2); }
+      if (short && Math.abs(v) >= 1000) return (v / 1000).toFixed(1) + 'k';
+      return Math.abs(v) >= 100 ? Math.round(v).toLocaleString('en-US') : v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+    };
+
+    // ---------- dashboard dates ----------
     const P = [
-      ['today', 'Today', '3 Nov', '2026-11-03', '2026-11-03', 'Day', '3 Nov 2026', '2 Nov'],
-      ['yesterday', 'Yesterday', '2 Nov', '2026-11-02', '2026-11-02', 'Day', '2 Nov 2026', '1 Nov'],
-      ['thisWeek', 'This week', 'Mon–Sun', '2026-11-02', '2026-11-08', 'Day', '2 – 8 Nov 2026', 'last week'],
-      ['last7', 'Last 7 days', '7d', '2026-10-28', '2026-11-03', 'Day', '28 Oct – 3 Nov 2026', 'the 7 days before'],
-      ['thisMonth', 'This month', 'Nov', '2026-11-01', '2026-11-30', 'Day', 'November 2026', 'October'],
-      ['lastMonth', 'Last month', 'Oct', '2026-10-01', '2026-10-31', 'Week', 'October 2026', 'September'],
-      ['thisQuarter', 'This quarter', 'Oct–Dec', '2026-10-01', '2026-12-31', 'Week', 'Oct – Dec 2026', 'Jul – Sep'],
-      ['thisYear', 'This calendar year', '2026', '2026-01-01', '2026-12-31', 'Month', '2026', '2025'],
-      ['fy', 'This financial year', 'FY 26–27', '2026-04-01', '2027-03-31', 'Month', 'FY 2026–27', 'FY 2025–26'],
-      ['lastFy', 'Last financial year', 'FY 25–26', '2025-04-01', '2026-03-31', 'Month', 'FY 2025–26', 'FY 2024–25'],
-      ['custom', 'Custom range', 'from – to', '2026-10-01', '2026-10-31', 'Day', '', 'the period before']
+      ['today', 'Today', '3 Nov', '3 Nov 2026', 'yesterday', [[6, 1 / 3]], [[6, 1 / 3]]],
+      ['yesterday', 'Yesterday', '2 Nov', '2 Nov 2026', 'the day before', [[6, 1 / 3]], [[6, 1 / 3]]],
+      ['thisWeek', 'This week', 'Mon–Sun', '2 – 8 Nov 2026', 'last week', [[6, 2 / 3]], [[5, 7 / 31]]],
+      ['last7', 'Last 7 days', '7d', '28 Oct – 3 Nov 2026', 'the 7 days before', [[6, 1], [5, 4 / 31]], [[5, 7 / 31]]],
+      ['thisMonth', 'This month', 'Nov', 'November 2026', 'the same days of October', [[6, 1]], [[5, 3 / 31]]],
+      ['lastMonth', 'Last month', 'Oct', 'October 2026', 'September', [[5, 1]], [[4, 1]]],
+      ['thisQuarter', 'This quarter', 'Oct–Dec', 'Oct – Dec 2026', 'Jul – Sep', [[5, 1], [6, 1]], [[2, 1], [3, 1], [4, 1]]],
+      ['thisYear', 'This calendar year', '2026', '2026', '2025', [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]], [[0, 0.7], [1, 0.7], [2, 0.7], [3, 0.7], [4, 0.7], [5, 0.7], [6, 0.7]]],
+      ['fy', 'This financial year', 'FY 26–27', 'FY 2026–27', 'FY 2025–26', [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1], [6, 1]], [[0, 0.72], [1, 0.72], [2, 0.72], [3, 0.72], [4, 0.72], [5, 0.72], [6, 0.72]]],
+      ['custom', 'Custom range', 'from – to', '', 'the period before', [[5, 1]], [[4, 1]]]
     ];
     const presetId = s.preset || 'lastMonth';
     const cur = P.find((p) => p[0] === presetId);
-    const from = s.from || cur[3], to = s.to || cur[4];
-    const grain = s.grain || cur[5];
-    const compare = s.compare !== false;
-    const fmt = (d) => { const [y, m, dd] = d.split('-'); return Number(dd) + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][Number(m) - 1] + ' ' + y; };
-    const rangeLabel = presetId === 'custom' ? fmt(from) + ' – ' + fmt(to) : cur[6];
+    const from = s.from || '2026-10-01', to = s.to || '2026-10-31';
+    const compareOn = s.compare !== false;
+    const fmtD = (d) => { const [y, m, dd] = d.split('-'); return Number(dd) + ' ' + MON.concat(['Dec', 'Jan', 'Feb', 'Mar', 'Apr'])[[5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3, 4].indexOf(Number(m))] + ' ' + y; };
+    const rangeLabel = presetId === 'custom' ? fmtD(from) + ' – ' + fmtD(to) : cur[3];
     const pOn = 'display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:0 10px;border:0;border-radius:8px;background:#0C0E14;color:#FFFFFF;font:600 14px Geist,system-ui,sans-serif;cursor:pointer;text-align:left';
     const pOff = 'display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:40px;padding:0 10px;border:0;border-radius:8px;background:transparent;color:#14161C;font:500 14px Geist,system-ui,sans-serif;cursor:pointer;text-align:left';
-    const presets = P.map(([id, label, hint]) => ({
-      label, hint, pressed: String(id === presetId), style: id === presetId ? pOn : pOff,
-      hintStyle: 'font-size:11px;color:' + (id === presetId ? '#D4F25A' : '#5C5F6A'),
-      pick: () => this.setState({ preset: id, from: null, to: null, grain: null })
-    }));
-    const gOn = 'flex:1 1 auto;min-height:40px;padding:0 14px;border:0;border-radius:9px;background:#FFFFFF;box-shadow:0 1px 2px #0000001a;font:600 13px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer';
-    const gOff = 'flex:1 1 auto;min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;font:500 13px Geist,system-ui,sans-serif;color:#4A4D57;cursor:pointer';
-    const grains = ['Day', 'Week', 'Month', 'Quarter', 'Year', 'FY'].map((g) => ({
-      label: g === 'FY' ? 'Financial year' : g, pressed: String(g === grain), style: g === grain ? gOn : gOff,
-      pick: () => this.setState({ grain: g })
-    }));
-    const dateVals = {
-      presets, grains, from, to, grain: grain === 'FY' ? 'FY' : grain.toLowerCase(), rangeLabel, compare,
-      compareLabel: compare ? cur[7] : 'nothing',
-      dateOpen: !!s.open, dateExpanded: String(!!s.open),
-      toggleDate: () => this.setState({ open: !s.open }),
-      setFrom: (e) => this.setState({ from: e.target.value, to: to, preset: 'custom' }),
-      setTo: (e) => this.setState({ to: e.target.value, from: from, preset: 'custom' }),
-      toggleCompare: () => this.setState({ compare: !compare })
+    const presets = P.map(([id, label, hint]) => ({ label, hint, pressed: String(id === presetId), style: id === presetId ? pOn : pOff, hintStyle: 'font-size:11px;color:' + (id === presetId ? '#D4F25A' : '#5C5F6A'), pick: () => this.setState({ preset: id }) }));
+    const WP = {
+      dash: ['Dashboard dates', rangeLabel, cur[4], cur[5], cur[6]],
+      thisMonth: ['This month', 'November so far', 'the same days of October', [[6, 1]], [[5, 3 / 31]]],
+      lastMonth: ['Last month', 'October', 'September', [[5, 1]], [[4, 1]]],
+      last6: ['Last 6 months', 'May – Oct', 'the 6 months before', [[0, 1], [1, 1], [2, 1], [3, 1], [4, 1], [5, 1]], [[0, 0.7], [1, 0.7], [2, 0.7], [3, 0.7], [4, 0.7], [5, 0.7]]],
+      fy: ['This financial year', 'FY 2026–27', 'FY 2025–26', P[8][5], P[8][6]]
     };
-    const m = [['May', 31.2, 8.1], ['Jun', 35.8, 9.0], ['Jul', 39.4, 10.2], ['Aug', 42.1, 11.0], ['Sep', 45.6, 11.9], ['Oct', 48.9, 12.8]];
-    const months = m.map(([mm, r, g], i) => ({
-      m: mm, revL: '$' + r + 'k',
-      revStyle: 'width:38%;max-width:30px;border-radius:6px 6px 2px 2px;height:' + Math.round(r / 48.9 * 170) + 'px;background:' + (i === 5 ? '#2F4FD6' : '#BCC6F3'),
-      marStyle: 'width:38%;max-width:30px;border-radius:6px 6px 2px 2px;height:' + Math.round(g / 48.9 * 170) + 'px;background:' + (i === 5 ? '#0C0E14' : '#9A9CA6')
-    }));
-    const cats = [['iGaming', 18590, 38], ['Banking', 10760, 22], ['Credit card', 8320, 17], ['Gaming', 6850, 14], ['Insurance', 2940, 6], ['Lending', 1460, 3]].map(([name, rev, pct]) => ({
-      name, rev: '$' + rev.toLocaleString('en-US'), pct: pct + '%',
-      bar: 'height:100%;border-radius:999px;background:#2F4FD6;width:' + Math.round(pct / 38 * 100) + '%'
-    }));
-    const good = 'color:#14161C', low = 'color:#9A4A00;font-weight:600;background:#FFF1DF;padding:2px 8px;border-radius:6px';
-    const pubs = [
-      ['ClickHive Media', 6, '2,840', 91.2, '$14,210', '$3,980'],
-      ['AdNest Network', 5, '2,115', 86.7, '$11,060', '$2,870'],
-      ['Orbit Leads', 4, '1,690', 78.4, '$8,450', '$2,110'],
-      ['BlueKite Ads', 3, '980', 88.1, '$4,900', '$1,270'],
-      ['Pulse Affiliates', 3, '1,240', 64.9, '$6,200', '$1,490']
-    ].map(([name, camps, conf, acc, rev, mar]) => ({ name, camps, conf, acc: acc + '%', accStyle: acc < 70 ? low : good, rev, mar }));
-    const chips = {
-      Pending: 'background:#FFF1DF;color:#8A4300',
-      Received: 'background:#E7ECFD;color:#2440B0',
-      Disputed: 'background:#FBE7E9;color:#9B1C2C',
-      Settled: 'background:#E8F3EA;color:#1F6B37'
+
+    // ---------- filters ----------
+    const fAdv = s.fAdv || 'All advertisers', fCat = s.fCat || 'All categories', fPoc = s.fPoc || 'Everyone';
+    const pass = (r) => (fAdv === 'All advertisers' || r.adv === fAdv) && (fCat === 'All categories' || r.cat === fCat) && (fPoc === 'Everyone' || r.poc === (fPoc === 'Me (Priya S.)' ? 'Priya S.' : fPoc));
+    const agg = (parts, extra) => {
+      const A = {}; FIELDS.forEach((k) => { A[k] = 0; });
+      ROWS.forEach((r) => { if (!pass(r) || (extra && !extra(r))) return; const p = parts.find((q) => q[0] === r.m); if (!p) return; FIELDS.forEach((k) => { A[k] += r[k] * p[1]; }); });
+      return A;
     };
-    const reports = [
-      ['Nova Bank PH', 'Savings Account · CPR', 'Oct 2026', 'Pending'],
-      ['SpinArena', 'Android FTD · CPA', 'Oct 2026', 'Received'],
-      ['Adbridge Agency', 'Kredo Card approval · CPA', 'Oct 2026', 'Disputed'],
-      ['Pocket Rummy', 'Install + registration · CPR', 'Oct 2026', 'Pending'],
-      ['ShieldCare Insurance', 'Health lead · CPL', 'Sep 2026', 'Settled']
-    ].map(([adv, camp, period, status]) => ({ adv, camp, period, status, chipStyle: chips[status] }));
-    return Object.assign({ months, cats, pubs, reports }, dateVals);
+    const opts = (list, v) => list.map((x) => ({ v: x, sel: x === v }));
+    const DIMS = { pub: ['Publisher', PUBS.map((p) => p[0])], adv: ['Advertiser', ADVS.map((a) => a[0])], cat: ['Category', ADVS.map((a) => a[1])], poc: ['Account manager', ['Arjun M.', 'Priya S.', 'Karan D.', 'Meera R.']] };
+
+    // ---------- dashboards ----------
+    const W = (id, type, title, o, x, y, w, h) => Object.assign({ id, type, title, metric: 'rev', metric2: '', metrics: [], dim: 'pub', top: 5, period: 'dash', compare: true, ruleM: '', below: '', x, y, w, h }, o);
+    const DEF = [
+      { id: 'owner', name: 'Owner view', who: ['Admins'], widgets: [
+        W('w1', 'strip', 'Money flow', { metrics: ['rev', 'pay', 'margin', 'vrate'] }, 0, 0, 12, 2),
+        W('w2', 'cols', 'Revenue & margin by month', { metric: 'rev', metric2: 'margin', period: 'last6' }, 0, 2, 7, 4),
+        W('w3', 'bars', 'Margin by category', { metric: 'margin', dim: 'cat' }, 7, 2, 5, 4),
+        W('w4', 'table', 'Top publishers', { metric: 'rev', metrics: ['val', 'vrate', 'rev', 'margin'], ruleM: 'vrate', below: '70' }, 0, 6, 7, 4),
+        W('w5', 'bars', 'Validation rate by publisher', { metric: 'vrate', ruleM: 'vrate', below: '75' }, 7, 6, 5, 4),
+        W('w6', 'kpi', 'Avg first deposit', { metric: 'avgdep' }, 0, 10, 4, 2),
+        W('w7', 'kpi', 'Margin %', { metric: 'mpct', ruleM: 'mpct', below: '25' }, 4, 10, 4, 2),
+        W('w8', 'kpi', 'Not validated', { metric: 'notval' }, 8, 10, 4, 2)
+      ] },
+      { id: 'am', name: 'Account manager', who: ['Admins', 'Account managers'], widgets: [
+        W('a1', 'kpi', 'Validated conversions', { metric: 'val' }, 0, 0, 4, 2),
+        W('a2', 'kpi', 'Validation rate', { metric: 'vrate', ruleM: 'vrate', below: '80' }, 4, 0, 4, 2),
+        W('a3', 'kpi', 'Margin', { metric: 'margin' }, 8, 0, 4, 2),
+        W('a4', 'line', 'Validated conversions per day', { metric: 'val', period: 'lastMonth' }, 0, 2, 8, 4),
+        W('a5', 'bars', 'Validated by publisher', { metric: 'val' }, 8, 2, 4, 4),
+        W('a6', 'table', 'My advertisers', { metric: 'rev', dim: 'adv', metrics: ['rep', 'val', 'vrate', 'rev', 'margin'], ruleM: 'vrate', below: '75' }, 0, 6, 12, 4)
+      ] },
+      { id: 'val', name: 'Validation watch', who: ['Admins', 'Account managers'], widgets: [
+        W('v1', 'kpi', 'Validation rate', { metric: 'vrate', ruleM: 'vrate', below: '85' }, 0, 0, 3, 2),
+        W('v2', 'kpi', 'Reported', { metric: 'rep' }, 3, 0, 3, 2),
+        W('v3', 'kpi', 'Validated', { metric: 'val' }, 6, 0, 3, 2),
+        W('v4', 'kpi', 'Not validated', { metric: 'notval' }, 9, 0, 3, 2),
+        W('v5', 'table', 'Validation by publisher', { metric: 'rep', metrics: ['rep', 'val', 'notval', 'vrate'], ruleM: 'vrate', below: '75' }, 0, 2, 7, 5),
+        W('v6', 'cols', 'Validation rate by month', { metric: 'vrate', period: 'last6' }, 7, 2, 5, 5)
+      ] }
+    ];
+    const dashes = s.dashes || DEF;
+    const curId = dashes.some((d) => d.id === s.cur) ? s.cur : (s.def && dashes.some((d) => d.id === s.def) ? s.def : dashes[0].id);
+    const dash = dashes.find((d) => d.id === curId);
+    const editing = !!s.editing;
+    const list = editing ? s.draft || [] : dash.widgets;
+    const putDash = (patch) => this.setState({ dashes: dashes.map((d) => (d.id === curId ? Object.assign({}, d, patch) : d)) });
+    const setW = (id, patch) => this.setState((st) => ({ draft: (st.draft || []).map((w) => (w.id === id ? Object.assign({}, w, patch) : w)) }));
+    const uid = () => 'w' + Date.now().toString(36) + Math.floor(Math.random() * 99);
+    const bottom = (ws) => ws.reduce((a, w) => Math.max(a, w.y + w.h), 0);
+
+    // ---------- build widgets ----------
+    const U = 96, GAP = 16;
+    const deltaOf = (v, pv, fmt) => {
+      if (v == null || pv == null || !pv) return ['', ''];
+      if (fmt === 'pct') { const d = (v - pv) * 100; return [(d >= 0 ? '▲ ' : '▼ ') + Math.abs(d).toFixed(1) + ' pts', d >= 0 ? 'color:#1F6B37;font-weight:600' : 'color:#9B1C2C;font-weight:600']; }
+      const d = (v - pv) / Math.abs(pv) * 100; return [(d >= 0 ? '▲ ' : '▼ ') + Math.abs(d).toFixed(1) + '%', d >= 0 ? 'color:#1F6B37;font-weight:600' : 'color:#9B1C2C;font-weight:600'];
+    };
+    const lim = (w) => (w.below === '' || w.below == null || isNaN(Number(w.below)) ? null : Number(w.below));
+    const widgets = list.map((w) => {
+      const per = WP[w.period] || WP.dash;
+      const md = mdef(w, w.metric);
+      const isDark = w.type === 'strip';
+      const o = {
+        id: w.id, title: w.title,
+        cls: 'wg' + (isDark ? ' dark' : '') + (editing ? ' ed' : '') + (s.edId === w.id ? ' on' : ''),
+        box: 'left:calc((100% + 16px) * ' + w.x + ' / 12);top:' + w.y * U + 'px;width:calc((100% + 16px) * ' + w.w + ' / 12 - 16px + var(--dw, 0px));height:calc(' + (w.h * U - GAP) + 'px + var(--dh, 0px));' + (isDark ? 'background:#0C0E14;color:#FFFFFF;background-image:radial-gradient(#ffffff0d 1px, transparent 1px);background-size:18px 18px' : 'background:#FFFFFF;border:1px solid #E6E6E1'),
+        titleStyle: isDark ? 'color:#FFFFFF' : '',
+        isKpi: false, isStrip: false, isBars: false, isCols: false, isLine: false, isTable: false,
+        edit: () => this.setState({ edId: w.id }),
+        copy: () => this.setState((st) => { const c = Object.assign({}, w, { id: uid(), title: w.title + ' (copy)', y: bottom(st.draft) }); return { draft: (st.draft || []).concat([c]) }; }),
+        remove: () => this.setState((st) => ({ draft: Component.compact((st.draft || []).filter((x) => x.id !== w.id), ''), edId: st.edId === w.id ? null : st.edId }))
+      };
+      const limit = lim(w), ruleMd = mdef(w, w.ruleM || w.metric);
+      const bad = (v, m) => limit != null && v != null && m.id === ruleMd.id && disp(v, m.fmt) < limit;
+      const A = agg(per[3]), PA = agg(per[4]);
+      const dimLab = (DIMS[w.dim] || DIMS.pub)[0].toLowerCase();
+      if (w.type === 'kpi') {
+        const v = ev(md.f, A), pv = ev(md.f, PA), [d, ds] = deltaOf(v, pv, md.fmt);
+        Object.assign(o, { isKpi: true, sub: per[1] + (md.id === 'custom' || md.id === 'avgdep' ? ' · formula ' + md.f : ''), value: fmtV(v, md.fmt), delta: w.compare ? d : '', deltaStyle: ds, vs: w.compare && d ? 'vs ' + per[2] : '',
+          valStyle: 'font-size:' + (w.w <= 3 ? 30 : 36) + 'px;font-weight:500;letter-spacing:-.03em;line-height:1;' + (bad(v, md) ? 'color:#B42318' : '') });
+        if (bad(v, md)) o.vs = (o.vs ? o.vs + ' · ' : '') + 'below ' + limit + (md.fmt === 'pct' ? '%' : '');
+      } else if (w.type === 'strip') {
+        const ms = (w.metrics.length ? w.metrics : ['rev']).map((id) => mdef(w, id));
+        Object.assign(o, { isStrip: true, sub: per[1] + ' · compared with ' + per[2],
+          stripGrid: 'flex:1;min-height:0;display:grid;grid-template-columns:repeat(' + Math.min(ms.length, Math.max(1, Math.floor(w.w / 2))) + ',minmax(0,1fr));gap:20px;align-content:end',
+          items: ms.map((m) => { const v = ev(m.f, A), pv = ev(m.f, PA), [d, ds] = deltaOf(v, pv, m.fmt); return { label: m.name, v: fmtV(v, m.fmt), valStyle: 'font-size:' + (w.w >= 10 ? 38 : 28) + 'px;font-weight:500;letter-spacing:-.03em;line-height:1.05;' + (m.id === 'margin' ? 'color:#D4F25A' : ''), d: w.compare ? d : '', dStyle: ds.replace('#1F6B37', '#D4F25A').replace('#9B1C2C', '#FF9B8E'), vs: w.compare && d ? 'vs ' + per[2] : '' }; }) });
+      } else if (w.type === 'bars') {
+        const [, vals] = DIMS[w.dim] || DIMS.pub; const key = w.dim === 'poc' ? 'poc' : w.dim;
+        let rows = Array.from(new Set(vals)).map((name) => ({ name, v: ev(md.f, agg(per[3], (r) => r[key] === name)) })).filter((r) => r.v != null && r.v !== 0);
+        rows.sort((a, b) => b.v - a.v); if (w.top) rows = rows.slice(0, Number(w.top));
+        const max = Math.max.apply(null, rows.map((r) => r.v).concat([1e-9]));
+        const fit = Math.max(1, Math.floor((w.h * U - GAP - 100) / 26));
+        Object.assign(o, { isBars: true, sub: per[1] + ' · by ' + dimLab + (md.id === 'custom' ? ' · ' + md.f : ''),
+          bars: rows.slice(0, fit).map((r) => ({ label: r.name, v: fmtV(r.v, md.fmt), vStyle: 'text-align:right;' + (bad(r.v, md) ? 'color:#B42318;font-weight:600' : ''), bar: 'display:block;height:100%;border-radius:999px;width:' + Math.max(2, r.v / max * 100).toFixed(1) + '%;background:' + (bad(r.v, md) ? '#E5735F' : '#2F4FD6') })) });
+      } else if (w.type === 'cols' || w.type === 'line') {
+        const single = per[3].length === 1;
+        let pts;
+        if (single) {
+          const [m, wt] = per[3][0], n = m === 6 ? 3 : 31, tot = m === 6 ? 3 : DAYS;
+          const base = agg([[m, wt]]);
+          pts = Array.from({ length: n }, (_, i) => { const f = (m === 6 ? 1 : DAYW[i]) / tot, B = {}; FIELDS.forEach((k) => { B[k] = base[k] * f; }); return { x: String(i + 1), B }; });
+        } else pts = per[3].map(([m, wt]) => ({ x: MON[m], B: agg([[m, wt]]) }));
+        const m2 = w.metric2 ? mdef(w, w.metric2) : null;
+        const v1 = pts.map((p) => ev(md.f, p.B) || 0), v2 = m2 ? pts.map((p) => ev(m2.f, p.B) || 0) : [];
+        const sameUnit = m2 && m2.fmt === md.fmt;
+        const max1 = Math.max.apply(null, v1.concat(sameUnit ? v2 : []).concat([1e-9])), max2 = Math.max.apply(null, v2.concat([1e-9]));
+        const xm = single ? (per[3][0][0] === 6 ? 'November' : 'October') : '';
+        o.aria = md.name + (m2 ? ' and ' + m2.name : '') + ', ' + pts.map((p, i) => p.x + ' ' + fmtV(v1[i], md.fmt)).join(', ');
+        if (w.type === 'cols') {
+          const plotH = Math.max(50, w.h * U - GAP - 168), many = pts.length > 12;
+          Object.assign(o, { isCols: true, sub: per[1] + (single ? ' · by day' : ' · by month'),
+            legend: [{ name: md.name, sw: 'width:10px;height:10px;border-radius:3px;background:#2F4FD6' }].concat(m2 ? [{ name: m2.name + (sameUnit ? '' : ' (own scale)'), sw: 'width:10px;height:10px;border-radius:3px;background:#0C0E14' }] : []),
+            plot: 'display:grid;grid-template-columns:repeat(' + pts.length + ',minmax(0,1fr));gap:' + (many ? 3 : 12) + 'px;align-items:end;border-bottom:1px solid #E6E6E1;padding-bottom:2px',
+            xGrid: 'display:grid;grid-template-columns:repeat(' + pts.length + ',minmax(0,1fr));gap:' + (many ? 3 : 12) + 'px;font-size:12px;color:#5C5F6A;text-align:center',
+            cols: pts.map((p, i) => ({ x: many ? (i % 5 === 0 ? p.x : '') : p.x, v: many ? '' : fmtV(v1[i], md.fmt, true), labStyle: 'font-size:11px;color:#5C5F6A;white-space:nowrap;' + (many ? 'display:none' : ''),
+              s1: 'width:' + (m2 ? 42 : 60) + '%;max-width:30px;border-radius:5px 5px 2px 2px;height:' + Math.max(2, Math.round(v1[i] / max1 * plotH)) + 'px;background:' + (i === pts.length - 1 ? '#2F4FD6' : '#9FB0F0'),
+              s2: m2 ? 'width:42%;max-width:30px;border-radius:5px 5px 2px 2px;height:' + Math.max(2, Math.round(v2[i] / (sameUnit ? max1 : max2) * plotH)) + 'px;background:' + (i === pts.length - 1 ? '#0C0E14' : '#9A9CA6') : 'display:none' })) });
+        } else {
+          const pth = (vals, mx) => vals.map((v, i) => (i ? 'L' : 'M') + (vals.length === 1 ? 50 : (i / (vals.length - 1)) * 100).toFixed(2) + ' ' + (38 - (v / mx) * 34).toFixed(2)).join(' ');
+          const p1 = pth(v1, max1);
+          const tot = ev(md.f, A);
+          Object.assign(o, { isLine: true, sub: per[1] + (single ? ' · by day' : ' · by month'), path: p1, area: p1 + ' L100 40 L0 40 Z', path2: m2 ? pth(v2, sameUnit ? max1 : max2) : '',
+            svgStyle: 'display:block;width:100%;flex:1;min-height:40px;border-bottom:1px solid #E6E6E1', lineNote: (md.fmt === 'pct' ? 'Overall ' : 'Total ') + md.name.toLowerCase() + ' · peak ' + fmtV(Math.max.apply(null, v1), md.fmt),
+            lineLast: fmtV(tot, md.fmt), x0: pts[0].x + (single ? ' ' + xm.slice(0, 3) : ''), xm: single ? '' : '', x1: pts[pts.length - 1].x + (single ? ' ' + xm.slice(0, 3) : '') });
+        }
+      } else if (w.type === 'table') {
+        const [dimName, vals] = DIMS[w.dim] || DIMS.pub; const key = w.dim;
+        const cols = (w.metrics.length ? w.metrics : [w.metric]).map((id) => mdef(w, id));
+        let rows = Array.from(new Set(vals)).map((name) => { const B = agg(per[3], (r) => r[key] === name); return { name, B, sort: ev(md.f, B) || 0 }; });
+        rows.sort((a, b) => b.sort - a.sort); if (w.top) rows = rows.slice(0, Number(w.top));
+        Object.assign(o, { isTable: true, sub: per[1] + ' · sorted by ' + md.name.toLowerCase(),
+          head: [{ label: dimName, style: '' }].concat(cols.map((c) => ({ label: c.name, style: 'text-align:right' }))),
+          rows: rows.map((r) => ({ cells: [{ v: r.name, cls: '', style: 'font-weight:500' }].concat(cols.map((c) => { const v = ev(c.f, r.B); const b = bad(v, c); return { v: fmtV(v, c.fmt), cls: 'num', style: b ? 'color:#B42318;font-weight:600;background:#FDF1EF' : '' }; })) })) });
+      }
+      return o;
+    });
+    const gridH = Math.max(bottom(list) + (editing ? 2 : 0), editing ? 4 : 0) * U - (list.length ? GAP : 0);
+
+    // ---------- editor ----------
+    const edW = editing && s.edId ? list.find((w) => w.id === s.edId) : null;
+    let ed = {};
+    if (edW) {
+      const t = edW.type, metricOpts = M.map((m) => ({ id: m.id, v: m.name })).concat([{ id: 'custom', v: '✎ Write my own formula…' }]);
+      const sel = (arr, v) => arr.map((o) => Object.assign({}, o, { sel: o.id === v }));
+      const cf = edW.formula == null ? '[Revenue] ÷ [Reported]' : edW.formula;
+      const pv = ev(cf, agg(WP[edW.period] ? WP[edW.period][3] : cur[5]));
+      const ruleIds = t === 'table' ? edW.metrics : [edW.metric];
+      ed = {
+        title: edW.title, setTitle: (e) => setW(edW.id, { title: e.target.value }),
+        types: [['kpi', 'Number', '1'], ['bars', 'Ranking', '≡'], ['cols', 'Columns', '▥'], ['line', 'Line', '⟋'], ['table', 'Table', '▦'], ['strip', 'Summary strip', '▬']].map(([id, label, icon]) => ({ label, icon, sel: String(id === t), pick: () => setW(edW.id, Object.assign({ type: id }, id === 'strip' || id === 'table' ? { metrics: edW.metrics.length ? edW.metrics : [edW.metric === 'custom' ? 'rev' : edW.metric, 'margin'] } : {}, id === 'strip' && edW.w < 8 ? { w: 12 } : {}, id === 'table' && edW.h < 4 ? { h: 4 } : {}, (id === 'bars' || id === 'cols' || id === 'line') && edW.h < 3 ? { h: 4 } : {})) })),
+        hasMetric: t !== 'strip', metricLabel: t === 'table' ? 'Sort rows by' : t === 'cols' || t === 'line' ? 'Number over time' : 'Number to show',
+        metrics: sel(metricOpts, edW.metric), setMetric: (e) => setW(edW.id, Object.assign({ metric: e.target.value }, e.target.value === 'custom' ? { formula: cf, fmt: edW.fmt || 'num', cName: 'My formula' } : {})),
+        isCustom: edW.metric === 'custom' && t !== 'strip', formula: cf, setFormula: (e) => setW(edW.id, { formula: e.target.value }),
+        toks: FIELDS.map((k) => ({ label: k, add: () => setW(edW.id, { formula: (cf ? cf + ' ' : '') + '[' + k + ']' }) })).concat(['÷', '×', '+', '−', '(', ')'].map((op) => ({ label: op, add: () => setW(edW.id, { formula: cf + ' ' + op }) }))),
+        fmts: sel([{ id: 'num', v: 'Number' }, { id: 'pct', v: 'Percent' }, { id: 'money', v: 'Money' }], edW.fmt || 'num'), setFmt: (e) => setW(edW.id, { fmt: e.target.value }),
+        preview: pv == null ? 'Check the formula' : fmtV(pv, edW.fmt || 'num'),
+        prevBox: 'display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:10px;' + (pv == null ? 'background:#FDF3F1;border:1px solid #F5C9C3' : 'background:#F6F9E8;border:1px solid #D9EAA0'),
+        saveF: edW.saveF !== false, toggleSaveF: () => setW(edW.id, { saveF: edW.saveF === false }),
+        hasM2: t === 'cols' || t === 'line', m2s: sel([{ id: '', v: 'Nothing' }].concat(M.map((m) => ({ id: m.id, v: m.name }))), edW.metric2), setM2: (e) => setW(edW.id, { metric2: e.target.value }),
+        hasMulti: t === 'table' || t === 'strip', multiLabel: t === 'table' ? 'Columns' : 'Numbers in the strip',
+        multi: M.map((m) => ({ v: m.name, on: edW.metrics.indexOf(m.id) >= 0, toggle: () => setW(edW.id, { metrics: edW.metrics.indexOf(m.id) >= 0 ? edW.metrics.filter((x) => x !== m.id) : M.map((q) => q.id).filter((q) => q === m.id || edW.metrics.indexOf(q) >= 0) }) })),
+        hasDim: t === 'bars' || t === 'table', dims: sel(Object.keys(DIMS).map((id) => ({ id, v: DIMS[id][0] })), edW.dim), setDim: (e) => setW(edW.id, { dim: e.target.value }),
+        tops: sel([{ id: '3', v: 'Top 3' }, { id: '5', v: 'Top 5' }, { id: '10', v: 'Top 10' }, { id: '0', v: 'All' }], String(edW.top)), setTop: (e) => setW(edW.id, { top: Number(e.target.value) }),
+        periods: sel(Object.keys(WP).map((id) => ({ id, v: WP[id][0] + (id === 'dash' ? ' (' + rangeLabel + ')' : '') })), edW.period), setPeriod: (e) => setW(edW.id, { period: e.target.value }),
+        hasCompare: t === 'kpi' || t === 'strip', compare: edW.compare, toggleCompare: () => setW(edW.id, { compare: !edW.compare }),
+        hasRule: t === 'kpi' || t === 'bars' || t === 'table',
+        ruleMs: sel(ruleIds.map((id) => ({ id, v: mdef(edW, id).name })), edW.ruleM || edW.metric), setRuleM: (e) => setW(edW.id, { ruleM: e.target.value }),
+        below: edW.below, setBelow: (e) => setW(edW.id, { below: e.target.value, ruleM: edW.ruleM || ruleIds[0] }),
+        ruleHint: mdef(edW, edW.ruleM || ruleIds[0]).fmt === 'pct' ? 'Enter a percent, e.g. 70 for 70%.' : 'Leave empty for no alert.',
+        sizes: [[3, 'Small'], [4, 'Medium'], [6, 'Half'], [12, 'Full width']].map(([n, label]) => ({ label, sel: String(edW.w === n), pick: () => this.setState((st) => ({ draft: Component.compact((st.draft || []).map((w) => (w.id === edW.id ? Object.assign({}, w, { w: n, x: Math.min(w.x, 12 - n) }) : w)), edW.id) })) })),
+        remove: () => this.setState((st) => ({ draft: Component.compact((st.draft || []).filter((x) => x.id !== edW.id), ''), edId: null }))
+      };
+    }
+
+    // ---------- actions ----------
+    const startEdit = () => this.setState({ editing: true, draft: dash.widgets.map((w) => Object.assign({}, w)), edId: null, newOpen: false, setOpen: false, open: false });
+    const addWidget = () => this.setState((st) => {
+      const base = st.editing ? st.draft : dash.widgets.map((w) => Object.assign({}, w));
+      const nw = W(uid(), 'kpi', 'New widget', { metric: 'margin' }, 0, bottom(base), 4, 2);
+      return { editing: true, draft: base.concat([nw]), edId: nw.id, newOpen: false, setOpen: false, open: false };
+    });
+    const ROLES = ['Admins', 'Account managers', 'Finance', 'Viewers'];
+    const START = [['blank', 'Blank'], ['copy', 'A copy of ' + dash.name], ['val', 'Validation watch layout']];
+    const startSel = s.start || 'blank';
+
+    return {
+      presets, from, to, compare: compareOn, rangeLabel, compareLabel: compareOn ? cur[4] : 'nothing',
+      dateOpen: !!s.open, dateExpanded: String(!!s.open), toggleDate: () => this.setState({ open: !s.open, newOpen: false, setOpen: false }),
+      setFrom: (e) => this.setState({ from: e.target.value, to, preset: 'custom' }), setTo: (e) => this.setState({ to: e.target.value, from, preset: 'custom' }),
+      toggleCompare: () => this.setState({ compare: !compareOn }),
+      fAdvs: opts(['All advertisers'].concat(ADVS.map((a) => a[0])), fAdv), fCats: opts(['All categories'].concat(ADVS.map((a) => a[1])), fCat), fPocs: opts(['Everyone', 'Me (Priya S.)', 'Arjun M.', 'Karan D.', 'Meera R.'], fPoc),
+      setFAdv: set('fAdv'), setFCat: set('fCat'), setFPoc: set('fPoc'),
+      dashTabs: dashes.map((d) => ({ name: d.name, count: String(d.widgets.length), sel: String(d.id === curId), pick: () => { if (!editing) this.setState({ cur: d.id, newOpen: false, setOpen: false }); } })),
+      who: dash.who.length ? dash.who.join(', ') : 'only you', curName: dash.name,
+      newOpen: !!s.newOpen, newExpanded: String(!!s.newOpen), toggleNew: () => this.setState({ newOpen: !s.newOpen, setOpen: false, open: false }),
+      newName: s.newName || '', setNewName: set('newName'),
+      starts: START.map(([id, label]) => ({ label, sel: id === startSel, pick: () => this.setState({ start: id }) })),
+      createDash: () => {
+        const id = 'd' + Date.now().toString(36);
+        const src = startSel === 'copy' ? dash.widgets : startSel === 'val' ? DEF[2].widgets : [];
+        const d = { id, name: (s.newName || '').trim() || 'New dashboard', who: ['Admins'], widgets: src.map((w) => Object.assign({}, w, { id: uid() + w.id })) };
+        this.setState({ dashes: dashes.concat([d]), cur: id, newOpen: false, newName: '', editing: true, draft: d.widgets.map((w) => Object.assign({}, w)), edId: null });
+      },
+      setOpen: !!s.setOpen, setExpanded: String(!!s.setOpen), toggleSet: () => this.setState({ setOpen: !s.setOpen, newOpen: false, open: false }),
+      rename: (e) => putDash({ name: e.target.value || dash.name }),
+      roles: ROLES.map((r) => ({ label: r, on: dash.who.indexOf(r) >= 0, toggle: () => putDash({ who: dash.who.indexOf(r) >= 0 ? dash.who.filter((x) => x !== r) : ROLES.filter((x) => x === r || dash.who.indexOf(x) >= 0) }) })),
+      isDefault: (s.def || dashes[0].id) === curId, makeDefault: () => this.setState({ def: curId }),
+      duplicate: () => { const id = 'd' + Date.now().toString(36); this.setState({ dashes: dashes.concat([{ id, name: dash.name + ' (copy)', who: dash.who.slice(), widgets: dash.widgets.map((w) => Object.assign({}, w, { id: uid() + w.id })) }]), cur: id, setOpen: false }); },
+      deleteDash: () => { if (dashes.length < 2) return; const rest = dashes.filter((d) => d.id !== curId); this.setState({ dashes: rest, cur: rest[0].id, setOpen: false, editing: false }); },
+      editing, notEditing: !editing, startEdit, addWidget,
+      cancelEdit: () => this.setState({ editing: false, draft: null, edId: null }),
+      saveEdit: () => { putDash({ widgets: s.draft || [] }); this.setState({ editing: false, draft: null, edId: null }); },
+      empty: !list.length, widgets,
+      gridStyle: 'height:' + gridH + 'px',
+      gcols: Array.from({ length: 12 }, (_, i) => 'position:absolute;top:0;bottom:0;left:calc((100% + 16px) * ' + i + ' / 12);width:calc((100% + 16px) / 12 - 16px);background:rgba(12,14,20,.035);border-radius:10px;pointer-events:none'),
+      edOpen: !!edW, ed, closeEd: () => this.setState({ edId: null })
+    };
   }
 }
 </script>

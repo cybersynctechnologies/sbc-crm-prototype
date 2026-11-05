@@ -41,6 +41,22 @@ tr.sel td{background:#F6F9E8}
 .bar{position:relative;height:8px;width:120px;background:#F0F0EC;border-radius:999px;display:inline-block;vertical-align:middle}
 .src{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid #E6E6E1;border-radius:12px;background:#FAFAF8;flex:1 1 220px;min-width:0}
 .src span:first-child{font-size:12px;color:#5C5F6A;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+/* ui-kit: shared across every screen */
+main{gap:24px!important}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.ph-t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 420px;max-width:760px}
+.ph-t h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-.025em}
+.ph-t p{margin:0;font-size:14px;color:#5C5F6A;line-height:1.5}
+.ph-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tabs{display:inline-flex;align-self:flex-start;flex-wrap:wrap;gap:4px;padding:4px;background:#E9E9E4;border-radius:12px;max-width:100%;box-sizing:border-box}
+.tabs>button,.tabs>a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tabs>button:hover,.tabs>a:hover{color:#14161C}
+.tabs>[aria-selected="true"],.tabs>[aria-pressed="true"],.tabs>[aria-current="page"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.tabs .ct{font:500 11px 'Geist Mono',ui-monospace,monospace;color:#8A8D98}
+.b1{background:#0C0E14;color:#FFFFFF;border:1px solid #0C0E14}
+.b2{background:#FFFFFF;color:#14161C;border:1px solid #E2E2DC}
+.b2:hover{border-color:#C9C9C2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px}
 </style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
@@ -70,10 +86,10 @@ tr.sel td{background:#F6F9E8}
 </nav>
 
 <main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
-<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
-<div style="display: flex; flex-direction: column; gap: 6px; max-width: 760px">
-<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Validation</h1>
-<p style="margin: 0; font-size: 14px; color: #5C5F6A; line-height: 1.5">What each publisher reported, next to what the advertiser validated. Only validated numbers are billed and paid. The gap shows which publishers and traffic sources are worth keeping.</p>
+<header class="ph">
+<div class="ph-t">
+<h1>Validation</h1>
+<p>What each publisher reported, next to what the advertiser validated. Only validated numbers are billed and paid. The gap shows which publishers and traffic sources are worth keeping.</p>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end">
 <label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5C5F6A">Advertiser report<select class="sel"><option>SpinArena · October 2026</option><option>Nova Bank PH · October 2026</option><option>SpinArena · September 2026</option></select></label>
@@ -88,7 +104,7 @@ tr.sel td{background:#F6F9E8}
 <div class="src"><span>Rule</span><strong style="font-size: 14px; font-weight: 600">Advertiser's number is final</strong><span style="font-size: 13px; color: #5C5F6A">Flag publishers under <select class="sel" aria-label="Flag threshold" onChange="{{setThr}}" style="min-height: 30px; padding: 0 6px; font-size: 13px"><sc-for list="{{thrOpts}}" as="o" hint-placeholder-count="3"><option value="{{o.v}}" selected="{{o.sel}}">{{o.v}}%</option></sc-for></select> validated</span></div>
 </section>
 
-<section aria-label="October totals" style="background: #0C0E14; border-radius: 18px; padding: 24px 28px; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 20px">
+<section aria-label="October totals" style="background: #0C0E14; border-radius: 18px; padding: 24px 28px; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(118px, 100%), 1fr)); gap: 16px">
 <sc-for list="{{kpis}}" as="k" hint-placeholder-count="7">
 <div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #A6A9B6">{{k.label}}</span><span class="mono" style="{{k.style}}">{{k.value}}</span><span style="font-size: 12px; color: #8A8D99">{{k.note}}</span></div>
 </sc-for>
@@ -103,7 +119,7 @@ tr.sel td{background:#F6F9E8}
 </sc-if>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
-<div class="seg" role="group" aria-label="View">
+<div class="tabs" role="group" aria-label="View">
 <sc-for list="{{views}}" as="v" hint-placeholder-count="3"><button type="button" aria-pressed="{{v.pressed}}" onClick="{{v.pick}}">{{v.label}}</button></sc-for>
 </div>
 <div style="display: flex; gap: 10px; flex-wrap: wrap">

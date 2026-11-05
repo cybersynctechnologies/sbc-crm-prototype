@@ -32,6 +32,22 @@ tr:last-child td{border-bottom:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .radio{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #E2E2DC;border-radius:12px;font-size:14px;cursor:pointer}
 .radio input{width:18px;height:18px;margin:1px 0 0;accent-color:#0C0E14}
+/* ui-kit: shared across every screen */
+main{gap:24px!important}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.ph-t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 420px;max-width:760px}
+.ph-t h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-.025em}
+.ph-t p{margin:0;font-size:14px;color:#5C5F6A;line-height:1.5}
+.ph-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tabs{display:inline-flex;align-self:flex-start;flex-wrap:wrap;gap:4px;padding:4px;background:#E9E9E4;border-radius:12px;max-width:100%;box-sizing:border-box}
+.tabs>button,.tabs>a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tabs>button:hover,.tabs>a:hover{color:#14161C}
+.tabs>[aria-selected="true"],.tabs>[aria-pressed="true"],.tabs>[aria-current="page"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.tabs .ct{font:500 11px 'Geist Mono',ui-monospace,monospace;color:#8A8D98}
+.b1{background:#0C0E14;color:#FFFFFF;border:1px solid #0C0E14}
+.b2{background:#FFFFFF;color:#14161C;border:1px solid #E2E2DC}
+.b2:hover{border-color:#C9C9C2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px}
 </style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
@@ -61,10 +77,17 @@ tr:last-child td{border-bottom:0}
 </nav>
 
 <main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
-<header style="display: flex; flex-direction: column; gap: 6px">
-<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Excel upload</h1>
-<p style="margin: 0; font-size: 14px; color: #5C5F6A">Bring in advertiser reports and publisher sheets exactly as they arrive. Match the columns once per format and every upload after that is one click. <a href="fields.html">See saved formats</a></p>
+<header class="ph">
+<div class="ph-t"><h1>Excel upload</h1>
+<p>Bring in advertiser reports and publisher sheets exactly as they arrive, or use the SBC templates. Match the columns once per format and every upload after that is one click.</p>
+</div>
 </header>
+
+<div class="tabs" role="tablist" aria-label="Excel upload">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}<span class="ct">{{t.count}}</span></button></sc-for>
+</div>
+
+<sc-if value="{{isUpload}}" hint-placeholder-val="{{ true }}">
 
 <ol aria-label="Upload steps" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px">
 <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
@@ -153,7 +176,7 @@ tr:last-child td{border-bottom:0}
 </section>
 
 <div style="display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap">
-<button type="button" class="btn" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Back</button>
+<button type="button" class="btn b2">Back</button>
 <a class="btn" href="validation.html" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Check and compare →</a>
 </div>
 </aside>
@@ -172,12 +195,101 @@ tr:last-child td{border-bottom:0}
 </table>
 </div>
 </section>
+</sc-if>
+
+<sc-if value="{{isTemplates}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="master" style="background: #0C0E14; color: #FFFFFF; border-radius: 18px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; position: relative; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; inset: 0; background-image: radial-gradient(#ffffff0d 1px, transparent 1px); background-size: 18px 18px"></div>
+<div style="position: relative; flex: 1 1 320px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #A6A9B6">Default template</span>
+<h2 id="master" style="margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.01em">SBC master workbook</h2>
+<p style="margin: 0; font-size: 14px; color: #B9BBC6; line-height: 1.55">One Excel file with a sheet for every kind of update. Fill in the sheets you need and leave the rest empty, then upload the whole file here. Your custom fields are added as extra columns automatically.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px"><button type="button" class="btn" style="background: #D4F25A; color: #0C0E14; border: 0">Download workbook (.xlsx)</button><button type="button" class="btn" style="background: transparent; color: #FFFFFF; border: 1px solid #3A3F50">Download with sample rows</button></div>
+</div>
+<ol aria-label="Sheets in the workbook" style="position: relative; flex: 1 1 380px; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); gap: 8px">
+<sc-for list="{{sheets}}" as="h" hint-placeholder-count="8"><li style="display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 12px; border-radius: 10px; background: #1C1F28; box-shadow: inset 0 0 0 1px #2C3142; font-size: 14px"><span class="mono" style="font-size: 11px; color: #D4F25A">{{h.n}}</span>{{h.name}}</li></sc-for>
+</ol>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="tpl" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 id="tpl" style="margin: 0 0 2px; font-size: 16px; font-weight: 600">One sheet per update</h2>
+<sc-for list="{{tpls}}" as="t" hint-placeholder-count="6">
+<button type="button" aria-pressed="{{t.sel}}" onClick="{{t.pick}}" style="{{t.style}}"><span style="display: flex; flex-direction: column; gap: 3px; min-width: 0"><span style="font-weight: 600">{{t.name}}</span><span style="font-size: 13px; color: #5C5F6A; font-weight: 400">{{t.when}}</span></span><span class="mono" style="font-size: 12px; color: #5C5F6A; flex: none">{{t.cols}} cols</span></button>
+</sc-for>
+</section>
+
+<section aria-labelledby="tpl-d" style="flex: 999 1 560px; min-width: 0; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="padding: 20px 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: flex-start">
+<div style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 280px"><h2 id="tpl-d" style="margin: 0; font-size: 18px; font-weight: 600">{{tpl.name}}</h2><span style="font-size: 14px; color: #5C5F6A; line-height: 1.5">{{tpl.about}}</span></div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><button type="button" class="btn b2" style="min-height: 40px">CSV</button><button type="button" class="btn b1" style="min-height: 40px">Download .xlsx</button></div>
+</div>
+<div style="padding: 0 24px 18px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{tpl.chips}}" as="c" hint-placeholder-count="10"><span style="{{c.style}}">{{c.name}}<span style="opacity: .7; font-weight: 400"> · {{c.need}}</span></span></sc-for>
+</div>
+<div style="overflow-x: auto; border-top: 1px solid #EFEFEB">
+<table><thead><tr><sc-for list="{{tpl.head}}" as="h" hint-placeholder-count="6"><th scope="col">{{h}}</th></sc-for></tr></thead>
+<tbody><sc-for list="{{tpl.rows}}" as="r" hint-placeholder-count="3"><tr><sc-for list="{{r}}" as="c" hint-placeholder-count="6"><td style="color: #4A4D57">{{c}}</td></sc-for></tr></sc-for></tbody></table>
+</div>
+<p style="margin: 0; padding: 14px 24px; border-top: 1px solid #EFEFEB; font-size: 13px; color: #5C5F6A; line-height: 1.5">Sample rows show the layout. Column names can be in any order. If an advertiser or publisher won't use this layout, upload their own file and match the columns once; it's saved under Saved formats.</p>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isFormats}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<section aria-labelledby="saved" style="flex: 999 1 560px; min-width: 0; overflow: hidden; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px">
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 4px"><h2 id="saved" style="margin: 0; font-size: 16px; font-weight: 600">Saved formats</h2><span style="font-size: 13px; color: #5C5F6A">Each advertiser's or team's own layout, matched once. Picked automatically when an upload looks the same.</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Format</th><th scope="col">Comes from</th><th scope="col">Shape</th><th scope="col" style="text-align: right">Columns used</th><th scope="col">Rules</th><th scope="col">Last used</th></tr></thead>
+<tbody><sc-for list="{{formats}}" as="f" hint-placeholder-count="5"><tr><td style="font-weight: 500">{{f.name}}</td><td>{{f.from}}</td><td>{{f.shape}}</td><td class="num">{{f.cols}}</td><td style="font-size: 13px; color: #4A4D57">{{f.rules}}</td><td style="color: #5C5F6A">{{f.used}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+<section aria-labelledby="codes" style="flex: 1 1 340px; min-width: 0; overflow: hidden; background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px">
+<div style="padding: 20px 24px; display: flex; flex-direction: column; gap: 4px"><h2 id="codes" style="margin: 0; font-size: 16px; font-weight: 600">Advertiser codes for our publishers</h2><span style="font-size: 13px; color: #5C5F6A">Learnt from uploads. Edit a match here if it's wrong.</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Their code</th><th scope="col">Our publisher</th></tr></thead>
+<tbody><sc-for list="{{codes}}" as="c" hint-placeholder-count="6"><tr><td><span class="mono" style="font-size: 13px; padding: 3px 8px; background: #F0F0EC; border-radius: 6px">{{c.code}}</span><div style="font-size: 12px; color: #5C5F6A; margin-top: 4px">{{c.adv}}</div></td><td>{{c.pub}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+</div>
+</sc-if>
 </main>
 </div>
 </script>
 <script type="text/plain" id="dc-logic">
 class Component extends DCLogic {
   renderVals() {
+    const s = this.state || {};
+    const tab = s.tab || 'upload', tp = s.tp || 'adv';
+    const formats = [
+      ['FD validation export', 'SpinArena', 'One row per deposit', 9, 'Only FD · skip blocked · dedupe by user ID', '4 Nov'],
+      ['Monthly approvals', 'Nova Bank PH', 'Monthly totals', 5, 'Approved status only', '2 Nov'],
+      ['Leads with status', 'ShieldCare Insurance', 'One row per lead', 6, 'Count “qualified” only', '1 Nov'],
+      ['Ops monthly tracker', 'Our team', 'Daily totals', 8, 'Publisher tab per sheet', '28 Oct'],
+      ['SBC master workbook', 'Anyone', 'Either', 'All', 'None needed', '27 Oct']
+    ].map(([name, from, shape, cols, rules, used]) => ({ name, from, shape, cols, rules, used }));
+    const codes = [['clickhive', 'SpinArena', 'ClickHive Media'], ['ch_push', 'SpinArena', 'ClickHive Media · push source'], ['adnest_ph', 'SpinArena', 'AdNest Network'], ['orbit_l', 'SpinArena', 'Orbit Leads'], ['AFF-2207', 'Nova Bank PH', 'Pulse Affiliates'], ['bk-ads', 'ShieldCare Insurance', 'BlueKite Ads']].map(([code, adv, pub]) => ({ code, adv, pub }));
+    const R = 'required', O = 'optional';
+    const T = [
+      ['daily', 'Publisher daily numbers', 'What each publisher reports, day by day', 'The numbers your team enters in Daily entry, for when it is easier to paste a whole sheet.', [['Date', R], ['Publisher', R], ['Campaign', R], ['Reported conversions', R], ['Traffic source / sub ID', O], ['Clicks', O], ['Notes', O], ['Your custom fields', O]], [['2026-11-01', 'ClickHive Media', 'SpinArena · Android FTD', '42', 'ch_main', '1,880'], ['2026-11-01', 'AdNest Network', 'SpinArena · Android FTD', '19', 'an_ph_07', '960']]],
+      ['adv', 'Advertiser validation report', 'What the advertiser validated. Only these are billed and paid', 'Use when the advertiser is happy to send this layout. Either one row per conversion, or one row per day with a count.', [['Date', R], ['Advertiser', R], ['Campaign or offer ID', R], ['Publisher or their code', R], ['Validated conversions', 'or one row each'], ['Conversion ID', 'finds duplicates'], ['Status', O], ['Payout and currency', O], ['First deposit amount', O], ['Your custom fields', O]], [['2026-10-01', 'SpinArena', 'sp_cpa', 'clickhive', '1', '1786003489-67850'], ['2026-10-01', 'SpinArena', 'sp_cpa', 'adnest_ph', '1', '1786003490-11024']]],
+      ['camp', 'New campaigns', 'Add or update many campaigns at once', 'One row per campaign. KPI type is Hard (deposit, loan, approval) or Soft (click, lead, install).', [['Campaign name', R], ['Advertiser', R], ['Category', R], ['KPI type', R], ['Paid on', R], ['Model', R], ['Advertiser pays', R], ['Publisher payout', R], ['Geo', O], ['Device', O], ['Daily cap', O], ['Start date', O], ['POC', O]], [['Android FTD', 'SpinArena', 'iGaming', 'Hard', 'First deposit', 'CPA'], ['Savings account', 'Nova Bank PH', 'Banking', 'Hard', 'Account opened', 'CPR']]],
+      ['pub', 'Publishers', 'Bring in your publisher list', 'One row per publisher. Contacts and payment details can be added later.', [['Publisher name', R], ['Account manager', R], ['Payout currency', R], ['Traffic types', O], ['Contact email', O], ['Telegram handle', O], ['Your custom fields', O]], [['ClickHive Media', 'Priya S.', 'USD', 'Display, Push', 'ops@clickhive.example'], ['Orbit Leads', 'Arjun M.', 'USD', 'Social', 'team@orbitleads.example']]],
+      ['advs', 'Advertisers', 'Bring in your advertiser list', 'One row per advertiser. Pick their saved format later if they send their own layout.', [['Advertiser name', R], ['Type', R], ['Category', R], ['POC', O], ['Validation day', O], ['Payment terms', O], ['Your custom fields', O]], [['SpinArena', 'Direct brand', 'iGaming', 'Arjun M.', '5', 'Net 30'], ['Adbridge Agency', 'Agency', 'Credit card', 'Karan D.', '10', 'Net 45']]],
+      ['pay', 'Payments', 'Money received from advertisers or paid to publishers', 'One row per payment, so settlements can be closed in bulk.', [['Month', R], ['Advertiser or publisher', R], ['Amount', R], ['Currency', R], ['Paid on', R], ['Reference', O], ['Notes', O]], [['Oct 2026', 'SpinArena', '15,570.00', 'USD', '2026-11-12', 'WIRE-88123'], ['Oct 2026', 'ClickHive Media', '4,280.00', 'USD', '2026-11-15', 'PAY-2207']]]
+    ];
+    const cur = T.find((t) => t[0] === tp);
+    const on = 'display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;padding:10px 16px;border:1px solid #0C0E14;box-shadow:inset 0 0 0 1px #0C0E14;border-radius:12px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer;text-align:left';
+    const off = 'display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:64px;padding:10px 16px;border:1px solid #E6E6E1;border-radius:12px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;cursor:pointer;text-align:left';
+    const tpls = T.map(([id, name, when, , cols]) => ({ name, when, cols: cols.length, sel: String(id === tp), style: id === tp ? on : off, pick: () => this.setState({ tp: id }) }));
+    const tpl = {
+      name: cur[1], about: cur[3],
+      chips: cur[4].map(([name, need]) => ({ name, need, style: 'display:inline-flex;align-items:center;min-height:32px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;' + (need === R ? 'background:#D4F25A;color:#0C0E14' : 'background:#F0F0EC;color:#4A4D57') })),
+      head: cur[4].slice(0, 6).map((c) => c[0]), rows: cur[5]
+    };
+    const sheets = [['Read me', 'How to fill it in']].concat(T.map((t) => [t[1]])).concat([['Codes', 'their code → our publisher']]).map((x, i) => ({ n: String(i + 1).padStart(2, '0'), name: x[0] }));
+    const tabs = [['upload', 'Upload a file', ''], ['templates', 'Templates', String(T.length + 1)], ['formats', 'Saved formats', String(formats.length)]].map(([id, label, count]) => ({ label, count, sel: String(id === tab), pick: () => this.setState({ tab: id }) }));
     const base = 'display:flex;align-items:center;gap:10px;min-height:44px;padding:0 16px 0 8px;border-radius:999px;font-size:14px;';
     const steps = [['Choose file', 'done'], ['Match columns', 'now'], ['Check rows', 'next'], ['Compare', 'next'], ['Import', 'next']].map(([label, st], i) => ({
       label,
@@ -205,7 +317,7 @@ class Component extends DCLogic {
       ['ShieldCare leads Oct.csv', 'Advertiser report', '588', 'Meera R.', '1 Nov, 9:02 am', 'Imported'],
       ['History 2023-2025.xlsx', 'Past data (history)', '48,930', 'Priya S.', '14 Oct', 'Imported with fixes']
     ].map(([file, type, rows, by, when, result]) => ({ file, type, rows, by, when, result, chip: chip[result] }));
-    return { steps, cols, hist };
+    return { steps, cols, hist, tabs, isUpload: tab === 'upload', isTemplates: tab === 'templates', isFormats: tab === 'formats', tpls, tpl, sheets, formats, codes };
   }
 }
 </script>

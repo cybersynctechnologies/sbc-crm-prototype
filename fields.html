@@ -46,6 +46,22 @@ tr.sel td{background:#F6F9E8}
 .field{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
 .tok{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid #D6DCF7;background:#F2F5FE;color:#2440B0;font:500 13px Geist,system-ui,sans-serif;cursor:pointer}
 .tile{background:#FFFFFF;border:1px solid #E6E6E1;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+/* ui-kit: shared across every screen */
+main{gap:24px!important}
+.ph{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+.ph-t{display:flex;flex-direction:column;gap:6px;min-width:0;flex:1 1 420px;max-width:760px}
+.ph-t h1{margin:0;font-size:30px;font-weight:600;letter-spacing:-.025em}
+.ph-t p{margin:0;font-size:14px;color:#5C5F6A;line-height:1.5}
+.ph-a{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tabs{display:inline-flex;align-self:flex-start;flex-wrap:wrap;gap:4px;padding:4px;background:#E9E9E4;border-radius:12px;max-width:100%;box-sizing:border-box}
+.tabs>button,.tabs>a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;text-decoration:none;cursor:pointer;white-space:nowrap}
+.tabs>button:hover,.tabs>a:hover{color:#14161C}
+.tabs>[aria-selected="true"],.tabs>[aria-pressed="true"],.tabs>[aria-current="page"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.tabs .ct{font:500 11px 'Geist Mono',ui-monospace,monospace;color:#8A8D98}
+.b1{background:#0C0E14;color:#FFFFFF;border:1px solid #0C0E14}
+.b2{background:#FFFFFF;color:#14161C;border:1px solid #E2E2DC}
+.b2:hover{border-color:#C9C9C2}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px}
 </style>
 </helmet>
 <div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
@@ -75,12 +91,13 @@ tr.sel td{background:#F6F9E8}
 </nav>
 
 <main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
-<header style="display: flex; flex-direction: column; gap: 6px; max-width: 780px">
-<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Fields &amp; formulas</h1>
-<p style="margin: 0; font-size: 14px; color: #5C5F6A; line-height: 1.5">Shape the system around how your team works. Add your own fields to any record, write your own formulas, save the format of every sheet you receive and build the dashboards you want to see. Only admins can change this.</p>
+<header class="ph">
+<div class="ph-t"><h1>Fields &amp; formulas</h1>
+<p>Shape the system around how your team works. Add your own fields to any record and write your own formulas. Both can be used in dashboards, reports, filters and Excel upload. Only admins can change this.</p>
+</div>
 </header>
-<div class="seg" role="group" aria-label="Section">
-<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4"><button type="button" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+<div class="tabs" role="tablist" aria-label="Section">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="2"><button type="button" role="tab" aria-selected="{{t.sel}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
 </div>
 
 <sc-if value="{{isFields}}" hint-placeholder-val="{{ true }}">
@@ -111,7 +128,7 @@ tr.sel td{background:#F6F9E8}
 <sc-if value="{{isFormulas}}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
 <section aria-labelledby="mlist" class="card" style="flex: 999 1 600px; min-width: 0; overflow: hidden">
-<div style="padding: 18px 24px"><h2 id="mlist" style="margin: 0; font-size: 16px; font-weight: 600">Formulas</h2><span style="font-size: 13px; color: #5C5F6A">Use them like any other number: in tables, reports, dashboards and alerts</span></div>
+<div style="padding: 18px 24px"><h2 id="mlist" style="margin: 0; font-size: 16px; font-weight: 600">Formulas</h2><span style="font-size: 13px; color: #5C5F6A">Use them like any other number: in dashboard widgets, reports, tables and alerts</span></div>
 <div style="overflow-x: auto"><table>
 <thead><tr><th scope="col">Name</th><th scope="col">Formula</th><th scope="col">Shown as</th><th scope="col" style="text-align: right">SpinArena · Oct</th><th scope="col">Alert</th></tr></thead>
 <tbody><sc-for list="{{metrics}}" as="m" hint-placeholder-count="6"><tr><td style="font-weight: 500">{{m.name}}<div style="font-size: 12px; color: #5C5F6A">{{m.by}}</div></td><td><span class="mono" style="font-size: 13px; color: #2440B0">{{m.f}}</span></td><td>{{m.fmt}}</td><td class="num" style="font-weight: 600">{{m.val}}</td><td style="font-size: 13px; color: #4A4D57">{{m.alert}}</td></tr></sc-for></tbody>
@@ -130,56 +147,6 @@ tr.sel td{background:#F6F9E8}
 </div>
 </sc-if>
 
-<sc-if value="{{isFormats}}" hint-placeholder-val="{{ false }}">
-<section aria-labelledby="std" style="background: #0C0E14; color: #FFFFFF; border-radius: 18px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
-<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px"><h2 id="std" style="margin: 0; font-size: 18px; font-weight: 600">SBC standard sheet</h2><p style="margin: 0; font-size: 14px; color: #B9BBC6; line-height: 1.5">One layout the team can follow for any sheet, and that advertisers or publishers can use if they are willing. Any column you add as a custom field can go in too.</p>
-<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px"><button type="button" class="btn" style="background: #D4F25A; color: #0C0E14; border: 0">Download template (.xlsx)</button><button type="button" class="btn" style="background: transparent; color: #FFFFFF; border: 1px solid #3A3F50">Download as CSV</button></div></div>
-<div style="flex: 2 1 420px; display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{stdCols}}" as="c" hint-placeholder-count="10"><span style="{{c.style}}">{{c.name}}<span style="opacity: .7; font-weight: 400"> · {{c.need}}</span></span></sc-for></div>
-</section>
-<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
-<section aria-labelledby="saved" class="card" style="flex: 999 1 560px; min-width: 0; overflow: hidden">
-<div style="padding: 18px 24px"><h2 id="saved" style="margin: 0; font-size: 16px; font-weight: 600">Saved formats</h2><span style="font-size: 13px; color: #5C5F6A">Picked automatically when an upload looks the same</span></div>
-<div style="overflow-x: auto"><table>
-<thead><tr><th scope="col">Format</th><th scope="col">Comes from</th><th scope="col">Shape</th><th scope="col" style="text-align: right">Columns used</th><th scope="col">Rules</th><th scope="col">Last used</th></tr></thead>
-<tbody><sc-for list="{{formats}}" as="f" hint-placeholder-count="5"><tr><td style="font-weight: 500">{{f.name}}</td><td>{{f.from}}</td><td>{{f.shape}}</td><td class="num">{{f.cols}}</td><td style="font-size: 13px; color: #4A4D57">{{f.rules}}</td><td style="color: #5C5F6A">{{f.used}}</td></tr></sc-for></tbody>
-</table></div>
-</section>
-<section aria-labelledby="codes" class="card" style="flex: 1 1 360px; min-width: 0; overflow: hidden">
-<div style="padding: 18px 20px"><h2 id="codes" style="margin: 0; font-size: 16px; font-weight: 600">Advertiser codes for our publishers</h2><span style="font-size: 13px; color: #5C5F6A">Learnt from uploads, editable here</span></div>
-<div style="overflow-x: auto"><table>
-<thead><tr><th scope="col">Their code</th><th scope="col">Our publisher</th></tr></thead>
-<tbody><sc-for list="{{codes}}" as="c" hint-placeholder-count="6"><tr><td><span class="mono" style="font-size: 13px; padding: 3px 8px; background: #F0F0EC; border-radius: 6px">{{c.code}}</span><div style="font-size: 12px; color: #5C5F6A; margin-top: 4px">{{c.adv}}</div></td><td>{{c.pub}}</td></tr></sc-for></tbody>
-</table></div>
-</section>
-</div>
-</sc-if>
-
-<sc-if value="{{isDash}}" hint-placeholder-val="{{ false }}">
-<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
-<section aria-labelledby="dash" style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
-<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center"><h2 id="dash" style="margin: 0; font-size: 18px; font-weight: 600">Owner view <span style="font-size: 13px; font-weight: 400; color: #5C5F6A">· shared with Admins · {{wCount}} widgets</span></h2>
-<label><span class="sr">Dashboard</span><select class="sel"><option>Owner view</option><option>Account manager · my publishers</option><option>Finance · month end</option></select></label></div>
-<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 14px">
-<sc-for list="{{widgets}}" as="w" hint-placeholder-count="6">
-<div class="tile" style="{{w.span}}">
-<div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 13px; font-weight: 600">{{w.title}}</span><span style="font-size: 12px; color: #5C5F6A">{{w.meta}}</span></div>
-<sc-if value="{{w.isKpi}}" hint-placeholder-val="{{ true }}"><span class="mono" style="font-size: 28px; font-weight: 500">{{w.value}}</span><span style="font-size: 12px; color: #1F6B37">{{w.delta}}</span></sc-if>
-<sc-if value="{{w.isBars}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 8px"><sc-for list="{{w.bars}}" as="b" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) 52px; gap: 10px; align-items: center; font-size: 13px"><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{b.name}}</span><span style="height: 10px; background: #F0F0EC; border-radius: 999px; position: relative"><span style="{{b.style}}"></span></span><span class="mono" style="text-align: right">{{b.v}}</span></div></sc-for></div></sc-if>
-</div>
-</sc-for>
-</div>
-</section>
-<section aria-labelledby="wadd" class="card" style="flex: 1 1 320px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
-<h2 id="wadd" style="margin: 0; font-size: 16px; font-weight: 600">Add a widget</h2>
-<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Number to show</span><select class="field" onChange="{{setWMetric}}"><sc-for list="{{wMetrics}}" as="o" hint-placeholder-count="6"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
-<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show as</span><select class="field" onChange="{{setWKind}}"><sc-for list="{{wKinds}}" as="o" hint-placeholder-count="2"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
-<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Split by (for a ranking)</span><select class="field"><option>Publisher</option><option>Advertiser</option><option>Campaign</option><option>Category</option><option>Account manager</option><option>Any custom field</option></select></label>
-<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Period</span><select class="field"><option>This month</option><option>Last 90 days</option><option>This fiscal year</option><option>Custom dates</option></select></label>
-<button type="button" class="btn" onClick="{{addWidget}}" style="justify-content: center; background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Add to Owner view</button>
-<p style="margin: 0; font-size: 12px; color: #5C5F6A; line-height: 1.5">Any field or formula can be a widget. Drag to reorder, and choose which roles can see each dashboard.</p>
-</section>
-</div>
-</sc-if>
 </main>
 </div>
 </script>
@@ -189,7 +156,7 @@ class Component extends DCLogic {
     const s = this.state || {};
     const tab = s.tab || 'fields', obj = s.obj || 'Campaigns';
     const set = (k) => (e) => this.setState({ [k]: e.target.value });
-    const tabs = [['fields', 'Custom fields'], ['formulas', 'Formulas'], ['formats', 'Report formats'], ['dash', 'Dashboards']].map(([id, label]) => ({ label, pressed: String(id === tab), pick: () => this.setState({ tab: id }) }));
+    const tabs = [['fields', 'Custom fields'], ['formulas', 'Formulas'], ].map(([id, label]) => ({ label, sel: String(id === tab), pick: () => this.setState({ tab: id }) }));
     const B = ['Built in', 'background:#ECECE7;color:#4A4D57'], C = ['Custom', 'background:#EEF7CF;color:#3F5200'];
     const base = {
       Campaigns: [['Campaign name', 'Text', 'Yes', 'Yes', B, ''], ['Advertiser', 'Link to advertiser', 'Yes', 'Yes', B, ''], ['KPI type', 'Dropdown', 'Yes', 'Yes', B, 'Hard (deposit, loan, approval) or Soft (click, lead, install)'], ['Paid on', 'Dropdown', 'Yes', 'Yes', B, 'First deposit, Registration, Lead, Click, Install, Loan disbursal'], ['Advertiser pays', 'Money', 'Yes', 'Yes', B, 'Per conversion'], ['Default publisher payout', 'Money', 'Yes', 'Yes', B, ''], ['Minimum deposit', 'Money', 'No', 'Yes', C, 'Deposits below this are not counted'], ['Traffic allowed', 'Multi-select', 'No', 'No', C, 'Social, Push, Pop, Search, Email']],
@@ -217,31 +184,8 @@ class Component extends DCLogic {
     const mF = s.mF == null ? '[Validated] ÷ [Days live]' : s.mF, mFmt = s.mFmt || 'Number', mName = s.mName == null ? 'Validated per day' : s.mName;
     const pv = ev(mF);
     const toks = Object.keys(V).map(k => ({ label: k, add: () => this.setState({ mF: (mF ? mF + ' ' : '') + '[' + k + ']' }) })).concat(['÷', '×', '+', '−'].map(op => ({ label: op, add: () => this.setState({ mF: mF + ' ' + op }) })));
-    // formats
-    const stdCols = [['Date', 'required'], ['Advertiser', 'required'], ['Campaign or offer ID', 'required'], ['Publisher or their code', 'required'], ['Conversions', 'or one row each'], ['Conversion type', 'optional'], ['Traffic source / sub ID', 'optional'], ['Conversion ID', 'finds duplicates'], ['Payout and currency', 'optional'], ['Your custom fields', 'optional']].map(([name, need], i) => ({ name, need, style: 'display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;' + (i < 4 ? 'background:#D4F25A;color:#0C0E14' : 'background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142') }));
-    const formats = [
-      ['FD validation export', 'SpinArena', 'One row per deposit', 9, 'Only FD · skip blocked · dedupe by user ID', '4 Nov'],
-      ['Monthly approvals', 'Nova Bank PH', 'Monthly totals', 5, 'Approved status only', '2 Nov'],
-      ['Leads with status', 'ShieldCare Insurance', 'One row per lead', 6, 'Count “qualified” only', '1 Nov'],
-      ['Ops monthly tracker', 'Our team', 'Daily totals', 8, 'Publisher tab per sheet', '28 Oct'],
-      ['SBC standard sheet', 'Anyone', 'Either', 10, 'None needed', '27 Oct']
-    ].map(([name, from, shape, cols, rules, used]) => ({ name, from, shape, cols, rules, used }));
-    const codes = [['clickhive', 'SpinArena', 'ClickHive Media'], ['ch_push', 'SpinArena', 'ClickHive Media · push source'], ['adnest_ph', 'SpinArena', 'AdNest Network'], ['orbit_l', 'SpinArena', 'Orbit Leads'], ['AFF-2207', 'Nova Bank PH', 'Pulse Affiliates'], ['bk-ads', 'ShieldCare Insurance', 'BlueKite Ads']].map(([code, adv, pub]) => ({ code, adv, pub }));
-    // dashboards
-    const bars = (list, max, col) => list.map(([name, v, lab]) => ({ name, v: lab, style: `position:absolute;left:0;top:0;bottom:0;width:${v / max * 100}%;background:${col};border-radius:999px` }));
-    const baseW = [
-      { title: 'Margin this month', meta: 'All companies', isKpi: true, value: '$12,780', delta: '▲ 18% vs Sep' },
-      { title: 'Validation rate', meta: 'All advertisers', isKpi: true, value: '84.0%', delta: '▲ 1.2 pts vs Sep' },
-      { title: 'Avg first deposit', meta: 'Custom formula', isKpi: true, value: '$49.10', delta: '▲ $3.40 vs Sep' },
-      { title: 'Validation rate by publisher', meta: 'This month', isBars: true, span: 'grid-column: span 2', bars: bars([['ClickHive Media', 93.6, '93.6%'], ['BlueKite Ads', 89.3, '89.3%'], ['AdNest Network', 88.2, '88.2%'], ['Orbit Leads', 79.5, '79.5%'], ['Pulse Affiliates', 59.4, '59.4%']], 100, '#2F4FD6') },
-      { title: 'Player value per $1 paid', meta: 'Custom formula', isBars: true, bars: bars([['ClickHive Media', 0.62, '0.62'], ['AdNest Network', 0.48, '0.48'], ['Pulse Affiliates', 0.11, '0.11']], 0.7, '#7A9A12') }
-    ];
-    const extra = (s.widgets || []).map(w => w);
-    const widgets = baseW.concat(extra).map(w => Object.assign({ isKpi: false, isBars: false, span: '', bars: [] }, w));
-    const WM = ['Margin', 'Validation rate', 'Avg first deposit', 'Player value per $1 paid', 'Publishers missing today', 'Revenue'].concat((s.metrics || []).map(m => m[0]));
-    const wMetric = s.wMetric || 'Publishers missing today', wKind = s.wKind || 'Single number';
     return {
-      tabs, isFields: tab === 'fields', isFormulas: tab === 'formulas', isFormats: tab === 'formats', isDash: tab === 'dash',
+      tabs, isFields: tab === 'fields', isFormulas: tab === 'formulas',
       objs, objName: obj, fields,
       types: TYPES.map(v => ({ v, sel: v === fType })), fName: s.fName || '', fHint: s.fHint || '',
       setFName: set('fName'), setFType: set('fType'), setFHint: set('fHint'),
@@ -250,11 +194,6 @@ class Component extends DCLogic {
       setMName: set('mName'), setMF: set('mF'), setMFmt: set('mFmt'),
       preview: fmtv(pv, mFmt), prevBox: 'display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;' + (pv == null ? 'background:#FDF3F1;border:1px solid #F5C9C3' : 'background:#F6F9E8;border:1px solid #D9EAA0'),
       addMetric: () => { if (pv == null || !mName) return; this.setState({ metrics: (s.metrics || []).concat([[mName, mF, mFmt, 'Custom · Priya S.', '']]), mName: '', mF: '' }); },
-      stdCols, formats, codes,
-      widgets, wCount: widgets.length,
-      wMetrics: WM.map(v => ({ v, sel: v === wMetric })), wKinds: ['Single number', 'Ranking'].map(v => ({ v, sel: v === wKind })),
-      setWMetric: set('wMetric'), setWKind: set('wKind'),
-      addWidget: () => { const w = wKind === 'Ranking' ? { title: wMetric + ' by publisher', meta: 'Added just now', isBars: true, bars: bars([['ClickHive Media', 3, '—'], ['AdNest Network', 2, '—'], ['Orbit Leads', 1, '—']], 3, '#2F4FD6') } : { title: wMetric, meta: 'Added just now', isKpi: true, value: wMetric === 'Publishers missing today' ? '6 of 41' : '—', delta: 'This month' }; this.setState({ widgets: (s.widgets || []).concat([w]) }); }
     };
   }
 }

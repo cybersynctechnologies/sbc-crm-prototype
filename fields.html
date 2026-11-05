@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Fields & formulas</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+table{border-collapse:collapse;width:100%}
+th{font-size:11px;font-weight:600;color:#5C5F6A;text-align:left;padding:12px 16px;border-bottom:1px solid #E6E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#FAFAF8}
+td{font-size:14px;color:#14161C;padding:12px 16px;border-bottom:1px solid #EFEFEB;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.num{font-family:'Geist Mono',ui-monospace,monospace;text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:40px;padding:0 10px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.radio{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #E2E2DC;border-radius:12px;font-size:14px;cursor:pointer}
+.radio input{width:18px;height:18px;margin:1px 0 0;accent-color:#0C0E14}
+.seg{display:inline-flex;gap:4px;padding:4px;background:#ECECE7;border-radius:12px;flex-wrap:wrap}
+.seg button{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.rowbtn{all:unset;cursor:pointer;font-weight:500;color:#14161C;display:inline-flex;align-items:center;gap:8px;min-height:32px}
+.rowbtn:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px;border-radius:4px}
+tr.sel td{background:#F6F9E8}
+.bar{position:relative;height:8px;width:120px;background:#F0F0EC;border-radius:999px;display:inline-block;vertical-align:middle}
+.src{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid #E6E6E1;border-radius:12px;background:#FAFAF8;flex:1 1 220px;min-width:0}
+.src span:first-child{font-size:12px;color:#5C5F6A;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.card{background:#FFFFFF;border:1px solid #E6E6E1;border-radius:16px}
+.lbl{font-size:13px;font-weight:500}
+.field{min-height:44px;padding:0 12px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C;box-sizing:border-box;width:100%}
+.tok{display:inline-flex;align-items:center;min-height:32px;padding:0 10px;border-radius:8px;border:1px solid #D6DCF7;background:#F2F5FE;color:#2440B0;font:500 13px Geist,system-ui,sans-serif;cursor:pointer}
+.tile{background:#FFFFFF;border:1px solid #E6E6E1;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="daily-entry.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 10h18M9 4v17M15 4v17"></path></svg>Daily entry</a>
+<a class="nav" href="validation.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 7h14"></path><path d="M5 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M19 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M8 21h8"></path></svg>Validation</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="categories.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Categories</a>
+<a class="nav on" href="fields.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Fields &amp; formulas</a>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<header style="display: flex; flex-direction: column; gap: 6px; max-width: 780px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Fields &amp; formulas</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A; line-height: 1.5">Shape the system around how your team works. Add your own fields to any record, write your own formulas, save the format of every sheet you receive and build the dashboards you want to see. Only admins can change this.</p>
+</header>
+<div class="seg" role="group" aria-label="Section">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4"><button type="button" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}">{{t.label}}</button></sc-for>
+</div>
+
+<sc-if value="{{isFields}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<section aria-labelledby="flist" class="card" style="flex: 999 1 600px; min-width: 0; overflow: hidden">
+<div style="padding: 18px 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center">
+<h2 id="flist" style="margin: 0; font-size: 16px; font-weight: 600">Fields on {{objName}}</h2>
+<div class="seg" role="group" aria-label="Record type"><sc-for list="{{objs}}" as="o" hint-placeholder-count="4"><button type="button" aria-pressed="{{o.pressed}}" onClick="{{o.pick}}">{{o.label}}</button></sc-for></div>
+</div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Required</th><th scope="col">Shown in tables</th><th scope="col">Source</th></tr></thead>
+<tbody><sc-for list="{{fields}}" as="f" hint-placeholder-count="8"><tr><td style="font-weight: 500">{{f.name}}<div style="font-size: 12px; color: #5C5F6A; white-space: normal">{{f.hint}}</div></td><td><span class="chip" style="background: #ECECE7; color: #4A4D57">{{f.type}}</span></td><td>{{f.req}}</td><td>{{f.shown}}</td><td><span class="chip" style="{{f.srcStyle}}">{{f.src}}</span></td></tr></sc-for></tbody>
+</table></div>
+</section>
+<section aria-labelledby="fadd" class="card" style="flex: 1 1 320px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="fadd" style="margin: 0; font-size: 16px; font-weight: 600">Add a field to {{objName}}</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{fName}}" onChange="{{setFName}}" placeholder="e.g. Minimum deposit"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Type</span><select class="field" onChange="{{setFType}}"><sc-for list="{{types}}" as="t" hint-placeholder-count="9"><option selected="{{t.sel}}">{{t.v}}</option></sc-for></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Help text</span><input class="field" type="text" value="{{fHint}}" onChange="{{setFHint}}" placeholder="What the team should put here"></label>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 14px"><input type="checkbox" checked="" style="width: 18px; height: 18px; accent-color: #0C0E14">Show as a column in tables and reports</label>
+<label style="display: flex; align-items: center; gap: 10px; font-size: 14px"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #0C0E14">Required when adding a new record</label>
+<button type="button" class="btn" onClick="{{addField}}" style="justify-content: center; background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Add field</button>
+<p style="margin: 0; font-size: 12px; color: #5C5F6A; line-height: 1.5">New fields appear straight away on forms, in Excel upload matching, in filters and in the formula builder. Built-in fields can be renamed or hidden but not deleted.</p>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isFormulas}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<section aria-labelledby="mlist" class="card" style="flex: 999 1 600px; min-width: 0; overflow: hidden">
+<div style="padding: 18px 24px"><h2 id="mlist" style="margin: 0; font-size: 16px; font-weight: 600">Formulas</h2><span style="font-size: 13px; color: #5C5F6A">Use them like any other number: in tables, reports, dashboards and alerts</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Name</th><th scope="col">Formula</th><th scope="col">Shown as</th><th scope="col" style="text-align: right">SpinArena · Oct</th><th scope="col">Alert</th></tr></thead>
+<tbody><sc-for list="{{metrics}}" as="m" hint-placeholder-count="6"><tr><td style="font-weight: 500">{{m.name}}<div style="font-size: 12px; color: #5C5F6A">{{m.by}}</div></td><td><span class="mono" style="font-size: 13px; color: #2440B0">{{m.f}}</span></td><td>{{m.fmt}}</td><td class="num" style="font-weight: 600">{{m.val}}</td><td style="font-size: 13px; color: #4A4D57">{{m.alert}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+<section aria-labelledby="madd" class="card" style="flex: 1 1 360px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="madd" style="margin: 0; font-size: 16px; font-weight: 600">New formula</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Name</span><input class="field" type="text" value="{{mName}}" onChange="{{setMName}}"></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Formula</span><input class="field mono" type="text" value="{{mF}}" onChange="{{setMF}}" aria-describedby="ftip"></label>
+<div style="display: flex; flex-direction: column; gap: 6px"><span id="ftip" style="font-size: 12px; color: #5C5F6A">Click a field to add it. Use + − × ÷ and brackets.</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><sc-for list="{{toks}}" as="t" hint-placeholder-count="10"><button type="button" class="tok" onClick="{{t.add}}">{{t.label}}</button></sc-for></div></div>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show as</span><select class="field" onChange="{{setMFmt}}"><sc-for list="{{fmts}}" as="o" hint-placeholder-count="4"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<div style="{{prevBox}}"><span style="font-size: 12px; color: #5C5F6A">Preview · SpinArena, Android FTD, October</span><span class="mono" style="font-size: 24px; font-weight: 600">{{preview}}</span></div>
+<button type="button" class="btn" onClick="{{addMetric}}" style="justify-content: center; background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Save formula</button>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isFormats}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="std" style="background: #0C0E14; color: #FFFFFF; border-radius: 18px; padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 8px"><h2 id="std" style="margin: 0; font-size: 18px; font-weight: 600">SBC standard sheet</h2><p style="margin: 0; font-size: 14px; color: #B9BBC6; line-height: 1.5">One layout the team can follow for any sheet, and that advertisers or publishers can use if they are willing. Any column you add as a custom field can go in too.</p>
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px"><button type="button" class="btn" style="background: #D4F25A; color: #0C0E14; border: 0">Download template (.xlsx)</button><button type="button" class="btn" style="background: transparent; color: #FFFFFF; border: 1px solid #3A3F50">Download as CSV</button></div></div>
+<div style="flex: 2 1 420px; display: flex; flex-wrap: wrap; gap: 8px"><sc-for list="{{stdCols}}" as="c" hint-placeholder-count="10"><span style="{{c.style}}">{{c.name}}<span style="opacity: .7; font-weight: 400"> · {{c.need}}</span></span></sc-for></div>
+</section>
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<section aria-labelledby="saved" class="card" style="flex: 999 1 560px; min-width: 0; overflow: hidden">
+<div style="padding: 18px 24px"><h2 id="saved" style="margin: 0; font-size: 16px; font-weight: 600">Saved formats</h2><span style="font-size: 13px; color: #5C5F6A">Picked automatically when an upload looks the same</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Format</th><th scope="col">Comes from</th><th scope="col">Shape</th><th scope="col" style="text-align: right">Columns used</th><th scope="col">Rules</th><th scope="col">Last used</th></tr></thead>
+<tbody><sc-for list="{{formats}}" as="f" hint-placeholder-count="5"><tr><td style="font-weight: 500">{{f.name}}</td><td>{{f.from}}</td><td>{{f.shape}}</td><td class="num">{{f.cols}}</td><td style="font-size: 13px; color: #4A4D57">{{f.rules}}</td><td style="color: #5C5F6A">{{f.used}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+<section aria-labelledby="codes" class="card" style="flex: 1 1 360px; min-width: 0; overflow: hidden">
+<div style="padding: 18px 20px"><h2 id="codes" style="margin: 0; font-size: 16px; font-weight: 600">Advertiser codes for our publishers</h2><span style="font-size: 13px; color: #5C5F6A">Learnt from uploads, editable here</span></div>
+<div style="overflow-x: auto"><table>
+<thead><tr><th scope="col">Their code</th><th scope="col">Our publisher</th></tr></thead>
+<tbody><sc-for list="{{codes}}" as="c" hint-placeholder-count="6"><tr><td><span class="mono" style="font-size: 13px; padding: 3px 8px; background: #F0F0EC; border-radius: 6px">{{c.code}}</span><div style="font-size: 12px; color: #5C5F6A; margin-top: 4px">{{c.adv}}</div></td><td>{{c.pub}}</td></tr></sc-for></tbody>
+</table></div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{isDash}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<section aria-labelledby="dash" style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center"><h2 id="dash" style="margin: 0; font-size: 18px; font-weight: 600">Owner view <span style="font-size: 13px; font-weight: 400; color: #5C5F6A">· shared with Admins · {{wCount}} widgets</span></h2>
+<label><span class="sr">Dashboard</span><select class="sel"><option>Owner view</option><option>Account manager · my publishers</option><option>Finance · month end</option></select></label></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 14px">
+<sc-for list="{{widgets}}" as="w" hint-placeholder-count="6">
+<div class="tile" style="{{w.span}}">
+<div style="display: flex; justify-content: space-between; gap: 8px"><span style="font-size: 13px; font-weight: 600">{{w.title}}</span><span style="font-size: 12px; color: #5C5F6A">{{w.meta}}</span></div>
+<sc-if value="{{w.isKpi}}" hint-placeholder-val="{{ true }}"><span class="mono" style="font-size: 28px; font-weight: 500">{{w.value}}</span><span style="font-size: 12px; color: #1F6B37">{{w.delta}}</span></sc-if>
+<sc-if value="{{w.isBars}}" hint-placeholder-val="{{ false }}"><div style="display: flex; flex-direction: column; gap: 8px"><sc-for list="{{w.bars}}" as="b" hint-placeholder-count="5"><div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) 52px; gap: 10px; align-items: center; font-size: 13px"><span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{b.name}}</span><span style="height: 10px; background: #F0F0EC; border-radius: 999px; position: relative"><span style="{{b.style}}"></span></span><span class="mono" style="text-align: right">{{b.v}}</span></div></sc-for></div></sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+<section aria-labelledby="wadd" class="card" style="flex: 1 1 320px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="wadd" style="margin: 0; font-size: 16px; font-weight: 600">Add a widget</h2>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Number to show</span><select class="field" onChange="{{setWMetric}}"><sc-for list="{{wMetrics}}" as="o" hint-placeholder-count="6"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Show as</span><select class="field" onChange="{{setWKind}}"><sc-for list="{{wKinds}}" as="o" hint-placeholder-count="2"><option selected="{{o.sel}}">{{o.v}}</option></sc-for></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Split by (for a ranking)</span><select class="field"><option>Publisher</option><option>Advertiser</option><option>Campaign</option><option>Category</option><option>Account manager</option><option>Any custom field</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 6px"><span class="lbl">Period</span><select class="field"><option>This month</option><option>Last 90 days</option><option>This fiscal year</option><option>Custom dates</option></select></label>
+<button type="button" class="btn" onClick="{{addWidget}}" style="justify-content: center; background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">Add to Owner view</button>
+<p style="margin: 0; font-size: 12px; color: #5C5F6A; line-height: 1.5">Any field or formula can be a widget. Drag to reorder, and choose which roles can see each dashboard.</p>
+</section>
+</div>
+</sc-if>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const tab = s.tab || 'fields', obj = s.obj || 'Campaigns';
+    const set = (k) => (e) => this.setState({ [k]: e.target.value });
+    const tabs = [['fields', 'Custom fields'], ['formulas', 'Formulas'], ['formats', 'Report formats'], ['dash', 'Dashboards']].map(([id, label]) => ({ label, pressed: String(id === tab), pick: () => this.setState({ tab: id }) }));
+    const B = ['Built in', 'background:#ECECE7;color:#4A4D57'], C = ['Custom', 'background:#EEF7CF;color:#3F5200'];
+    const base = {
+      Campaigns: [['Campaign name', 'Text', 'Yes', 'Yes', B, ''], ['Advertiser', 'Link to advertiser', 'Yes', 'Yes', B, ''], ['KPI type', 'Dropdown', 'Yes', 'Yes', B, 'Hard (deposit, loan, approval) or Soft (click, lead, install)'], ['Paid on', 'Dropdown', 'Yes', 'Yes', B, 'First deposit, Registration, Lead, Click, Install, Loan disbursal'], ['Advertiser pays', 'Money', 'Yes', 'Yes', B, 'Per conversion'], ['Default publisher payout', 'Money', 'Yes', 'Yes', B, ''], ['Minimum deposit', 'Money', 'No', 'Yes', C, 'Deposits below this are not counted'], ['Traffic allowed', 'Multi-select', 'No', 'No', C, 'Social, Push, Pop, Search, Email']],
+      Advertisers: [['Name', 'Text', 'Yes', 'Yes', B, ''], ['Type', 'Dropdown', 'Yes', 'Yes', B, 'Direct brand, Agency, Network'], ['Report format', 'Link to format', 'No', 'No', B, ''], ['Validation day', 'Number', 'No', 'Yes', C, 'Day of the month their report usually arrives'], ['Payment terms', 'Dropdown', 'No', 'Yes', C, 'Net 15, Net 30, Net 45']],
+      Publishers: [['Name', 'Text', 'Yes', 'Yes', B, ''], ['Account manager', 'Link to team member', 'Yes', 'Yes', B, ''], ['Payout currency', 'Dropdown', 'Yes', 'Yes', B, ''], ['Traffic type', 'Multi-select', 'No', 'Yes', C, ''], ['Telegram handle', 'Text', 'No', 'No', C, '']],
+      'Daily rows': [['Date', 'Date', 'Yes', 'Yes', B, ''], ['Publisher', 'Link to publisher', 'Yes', 'Yes', B, ''], ['Campaign', 'Link to campaign', 'Yes', 'Yes', B, ''], ['Reported', 'Number', 'Yes', 'Yes', B, 'What the publisher says'], ['Validated', 'Number', 'No', 'Yes', B, 'Filled by the advertiser report'], ['Traffic source', 'Text', 'No', 'Yes', B, 'Sub ID'], ['First deposit amount', 'Money', 'No', 'Yes', C, 'From the advertiser file'], ['Player revenue', 'Money', 'No', 'No', C, 'From the advertiser file']]
+    };
+    const added = s.added || {};
+    const fields = base[obj].concat(added[obj] || []).map(([name, type, req, shown, src, hint]) => ({ name, type, req, shown, hint, src: src[0], srcStyle: src[1] }));
+    const objs = Object.keys(base).map(o => ({ label: o, pressed: String(o === obj), pick: () => this.setState({ obj: o }) }));
+    const TYPES = ['Text', 'Number', 'Money', 'Percent', 'Date', 'Dropdown', 'Multi-select', 'Yes / No', 'Link to record', 'File'];
+    const fType = s.fType || 'Money';
+    // formulas
+    const V = { Reported: 412, Validated: 346, 'Advertiser pays': 45, 'Publisher payout': 11626, Revenue: 15570, 'First deposit amount': 16989, 'Player revenue': 5210, 'Days live': 31 };
+    const ev = (f) => { let x = f; Object.keys(V).sort((a, b) => b.length - a.length).forEach(k => { x = x.split('[' + k + ']').join('(' + V[k] + ')'); }); x = x.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-'); if (!/^[\d\s.()+\-*/]+$/.test(x)) return null; try { const r = Function('return (' + x + ')')(); return isFinite(r) ? r : null; } catch (e) { return null; } };
+    const fmtv = (v, f) => v == null ? 'Check the formula' : f === 'Percent' ? (v * 100).toFixed(1) + '%' : f === 'Money' ? '$' + v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : v.toLocaleString('en-US', { maximumFractionDigits: 2 });
+    const baseM = [
+      ['Validation rate', '[Validated] ÷ [Reported]', 'Percent', 'Built in', 'Under 70% → tell the account manager'],
+      ['Margin', '[Revenue] − [Publisher payout]', 'Money', 'Built in', ''],
+      ['Margin %', '([Revenue] − [Publisher payout]) ÷ [Revenue]', 'Percent', 'Built in', 'Under 15% → tell the owner'],
+      ['Avg first deposit', '[First deposit amount] ÷ [Validated]', 'Money', 'Custom · Priya S.', 'Under $25 → flag publisher'],
+      ['Player value per $1 paid', '[Player revenue] ÷ [Publisher payout]', 'Number', 'Custom · Arjun M.', '']
+    ].concat(s.metrics || []);
+    const metrics = baseM.map(([name, f, fmt, by, alert]) => ({ name, f, fmt, by, alert: alert || '—', val: fmtv(ev(f), fmt) }));
+    const mF = s.mF == null ? '[Validated] ÷ [Days live]' : s.mF, mFmt = s.mFmt || 'Number', mName = s.mName == null ? 'Validated per day' : s.mName;
+    const pv = ev(mF);
+    const toks = Object.keys(V).map(k => ({ label: k, add: () => this.setState({ mF: (mF ? mF + ' ' : '') + '[' + k + ']' }) })).concat(['÷', '×', '+', '−'].map(op => ({ label: op, add: () => this.setState({ mF: mF + ' ' + op }) })));
+    // formats
+    const stdCols = [['Date', 'required'], ['Advertiser', 'required'], ['Campaign or offer ID', 'required'], ['Publisher or their code', 'required'], ['Conversions', 'or one row each'], ['Conversion type', 'optional'], ['Traffic source / sub ID', 'optional'], ['Conversion ID', 'finds duplicates'], ['Payout and currency', 'optional'], ['Your custom fields', 'optional']].map(([name, need], i) => ({ name, need, style: 'display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;font-size:13px;font-weight:600;' + (i < 4 ? 'background:#D4F25A;color:#0C0E14' : 'background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142') }));
+    const formats = [
+      ['FD validation export', 'SpinArena', 'One row per deposit', 9, 'Only FD · skip blocked · dedupe by user ID', '4 Nov'],
+      ['Monthly approvals', 'Nova Bank PH', 'Monthly totals', 5, 'Approved status only', '2 Nov'],
+      ['Leads with status', 'ShieldCare Insurance', 'One row per lead', 6, 'Count “qualified” only', '1 Nov'],
+      ['Ops monthly tracker', 'Our team', 'Daily totals', 8, 'Publisher tab per sheet', '28 Oct'],
+      ['SBC standard sheet', 'Anyone', 'Either', 10, 'None needed', '27 Oct']
+    ].map(([name, from, shape, cols, rules, used]) => ({ name, from, shape, cols, rules, used }));
+    const codes = [['clickhive', 'SpinArena', 'ClickHive Media'], ['ch_push', 'SpinArena', 'ClickHive Media · push source'], ['adnest_ph', 'SpinArena', 'AdNest Network'], ['orbit_l', 'SpinArena', 'Orbit Leads'], ['AFF-2207', 'Nova Bank PH', 'Pulse Affiliates'], ['bk-ads', 'ShieldCare Insurance', 'BlueKite Ads']].map(([code, adv, pub]) => ({ code, adv, pub }));
+    // dashboards
+    const bars = (list, max, col) => list.map(([name, v, lab]) => ({ name, v: lab, style: `position:absolute;left:0;top:0;bottom:0;width:${v / max * 100}%;background:${col};border-radius:999px` }));
+    const baseW = [
+      { title: 'Margin this month', meta: 'All companies', isKpi: true, value: '$12,780', delta: '▲ 18% vs Sep' },
+      { title: 'Validation rate', meta: 'All advertisers', isKpi: true, value: '84.0%', delta: '▲ 1.2 pts vs Sep' },
+      { title: 'Avg first deposit', meta: 'Custom formula', isKpi: true, value: '$49.10', delta: '▲ $3.40 vs Sep' },
+      { title: 'Validation rate by publisher', meta: 'This month', isBars: true, span: 'grid-column: span 2', bars: bars([['ClickHive Media', 93.6, '93.6%'], ['BlueKite Ads', 89.3, '89.3%'], ['AdNest Network', 88.2, '88.2%'], ['Orbit Leads', 79.5, '79.5%'], ['Pulse Affiliates', 59.4, '59.4%']], 100, '#2F4FD6') },
+      { title: 'Player value per $1 paid', meta: 'Custom formula', isBars: true, bars: bars([['ClickHive Media', 0.62, '0.62'], ['AdNest Network', 0.48, '0.48'], ['Pulse Affiliates', 0.11, '0.11']], 0.7, '#7A9A12') }
+    ];
+    const extra = (s.widgets || []).map(w => w);
+    const widgets = baseW.concat(extra).map(w => Object.assign({ isKpi: false, isBars: false, span: '', bars: [] }, w));
+    const WM = ['Margin', 'Validation rate', 'Avg first deposit', 'Player value per $1 paid', 'Publishers missing today', 'Revenue'].concat((s.metrics || []).map(m => m[0]));
+    const wMetric = s.wMetric || 'Publishers missing today', wKind = s.wKind || 'Single number';
+    return {
+      tabs, isFields: tab === 'fields', isFormulas: tab === 'formulas', isFormats: tab === 'formats', isDash: tab === 'dash',
+      objs, objName: obj, fields,
+      types: TYPES.map(v => ({ v, sel: v === fType })), fName: s.fName || '', fHint: s.fHint || '',
+      setFName: set('fName'), setFType: set('fType'), setFHint: set('fHint'),
+      addField: () => { if (!s.fName) return; const a = Object.assign({}, added); a[obj] = (a[obj] || []).concat([[s.fName, fType, 'No', 'Yes', C, s.fHint || 'Added just now']]); this.setState({ added: a, fName: '', fHint: '' }); },
+      metrics, mName, mF, toks, fmts: ['Number', 'Percent', 'Money'].map(v => ({ v, sel: v === mFmt })),
+      setMName: set('mName'), setMF: set('mF'), setMFmt: set('mFmt'),
+      preview: fmtv(pv, mFmt), prevBox: 'display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;' + (pv == null ? 'background:#FDF3F1;border:1px solid #F5C9C3' : 'background:#F6F9E8;border:1px solid #D9EAA0'),
+      addMetric: () => { if (pv == null || !mName) return; this.setState({ metrics: (s.metrics || []).concat([[mName, mF, mFmt, 'Custom · Priya S.', '']]), mName: '', mF: '' }); },
+      stdCols, formats, codes,
+      widgets, wCount: widgets.length,
+      wMetrics: WM.map(v => ({ v, sel: v === wMetric })), wKinds: ['Single number', 'Ranking'].map(v => ({ v, sel: v === wKind })),
+      setWMetric: set('wMetric'), setWKind: set('wKind'),
+      addWidget: () => { const w = wKind === 'Ranking' ? { title: wMetric + ' by publisher', meta: 'Added just now', isBars: true, bars: bars([['ClickHive Media', 3, '—'], ['AdNest Network', 2, '—'], ['Orbit Leads', 1, '—']], 3, '#2F4FD6') } : { title: wMetric, meta: 'Added just now', isKpi: true, value: wMetric === 'Publishers missing today' ? '6 of 41' : '—', delta: 'This month' }; this.setState({ widgets: (s.widgets || []).concat([w]) }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

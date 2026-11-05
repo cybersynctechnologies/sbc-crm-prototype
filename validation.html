@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SBC CRM · Validation</title>
+<script src="dc.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/plain" id="dc-template">
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F4F1}
+a{color:#2F4FD6}a:hover{color:#2440B0}
+.nav{display:flex;align-items:center;gap:12px;padding:0 12px;min-height:44px;border-radius:10px;color:#B9BBC6;text-decoration:none;font-size:14px;font-weight:500}
+.nav:hover{background:#1C1F28;color:#FFFFFF}
+.nav.on{background:#1F2330;color:#FFFFFF;box-shadow:inset 0 0 0 1px #2C3142}
+.nav svg{flex:none}
+table{border-collapse:collapse;width:100%}
+th{font-size:11px;font-weight:600;color:#5C5F6A;text-align:left;padding:12px 16px;border-bottom:1px solid #E6E6E1;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em;background:#FAFAF8}
+td{font-size:14px;color:#14161C;padding:12px 16px;border-bottom:1px solid #EFEFEB;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.num{font-family:'Geist Mono',ui-monospace,monospace;text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+.mono{font-family:'Geist Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:10px;font:600 14px Geist,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.sel{min-height:40px;padding:0 10px;border:1px solid #E2E2DC;border-radius:10px;background:#FFFFFF;font:14px Geist,system-ui,sans-serif;color:#14161C}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.radio{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #E2E2DC;border-radius:12px;font-size:14px;cursor:pointer}
+.radio input{width:18px;height:18px;margin:1px 0 0;accent-color:#0C0E14}
+.seg{display:inline-flex;gap:4px;padding:4px;background:#ECECE7;border-radius:12px;flex-wrap:wrap}
+.seg button{min-height:40px;padding:0 14px;border:0;border-radius:9px;background:transparent;font:500 14px Geist,system-ui,sans-serif;color:#4A4D57;cursor:pointer}
+.seg button[aria-pressed="true"]{background:#FFFFFF;color:#14161C;font-weight:600;box-shadow:0 1px 2px rgba(12,14,20,.08)}
+.rowbtn{all:unset;cursor:pointer;font-weight:500;color:#14161C;display:inline-flex;align-items:center;gap:8px;min-height:32px}
+.rowbtn:focus-visible{outline:2px solid #2F4FD6;outline-offset:2px;border-radius:4px}
+tr.sel td{background:#F6F9E8}
+.bar{position:relative;height:8px;width:120px;background:#F0F0EC;border-radius:999px;display:inline-block;vertical-align:middle}
+.src{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid #E6E6E1;border-radius:12px;background:#FAFAF8;flex:1 1 220px;min-width:0}
+.src span:first-child{font-size:12px;color:#5C5F6A;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+</style>
+</helmet>
+<div style="min-height: 100vh; display: flex; flex-wrap: wrap; font-family: Geist, system-ui, -apple-system, sans-serif; color: #14161C; background: #F4F4F1">
+<nav aria-label="Main" style="flex: 1 1 236px; background: #0C0E14; padding: 20px 14px; box-sizing: border-box; display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; align-items: center; gap: 12px; padding: 4px 10px 22px">
+<div aria-hidden="true" style="width: 36px; height: 36px; border-radius: 10px; background: #D4F25A; color: #0C0E14; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; letter-spacing: -.02em">SBC</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-weight: 600; font-size: 15px; letter-spacing: -.01em">SBC CRM</span><span style="color: #9093A0; font-size: 12px">[Company name]</span></div>
+</div>
+<a class="nav" href="index.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg>Dashboard</a>
+<a class="nav" href="daily-entry.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M3 10h18M9 4v17M15 4v17"></path></svg>Daily entry</a>
+<a class="nav on" href="validation.html" aria-current="page"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"></path><path d="M5 7h14"></path><path d="M5 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M19 7l-3 7a3 3 0 0 0 6 0z"></path><path d="M8 21h8"></path></svg>Validation</a>
+<a class="nav" href="campaigns.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13z"></path><path d="M7 13v5a2 2 0 0 0 4 0v-4"></path></svg>Campaigns</a>
+<a class="nav" href="advertisers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 13h18"></path></svg>Advertisers</a>
+<a class="nav" href="publishers.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.5a3.5 3.5 0 0 1 0 7"></path><path d="M18.5 14.5A6.5 6.5 0 0 1 21.5 20"></path></svg>Publishers</a>
+<a class="nav" href="settlements.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><path d="M14 3v6h6"></path><path d="M9 15l2 2 4-4"></path></svg>Settlements</a>
+<a class="nav" href="reports.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M6 17V11M11 17V5M16 17v-8M21 17v-4"></path></svg>Reports</a>
+<a class="nav" href="upload.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3"></path><path d="M7 8l5-5 5 5"></path><path d="M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path></svg>Excel upload</a>
+<a class="nav" href="broadcast.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4z"></path></svg>Broadcast</a>
+<div style="height: 1px; background: #1F2330; margin: 14px 10px"></div>
+<a class="nav" href="categories.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"></path><circle cx="7.5" cy="7.5" r="1.5"></circle></svg>Categories</a>
+<a class="nav" href="fields.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Fields &amp; formulas</a>
+<a class="nav" href="team.html"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>Team &amp; roles</a>
+<div style="margin-top: auto; padding: 18px 10px 4px; display: flex; align-items: center; gap: 12px">
+<div aria-hidden="true" style="width: 34px; height: 34px; border-radius: 50%; background: #262A37; color: #FFFFFF; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center">PS</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="color: #FFFFFF; font-size: 13px; font-weight: 500">Priya S.</span><span style="color: #9093A0; font-size: 12px">Account manager</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 28px clamp(16px, 3vw, 40px) 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 22px">
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 6px; max-width: 760px">
+<h1 style="margin: 0; font-size: 30px; font-weight: 600; letter-spacing: -.025em">Validation</h1>
+<p style="margin: 0; font-size: 14px; color: #5C5F6A; line-height: 1.5">What each publisher reported, next to what the advertiser validated. Only validated numbers are billed and paid. The gap shows which publishers and traffic sources are worth keeping.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end">
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5C5F6A">Advertiser report<select class="sel"><option>SpinArena · October 2026</option><option>Nova Bank PH · October 2026</option><option>SpinArena · September 2026</option></select></label>
+<label style="display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #5C5F6A">Campaign<select class="sel"><option>Android FTD</option><option>Web registration</option><option>Sports promo deposit</option><option>All 3 campaigns</option></select></label>
+<a class="btn" href="upload.html" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Upload advertiser report</a>
+</div>
+</header>
+
+<section aria-label="Where the numbers come from" style="display: flex; flex-wrap: wrap; gap: 12px">
+<div class="src"><span>Publisher side</span><strong style="font-size: 14px; font-weight: 600">Daily entry · 5 publishers · 1 to 31 Oct</strong><span style="font-size: 13px; color: #5C5F6A">Typed in by account managers or uploaded from publisher sheets</span></div>
+<div class="src"><span>Advertiser side</span><strong style="font-size: 14px; font-weight: 600">SpinArena FD validation Oct.xlsx</strong><span style="font-size: 13px; color: #5C5F6A">4,384 rows, one per validated deposit · imported 4 Nov by Arjun M.</span></div>
+<div class="src"><span>Rule</span><strong style="font-size: 14px; font-weight: 600">Advertiser's number is final</strong><span style="font-size: 13px; color: #5C5F6A">Flag publishers under <select class="sel" aria-label="Flag threshold" onChange="{{setThr}}" style="min-height: 30px; padding: 0 6px; font-size: 13px"><sc-for list="{{thrOpts}}" as="o" hint-placeholder-count="3"><option value="{{o.v}}" selected="{{o.sel}}">{{o.v}}%</option></sc-for></select> validated</span></div>
+</section>
+
+<section aria-label="October totals" style="background: #0C0E14; border-radius: 18px; padding: 24px 28px; color: #FFFFFF; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 20px">
+<sc-for list="{{kpis}}" as="k" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; color: #A6A9B6">{{k.label}}</span><span class="mono" style="{{k.style}}">{{k.value}}</span><span style="font-size: 12px; color: #8A8D99">{{k.note}}</span></div>
+</sc-for>
+</section>
+
+<sc-if value="{{approved}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 14px 18px; background: #E8F3EA; border: 1px solid #BFDFC8; border-radius: 12px; font-size: 14px; color: #1F6B37">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+<span style="flex: 1 1 280px">Approved. 346 validated FTDs sent to Settlements: <strong>$15,570</strong> to bill SpinArena, <strong>$11,626</strong> to pay 5 publishers.</span>
+<a class="btn" href="settlements.html" style="min-height: 40px; background: #FFFFFF; color: #1F6B37; border: 1px solid #BFDFC8">Open Settlements</a>
+</div>
+</sc-if>
+
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+<div class="seg" role="group" aria-label="View">
+<sc-for list="{{views}}" as="v" hint-placeholder-count="3"><button type="button" aria-pressed="{{v.pressed}}" onClick="{{v.pick}}">{{v.label}}</button></sc-for>
+</div>
+<div style="display: flex; gap: 10px; flex-wrap: wrap">
+<a class="btn" href="broadcast.html" style="background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Send statements to publishers</a>
+<button type="button" class="btn" onClick="{{approve}}" style="background: #0C0E14; color: #FFFFFF; border: 1px solid #0C0E14">{{approveLabel}}</button>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+
+<sc-if value="{{isPub}}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="bypub" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="padding: 18px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center"><h2 id="bypub" style="margin: 0; font-size: 16px; font-weight: 600">By publisher</h2><span style="font-size: 13px; color: #5C5F6A">Select a publisher to see its traffic sources and days</span></div>
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">Publisher</th><th scope="col" style="text-align: right">Reported</th><th scope="col" style="text-align: right">Validated</th><th scope="col" style="text-align: right">Not validated</th><th scope="col">Validation rate</th><th scope="col" style="text-align: right">Avg first deposit</th><th scope="col" style="text-align: right">Pay publisher</th><th scope="col" style="text-align: right">Margin</th></tr></thead>
+<tbody>
+<sc-for list="{{pubs}}" as="p" hint-placeholder-count="5">
+<tr class="{{p.cls}}">
+<td><button type="button" class="rowbtn" onClick="{{p.pick}}" aria-pressed="{{p.pressed}}"><span aria-hidden="true" style="{{p.dot}}"></span>{{p.name}}</button><div style="font-size: 12px; color: #5C5F6A; margin-left: 16px">{{p.subs}} sources · pays {{p.rate}}</div></td>
+<td class="num">{{p.rep}}</td>
+<td class="num" style="font-weight: 600">{{p.val}}</td>
+<td class="num" style="color: #9A4A00">{{p.gap}}</td>
+<td><span class="bar" aria-hidden="true"><span style="{{p.barStyle}}"></span></span> <span class="mono" style="{{p.rateStyle}}">{{p.pct}}</span></td>
+<td class="num">{{p.dep}}</td>
+<td class="num">{{p.pay}}</td>
+<td class="num" style="font-weight: 600">{{p.mar}}</td>
+</tr>
+</sc-for>
+</tbody>
+<tfoot><tr><td style="font-weight: 600">Total · 5 publishers</td><td class="num">412</td><td class="num" style="font-weight: 600">346</td><td class="num">66</td><td class="mono">84.0%</td><td class="num">$49.10</td><td class="num">$11,626</td><td class="num" style="font-weight: 600">$3,944</td></tr></tfoot>
+</table>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isDay}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="byday" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 22px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; align-items: center">
+<h2 id="byday" style="margin: 0; font-size: 16px; font-weight: 600">By day · {{selName}}</h2>
+<div style="display: flex; gap: 14px; font-size: 12px; color: #5C5F6A">
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #F2B66A"></span>Reported</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #2F4FD6"></span>Validated</span>
+</div>
+</div>
+<div role="img" aria-label="{{dayLabel}}" style="display: grid; grid-template-columns: repeat(31, minmax(0, 1fr)); gap: 4px; align-items: end; height: 180px; border-bottom: 1px solid #E6E6E1">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="31">
+<div style="display: flex; gap: 1px; align-items: end; height: 100%"><div style="{{d.rStyle}}"></div><div style="{{d.vStyle}}"></div></div>
+</sc-for>
+</div>
+<div style="display: grid; grid-template-columns: repeat(31, minmax(0, 1fr)); gap: 4px; font-size: 10px; color: #5C5F6A; text-align: center" aria-hidden="true">
+<sc-for list="{{days}}" as="d" hint-placeholder-count="31"><span class="mono">{{d.n}}</span></sc-for>
+</div>
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">Days with the biggest gap</th><th scope="col" style="text-align: right">Reported</th><th scope="col" style="text-align: right">Validated</th><th scope="col" style="text-align: right">Rate</th></tr></thead>
+<tbody>
+<sc-for list="{{worstDays}}" as="w" hint-placeholder-count="4"><tr><td>{{w.label}}</td><td class="num">{{w.rep}}</td><td class="num">{{w.val}}</td><td class="num" style="{{w.style}}">{{w.pct}}</td></tr></sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{isSrc}}" hint-placeholder-val="{{ false }}">
+<section aria-labelledby="bysrc" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; overflow: hidden">
+<div style="padding: 18px 24px; display: flex; flex-direction: column; gap: 4px"><h2 id="bysrc" style="margin: 0; font-size: 16px; font-weight: 600">By traffic source</h2><span style="font-size: 13px; color: #5C5F6A">Publishers often send traffic from several sources. The advertiser's file tells us which one each deposit came from.</span></div>
+<div style="overflow-x: auto">
+<table>
+<thead><tr><th scope="col">Source code</th><th scope="col">Publisher</th><th scope="col" style="text-align: right">Reported</th><th scope="col" style="text-align: right">Validated</th><th scope="col">Validation rate</th><th scope="col">Suggestion</th></tr></thead>
+<tbody>
+<sc-for list="{{srcs}}" as="s" hint-placeholder-count="9">
+<tr><td><span class="mono" style="font-size: 13px; padding: 3px 8px; background: #F0F0EC; border-radius: 6px">{{s.code}}</span></td><td>{{s.pub}}</td><td class="num">{{s.rep}}</td><td class="num" style="font-weight: 600">{{s.val}}</td><td><span class="bar" aria-hidden="true"><span style="{{s.barStyle}}"></span></span> <span class="mono" style="{{s.rateStyle}}">{{s.pct}}</span></td><td style="font-size: 13px; color: #4A4D57">{{s.tip}}</td></tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+</section>
+</sc-if>
+</div>
+
+<aside aria-label="Details" style="flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<section aria-labelledby="selpub" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; gap: 8px; align-items: center"><h2 id="selpub" style="margin: 0; font-size: 16px; font-weight: 600">{{selName}}</h2><span class="chip" style="{{selChip}}">{{selStatus}}</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C5F6A">Reported</span><span class="mono" style="font-size: 20px">{{selRep}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C5F6A">Validated</span><span class="mono" style="font-size: 20px">{{selVal}}</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #5C5F6A">Rate</span><span class="mono" style="{{selRateStyle}}">{{selPct}}</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-size: 12px; font-weight: 600; color: #5C5F6A; text-transform: uppercase; letter-spacing: .06em">Traffic sources</span>
+<sc-for list="{{selSrcs}}" as="s" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="display: flex; justify-content: space-between; gap: 8px; font-size: 13px"><span class="mono">{{s.code}}</span><span class="mono" style="{{s.rateStyle}}">{{s.val}} of {{s.rep}} · {{s.pct}}</span></div>
+<div aria-hidden="true" style="height: 8px; background: #F0F0EC; border-radius: 999px; position: relative"><div style="{{s.barStyle}}"></div></div>
+</div>
+</sc-for>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<span style="font-size: 12px; font-weight: 600; color: #5C5F6A; text-transform: uppercase; letter-spacing: .06em">Last 4 months</span>
+<div style="display: flex; gap: 8px; flex-wrap: wrap"><sc-for list="{{selHist}}" as="h" hint-placeholder-count="4"><span class="chip mono" style="{{h.style}}">{{h.m}} {{h.pct}}</span></sc-for></div>
+</div>
+<div style="display: flex; gap: 8px; flex-wrap: wrap">
+<a class="btn" href="publisher.html" style="min-height: 40px; background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">Open profile</a>
+<button type="button" class="btn" onClick="{{viewDays}}" style="min-height: 40px; background: #FFFFFF; color: #14161C; border: 1px solid #E2E2DC">See by day</button>
+</div>
+</section>
+
+<section aria-labelledby="att" style="background: #FFFFFF; border: 1px solid #E6E6E1; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+<h2 id="att" style="margin: 0; font-size: 16px; font-weight: 600">Needs attention</h2>
+<sc-for list="{{alerts}}" as="a" hint-placeholder-count="4">
+<div style="{{a.box}}"><strong style="font-size: 14px; font-weight: 600">{{a.title}}</strong><span style="font-size: 13px; color: #4A4D57; line-height: 1.45">{{a.text}}</span></div>
+</sc-for>
+</section>
+</aside>
+</div>
+</main>
+</div>
+</script>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    const s = this.state || {};
+    const view = s.view || 'pub', sel = s.sel == null ? 3 : s.sel, thr = s.thr || 70;
+    const usd = (n) => '$' + Math.round(n).toLocaleString('en-US');
+    const pubs = [
+      { name: 'ClickHive Media', rate: 34, dep: 62.4, hist: [91, 92, 94, 94], srcs: [['ch_main', 96, 92], ['ch_push', 44, 39]] },
+      { name: 'AdNest Network', rate: 34, dep: 48.1, hist: [86, 89, 87, 88], srcs: [['an_ph_01', 60, 57], ['an_ph_07', 42, 33]] },
+      { name: 'Orbit Leads', rate: 33, dep: 41.7, hist: [82, 80, 77, 79], srcs: [['ol_social', 50, 44], ['ol_pop', 28, 18]] },
+      { name: 'Pulse Affiliates', rate: 32, dep: 22.3, hist: [66, 63, 61, 59], srcs: [['pa_108', 36, 30], ['pa_207', 28, 8]] },
+      { name: 'BlueKite Ads', rate: 34, dep: 55.0, hist: [90, 88, 91, 89], srcs: [['bk_main', 28, 25]] }
+    ].map(p => { p.rep = p.srcs.reduce((a, x) => a + x[1], 0); p.val = p.srcs.reduce((a, x) => a + x[2], 0); return p; });
+    const tone = (pct) => pct >= 85 ? ['#1F6B37', '#E8F3EA', 'Good'] : pct >= thr ? ['#9A4A00', '#FFF1DF', 'Watch'] : ['#B42318', '#FDECEA', 'Below ' + thr + '%'];
+    const bar = (pct, c) => `position:absolute;left:0;top:0;bottom:0;width:${Math.min(100, pct)}%;background:${c};border-radius:999px`;
+    const rows = pubs.map((p, i) => {
+      const pct = p.val / p.rep * 100, [c, bg] = tone(pct);
+      return {
+        name: p.name, subs: p.srcs.length, rate: usd(p.rate), rep: p.rep, val: p.val, gap: p.rep - p.val,
+        pct: pct.toFixed(1) + '%', rateStyle: `color:${c};font-weight:600;font-size:13px`, barStyle: bar(pct, c),
+        dep: '$' + p.dep.toFixed(2), pay: usd(p.val * p.rate), mar: usd(p.val * 45 - p.val * p.rate),
+        cls: i === sel ? 'sel' : '', pressed: String(i === sel),
+        dot: `width:8px;height:8px;border-radius:50%;background:${c};flex:none`,
+        pick: () => this.setState({ sel: i })
+      };
+    });
+    const P = pubs[sel], sp = P.val / P.rep * 100, [sc, sbg, sl] = tone(sp);
+    const selSrcs = P.srcs.map(([code, rep, val]) => { const pc = val / rep * 100, [c] = tone(pc); return { code, rep, val, pct: Math.round(pc) + '%', rateStyle: `color:${c};font-weight:600`, barStyle: bar(pc, c) }; });
+    const selHist = ['Jul', 'Aug', 'Sep', 'Oct'].map((m, i) => { const [c, bg] = tone(P.hist[i]); return { m, pct: P.hist[i] + '%', style: `background:${bg};color:${c}` }; });
+    // day split for selected publisher
+    const w = Array.from({ length: 31 }, (_, d) => 0.6 + ((d * 37) % 11) / 10 + (d > 20 ? 0.5 : 0) + ((d + 1) % 7 === 0 || (d + 2) % 7 === 0 ? -0.3 : 0));
+    const spread = (tot, ws) => { const sum = ws.reduce((a, b) => a + b, 0); const out = ws.map(x => Math.floor(tot * x / sum)); let r = tot - out.reduce((a, b) => a + b, 0); for (let k = 0; r > 0; k = (k + 7) % 31, r--) out[k]++; return out; };
+    const rep = spread(P.rep, w), vw = w.map((x, d) => x * (0.75 + ((d * 13) % 6) / 20)), val = spread(P.val, vw).map((v, d) => Math.min(v, rep[d]));
+    const vfix = P.val - val.reduce((a, b) => a + b, 0); for (let k = 0, r = vfix; r > 0 && k < 62; k++) { const d = k % 31; if (val[d] < rep[d]) { val[d]++; r--; } }
+    const mx = Math.max(...rep, 1);
+    const days = rep.map((r, d) => ({ n: d + 1, rStyle: `flex:1;height:${r / mx * 100}%;background:#F2B66A;border-radius:3px 3px 0 0;min-height:2px`, vStyle: `flex:1;height:${val[d] / mx * 100}%;background:#2F4FD6;border-radius:3px 3px 0 0;min-height:2px` }));
+    const worstDays = rep.map((r, d) => ({ d, r, v: val[d], g: r - val[d] })).sort((a, b) => b.g - a.g).slice(0, 4).map(x => { const pc = x.r ? x.v / x.r * 100 : 100, [c] = tone(pc); return { label: (x.d + 1) + ' Oct', rep: x.r, val: x.v, pct: Math.round(pc) + '%', style: `color:${c};font-weight:600` }; });
+    const srcs = [];
+    pubs.forEach(p => p.srcs.forEach(([code, r, v]) => { const pc = v / r * 100, [c] = tone(pc); srcs.push({ code, pub: p.name, rep: r, val: v, pc, pct: pc.toFixed(1) + '%', rateStyle: `color:${c};font-weight:600;font-size:13px`, barStyle: bar(pc, c), tip: pc < 40 ? 'Pause this source and tell the publisher' : pc < thr ? 'Ask the publisher to check this source' : pc < 85 ? 'Keep an eye on it' : 'Healthy' }); }));
+    srcs.sort((a, b) => a.pc - b.pc);
+    const views = [['pub', 'By publisher'], ['day', 'By day'], ['src', 'By traffic source']].map(([id, label]) => ({ label, pressed: String(id === view), pick: () => this.setState({ view: id }) }));
+    const kpis = [
+      ['Publishers reported', '412', 'from Daily entry'],
+      ['Advertiser validated', '346', 'from SpinArena file'],
+      ['Validation rate', '84.0%', 'validated ÷ reported'],
+      ['In file, no publisher', '31', 'not paid until matched'],
+      ['Bill SpinArena', '$15,570', '346 × $45'],
+      ['Pay publishers', '$11,626', 'validated × their rate'],
+      ['Margin', '$3,944', '25.3%']
+    ].map(([label, value, note], i) => ({ label, value, note, style: 'font-size:26px;font-weight:500' + (i === 6 ? ';color:#D4F25A' : '') }));
+    const box = (c, bg) => `display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;border:1px solid ${c};background:${bg}`;
+    const alerts = [
+      ['Pulse Affiliates: 59.4% validated', 'Fourth month in a row under 70%. Source pa_207 had 8 of 28 validated. Pausing that source would lift them to 83%.', box('#F5C9C3', '#FDF3F1')],
+      ['31 deposits have no publisher code', 'They are in SpinArena\'s file but the tracking link had no publisher on it. Ask SpinArena before you close the month.', box('#F3DDBE', '#FFF8EE')],
+      ['Orbit Leads: source ol_pop at 64%', 'Their social source is fine at 88%. The pop traffic is pulling them down.', box('#F3DDBE', '#FFF8EE')],
+      ['4 rows blocked by the advertiser', 'Marked as blocked in the file and left out of the count automatically.', box('#E6E6E1', '#FAFAF8')]
+    ].map(([title, text, b]) => ({ title, text, box: b }));
+    return {
+      views, kpis, alerts, pubs: rows, days, worstDays, srcs, selSrcs, selHist,
+      isPub: view === 'pub', isDay: view === 'day', isSrc: view === 'src',
+      selName: P.name, selRep: P.rep, selVal: P.val, selPct: sp.toFixed(1) + '%', selRateStyle: `font-size:20px;color:${sc}`,
+      selChip: `background:${sbg};color:${sc}`, selStatus: sl,
+      dayLabel: `Reported and validated per day for ${P.name}, October`,
+      viewDays: () => this.setState({ view: 'day' }),
+      approved: !!s.approved, approveLabel: s.approved ? 'Approved ✓' : 'Approve for settlement',
+      approve: () => this.setState({ approved: true }),
+      thrOpts: [60, 70, 80].map(v => ({ v, sel: v === thr })),
+      setThr: (e) => this.setState({ thr: Number(e.target.value) })
+    };
+  }
+}
+</script>
+</body>
+</html>
